@@ -12,6 +12,8 @@ function catalog(version = '1.0', extra = false) {
     ] }, ...(extra ? [{ publisher: 'alice', source: { repo: 'alice/tool' }, pins: [{ package: 'Tool', version: '2.0' }] }] : [])] };
 }
 
+const CJK = /[　-〿぀-ヿ㐀-鿿＀-￯]/;
+
 describe('catalog synchronization', () => {
   it('does not treat a release marker copied by another user as an official announcement', () => {
     const packages = normalizeCatalog(catalog(), settings);
@@ -27,7 +29,29 @@ describe('catalog synchronization', () => {
     expect(plan.pendingCategories).toEqual([]);
     expect(plan.posts).toHaveLength(1);
     expect(plan.posts[0]).toMatchObject({ kind: 'create', categoryId: 'ann', title: 'Reclaim 1.0' });
-    expect(plan.posts[0].body).toContain('修正問題');
+    expect(plan.posts[0].body).toContain('A new package version is available.');
+  });
+
+  it('writes announcements in English only', () => {
+    const input = catalog('1.0', true);
+    Object.assign(input.packages[0].metadata!, { changelog: { 'zh-TW': '修正問題', en: 'Fixed a crash.' } });
+    for (const post of planSync(normalizeCatalog(input, settings), categories, [], settings).posts) {
+      expect(post.body).not.toMatch(CJK);
+      expect(post.title).not.toMatch(CJK);
+    }
+    const official = planSync(normalizeCatalog(input, settings), categories, [], settings).posts[0];
+    expect(official.body).toContain('Fixed a crash.');
+    expect(official.body).not.toContain('### ');
+  });
+
+  it('keeps a plain-text changelog only when it is English', () => {
+    const plain = (changelog: string) => {
+      const input = catalog();
+      Object.assign(input.packages[0].metadata!, { changelog });
+      return planSync(normalizeCatalog(input, settings), categories, [], settings).posts[0].body;
+    };
+    expect(plain('Faster scans.')).toContain('Faster scans.');
+    expect(plain('修正問題')).toContain('A new package version is available.');
   });
 
   it('announces a new version while retaining previous versions', () => {

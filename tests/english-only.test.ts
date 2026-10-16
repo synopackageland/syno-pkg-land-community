@@ -18,6 +18,7 @@ const files = [
 	...walk(path.join(root, 'src')),
 	...walk(path.join(root, 'worker')),
 	path.join(root, 'forum.config.ts'),
+	path.join(root, '.github/lib/catalog-sync.ts'),
 	path.join(root, 'static/robots.txt')
 ];
 
