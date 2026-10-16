@@ -4,6 +4,8 @@
 	import { isArticle } from '$lib/github/api';
 	import type { DiscussionListItem } from '$lib/github/types';
 	import { excerpt, formatDate, timeAgo } from '$lib/utils';
+	import { topicVisual } from '$lib/nav';
+	import Icon from './Icon.svelte';
 	import UserBadges from './UserBadges.svelte';
 
 	let {
@@ -12,13 +14,14 @@
 	}: { discussion: DiscussionListItem; showCategory?: boolean } = $props();
 
 	const article = $derived(isArticle(discussion.body));
+	const visual = $derived(topicVisual(discussion.category.slug));
 	const href = $derived(resolve('/d/[number]', { number: String(discussion.number) }));
 </script>
 
 <!-- The whole row is clickable via the title's stretched overlay link; the
      author avatar/name are separate links (to the profile page) layered above
      it, since anchors can't nest. -->
-<li class="group relative flex gap-3 px-4 py-3 transition-colors hover:bg-fd-muted/50 sm:px-5">
+<li class="group relative flex gap-3.5 px-4 py-4 transition-colors hover:bg-fd-muted/50 sm:px-6">
 	{#if discussion.author}
 		<a
 			href={resolve('/u/[login]', { login: discussion.author.login })}
@@ -48,11 +51,11 @@
 			{/if}
 		</div>
 		{#if forumConfig.content.listExcerpts && discussion.body}
-			<p class="mt-0.5 line-clamp-2 text-[13px] leading-relaxed text-fd-muted-foreground sm:line-clamp-1">
+			<p class="mt-1 line-clamp-2 text-[13px] leading-[1.6] text-fd-muted-foreground sm:line-clamp-1">
 				{excerpt(discussion.body, undefined, discussion.title)}
 			</p>
 		{/if}
-		<div class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[12px] text-fd-muted-foreground">
+		<div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-fd-muted-foreground">
 			{#if discussion.author}
 				<span class="inline-flex items-center gap-1.5">
 					<a
@@ -66,7 +69,7 @@
 			{/if}
 			<time datetime={discussion.createdAt} title={formatDate(discussion.createdAt)}>{timeAgo(discussion.createdAt)}</time>
 			{#if showCategory}
-				<span class="hidden sm:inline">in {discussion.category.name}</span>
+				<span class="hidden items-center gap-1.5 sm:inline-flex"><Icon name={visual.icon} class="size-3.5 {visual.tint}" />{discussion.category.name}</span>
 			{/if}
 			<span class="tabular inline-flex items-center gap-1 sm:hidden">
 				<svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 1 1 16.1-3.8z" /></svg>
