@@ -30,7 +30,8 @@ export function excerpt(markdown: string, length = 160): string {
 		.replace(/```[\s\S]*?```/g, '')
 		.replace(/!\[[^\]]*\]\([^)]*\)/g, '')
 		.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
-		.replace(/[#>*_`~|-]/g, '')
+		.replace(/^\s*(?:[-*+]\s+|-{3,}\s*$)/gm, '')
+		.replace(/[#>*_`~|]/g, '')
 		.replace(/\s+/g, ' ')
 		.trim();
 	return text.length > length ? `${text.slice(0, length).trimEnd()}…` : text;
