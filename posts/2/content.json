@@ -1,0 +1,92 @@
+{
+	"id": "D_kwDOVLwbas4AqF2Y",
+	"number": 2,
+	"title": "Connect 0.1.0-0052",
+	"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgConnect:0.1.0-0052 -->\n\nConnect **0.1.0-0052**\n\n### en\n\n0.1.0-0052\n- One overview page lists every connection method. Turn Cloudflare Tunnel, Tailscale, NetBird or IPv6 direct access on or off independently, or turn them all off.\n- Cloudflare Tunnel: a temporary URL with no account, your own domain after signing in to Cloudflare (an existing DNS record is never overwritten), or your own tunnel token. Only the DSM web page is published.\n- Tailscale: reach selected NAS web services from your own computers and phones; Funnel can make selected web services public.\n- NetBird: sign in with your NetBird account, or use a setup key and your own management server in Advanced. Access to the NAS follows your management server's policy.\n- IPv6 direct: use the NAS's global IPv6 address with checklists for the DSM firewall, router and DDNS. Connect does not change the firewall or your router.\n- The cloudflared, Tailscale and NetBird clients are the vendors' official releases, downloaded and verified on the NAS before use.\n- Only DSM administrators (local, AD or LDAP, as resolved by DSM) can open Connect and call its API. Everything runs as the package account, with no root helper.\n- Nine languages; DSM 7.1 or later on x86_64, aarch64 and armv7.\n- Fixed since 0.1.0-0047: starting and then stopping Tailscale or IPv6 direct no longer clears their saved services; NetBird failures show one clear message, and copying the NetBird IP works over http; Settings names GitHub's rate limit and when to retry, and says it is checking while a check runs; a page DSM gave no sign-in token asks you to sign in to DSM again.\n- Upgrading from 0.1.0-0047 needs no administrator approval.\n\n### zh-TW\n\n0.1.0-0052\n- 在同一個總覽頁列出所有連線方式。Cloudflare Tunnel、Tailscale、NetBird 與 IPv6 直連可以各自啟用或停用，也可以全部停用。\n- Cloudflare Tunnel：不需帳號即可取得臨時網址；登入 Cloudflare 後可使用自己的網域（已有同名 DNS 記錄時不覆寫）；也可以使用自己的 Tunnel token。只公開 DSM 網頁。\n- Tailscale：從自己的電腦與手機連到選定的 NAS 網頁服務；Funnel 可將選定的網頁服務公開。\n- NetBird：以 NetBird 帳號登入，或在進階設定中使用 setup key 與自架的管理伺服器。NAS 的存取範圍由管理伺服器政策控制。\n- IPv6 直連：使用 NAS 的全域 IPv6 位址，並提供 DSM 防火牆、路由器與 DDNS 的檢查清單。Connect 不會修改防火牆或路由器。\n- cloudflared、Tailscale 與 NetBird 使用原廠官方版本，在 NAS 上下載並驗證後才使用。\n- 只有 DSM 管理員（本機、AD 或 LDAP，由 DSM 判定）能開啟 Connect 與呼叫其 API。所有程式都以套件帳號執行，不使用 root helper。\n- 支援九種語言；需要 DSM 7.1 以上，支援 x86_64、aarch64 與 armv7。\n- 0.1.0-0047 之後的修正：Tailscale 或 IPv6 直連先啟動再停止，不再清掉已儲存的服務；NetBird 失敗時只顯示一則清楚的訊息，經 http 也能複製 NetBird IP；設定頁會指出 GitHub 的頻率限制與可重試時間，檢查進行中會顯示「檢查中」；DSM 沒有提供登入權杖的頁面會請您重新登入 DSM。\n- 從 0.1.0-0047 升級不需要管理員核准。\n\nPackage: `synopackageland/SynoPkgConnect`\n\n[Browse packages / 瀏覽套件](https://synopkgland.com/apps/)\n\n",
+	"bodyHTML": "\n<p dir=\"auto\">Connect <strong>0.1.0-0052</strong></p>\n<h3 dir=\"auto\">en</h3>\n<p dir=\"auto\">0.1.0-0052</p>\n<ul dir=\"auto\">\n<li>One overview page lists every connection method. Turn Cloudflare Tunnel, Tailscale, NetBird or IPv6 direct access on or off independently, or turn them all off.</li>\n<li>Cloudflare Tunnel: a temporary URL with no account, your own domain after signing in to Cloudflare (an existing DNS record is never overwritten), or your own tunnel token. Only the DSM web page is published.</li>\n<li>Tailscale: reach selected NAS web services from your own computers and phones; Funnel can make selected web services public.</li>\n<li>NetBird: sign in with your NetBird account, or use a setup key and your own management server in Advanced. Access to the NAS follows your management server's policy.</li>\n<li>IPv6 direct: use the NAS's global IPv6 address with checklists for the DSM firewall, router and DDNS. Connect does not change the firewall or your router.</li>\n<li>The cloudflared, Tailscale and NetBird clients are the vendors' official releases, downloaded and verified on the NAS before use.</li>\n<li>Only DSM administrators (local, AD or LDAP, as resolved by DSM) can open Connect and call its API. Everything runs as the package account, with no root helper.</li>\n<li>Nine languages; DSM 7.1 or later on x86_64, aarch64 and armv7.</li>\n<li>Fixed since 0.1.0-0047: starting and then stopping Tailscale or IPv6 direct no longer clears their saved services; NetBird failures show one clear message, and copying the NetBird IP works over http; Settings names GitHub's rate limit and when to retry, and says it is checking while a check runs; a page DSM gave no sign-in token asks you to sign in to DSM again.</li>\n<li>Upgrading from 0.1.0-0047 needs no administrator approval.</li>\n</ul>\n<h3 dir=\"auto\">zh-TW</h3>\n<p dir=\"auto\">0.1.0-0052</p>\n<ul dir=\"auto\">\n<li>在同一個總覽頁列出所有連線方式。Cloudflare Tunnel、Tailscale、NetBird 與 IPv6 直連可以各自啟用或停用，也可以全部停用。</li>\n<li>Cloudflare Tunnel：不需帳號即可取得臨時網址；登入 Cloudflare 後可使用自己的網域（已有同名 DNS 記錄時不覆寫）；也可以使用自己的 Tunnel token。只公開 DSM 網頁。</li>\n<li>Tailscale：從自己的電腦與手機連到選定的 NAS 網頁服務；Funnel 可將選定的網頁服務公開。</li>\n<li>NetBird：以 NetBird 帳號登入，或在進階設定中使用 setup key 與自架的管理伺服器。NAS 的存取範圍由管理伺服器政策控制。</li>\n<li>IPv6 直連：使用 NAS 的全域 IPv6 位址，並提供 DSM 防火牆、路由器與 DDNS 的檢查清單。Connect 不會修改防火牆或路由器。</li>\n<li>cloudflared、Tailscale 與 NetBird 使用原廠官方版本，在 NAS 上下載並驗證後才使用。</li>\n<li>只有 DSM 管理員（本機、AD 或 LDAP，由 DSM 判定）能開啟 Connect 與呼叫其 API。所有程式都以套件帳號執行，不使用 root helper。</li>\n<li>支援九種語言；需要 DSM 7.1 以上，支援 x86_64、aarch64 與 armv7。</li>\n<li>0.1.0-0047 之後的修正：Tailscale 或 IPv6 直連先啟動再停止，不再清掉已儲存的服務；NetBird 失敗時只顯示一則清楚的訊息，經 http 也能複製 NetBird IP；設定頁會指出 GitHub 的頻率限制與可重試時間，檢查進行中會顯示「檢查中」；DSM 沒有提供登入權杖的頁面會請您重新登入 DSM。</li>\n<li>從 0.1.0-0047 升級不需要管理員核准。</li>\n</ul>\n<p dir=\"auto\">Package: <code class=\"notranslate\">synopackageland/SynoPkgConnect</code></p>\n<p dir=\"auto\"><a href=\"https://synopkgland.com/apps/\" rel=\"nofollow\">Browse packages / 瀏覽套件</a></p>",
+	"url": "https://github.com/synopackageland/community/discussions/2",
+	"createdAt": "2026-10-16T04:07:07Z",
+	"lastEditedAt": null,
+	"upvoteCount": 1,
+	"viewerHasUpvoted": false,
+	"locked": false,
+	"author": {
+		"login": "synopackageland",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+		"url": "https://github.com/synopackageland"
+	},
+	"category": {
+		"id": "DIC_kwDOVLwbas4DIkxQ",
+		"name": "Announcements",
+		"slug": "announcements",
+		"emojiHTML": "<div>📣</div>",
+		"description": "Updates from maintainers",
+		"isAnswerable": false
+	},
+	"reactionGroups": [
+		{
+			"content": "THUMBS_UP",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "THUMBS_DOWN",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "LAUGH",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HOORAY",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "CONFUSED",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HEART",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "ROCKET",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "EYES",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		}
+	],
+	"comments": {
+		"totalCount": 0,
+		"pageInfo": {
+			"endCursor": null,
+			"hasNextPage": false
+		},
+		"nodes": []
+	}
+}
