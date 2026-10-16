@@ -127,6 +127,15 @@ describe('permissions', () => {
 		expect(mod.canPostIn({ slug: 'announcements' })).toBe(true);
 	});
 
+	it('postAction asks signed-out visitors to sign in first', () => {
+		mockAuth.signedIn = false;
+		expect(mod.postAction({ slug: 'general' })).toBe('sign-in');
+		expect(mod.postAction({ slug: 'announcements' })).toBe('sign-in');
+		mockAuth.signedIn = true;
+		expect(mod.postAction({ slug: 'general' })).toBe('post');
+		expect(mod.postAction({ slug: 'announcements' })).toBe('locked');
+	});
+
 	it('postableCategories filters restricted topics for readers', async () => {
 		await mod.loadOverview();
 		expect(mod.postableCategories().map((c) => c.slug)).toEqual(['general']);

@@ -146,6 +146,12 @@ export function canPostIn(category: Pick<Category, 'slug'>): boolean {
 	return true;
 }
 
+/** What a topic's post button should do for the current visitor */
+export function postAction(category: Pick<Category, 'slug'>): 'post' | 'sign-in' | 'locked' {
+	if (!auth.signedIn) return 'sign-in';
+	return canPostIn(category) ? 'post' : 'locked';
+}
+
 /** Categories the signed-in user may post in */
 export function postableCategories(): Category[] {
 	return ui.categories.filter(canPostIn);
