@@ -75,6 +75,14 @@ If the custom domain is not already bound, the account owner must add
 `community.synopkgland.com` under the Worker's Settings → Domains & Routes.
 Do not change DNS records belonging to the existing website or package source.
 
+The initial live endpoint is
+https://synopkgland-community.bidacumen.workers.dev/ . The main website links to
+this working endpoint until the custom domain is ready. After binding and
+verifying the custom domain, change `communityUrl` in the website repository's
+`website/src/data/public-origin.json` to `https://community.synopkgland.com/`,
+run the website build/gates and redeploy the website. Then configure the OAuth
+App against the final domain above, rather than creating a temporary App.
+
 ```sh
 npm ci
 npm run check
