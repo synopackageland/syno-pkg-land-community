@@ -1,0 +1,92 @@
+{
+	"id": "D_kwDOVLwbas4AqHP8",
+	"number": 7,
+	"title": "Reclaim 0.1.1-1572",
+	"body": "<!-- synopkgland:release:synopackageland%2FSynoReclaim:0.1.1-1572 -->\n\nReclaim **0.1.1-1572**\n\n0.1.1-1572\n- System partition cleanup offers Standard and Deep modes; Deep previews each item's effect and asks for an extra confirmation.\n- The system partition warning starts at 900 MB free, and Settings can turn it off; cleanup stays on the Overview card.\n- Pages, dialogs and buttons follow the DSM look of UI 0.10.\n- Built on SDK 0.12.1: an administrator approves Syno Reclaim again after the upgrade.\n\nPackage: `synopackageland/SynoReclaim`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+	"bodyHTML": "\n<p dir=\"auto\">Reclaim <strong>0.1.1-1572</strong></p>\n<p dir=\"auto\">0.1.1-1572</p>\n<ul dir=\"auto\">\n<li>System partition cleanup offers Standard and Deep modes; Deep previews each item's effect and asks for an extra confirmation.</li>\n<li>The system partition warning starts at 900 MB free, and Settings can turn it off; cleanup stays on the Overview card.</li>\n<li>Pages, dialogs and buttons follow the DSM look of UI 0.10.</li>\n<li>Built on SDK 0.12.1: an administrator approves Syno Reclaim again after the upgrade.</li>\n</ul>\n<p dir=\"auto\">Package: <code class=\"notranslate\">synopackageland/SynoReclaim</code></p>\n<p dir=\"auto\"><a href=\"https://synopkgland.com/apps/\" rel=\"nofollow\">Browse packages</a></p>",
+	"url": "https://github.com/synopackageland/syno-pkg-land-community/discussions/7",
+	"createdAt": "2026-10-16T13:59:14Z",
+	"lastEditedAt": null,
+	"upvoteCount": 1,
+	"viewerHasUpvoted": false,
+	"locked": false,
+	"author": {
+		"login": "synopackageland",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+		"url": "https://github.com/synopackageland"
+	},
+	"category": {
+		"id": "DIC_kwDOVLwbas4DIkxQ",
+		"name": "Announcements",
+		"slug": "announcements",
+		"emojiHTML": "<div>📣</div>",
+		"description": "Updates from maintainers",
+		"isAnswerable": false
+	},
+	"reactionGroups": [
+		{
+			"content": "THUMBS_UP",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "THUMBS_DOWN",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "LAUGH",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HOORAY",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "CONFUSED",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HEART",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "ROCKET",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "EYES",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		}
+	],
+	"comments": {
+		"totalCount": 0,
+		"pageInfo": {
+			"endCursor": null,
+			"hasNextPage": false
+		},
+		"nodes": []
+	}
+}

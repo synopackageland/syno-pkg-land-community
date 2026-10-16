@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-16T09:04:37.387Z",
+  "syncedAt": "2026-10-16T13:59:16.267Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "write",
   "pendingCategories": [],
@@ -7,27 +7,27 @@
   "packages": [
     {
       "key": "synopackageland/SynoReclaim",
-      "version": "0.1.1-1570",
+      "version": "0.1.1-1572",
       "name": "Reclaim",
       "official": true,
       "category": "reclaim",
-      "notes": "0.1.1-1570\n- Full-volume ext4 scans show progress during aggregation.\n- Page headers keep titles and actions readable in narrow windows.\n- One click opens page notes from the info button.\n- Removing the entry from its portal page asks for confirmation and explains how to enable it again from the DSM desktop."
+      "notes": "0.1.1-1572\n- System partition cleanup offers Standard and Deep modes; Deep previews each item's effect and asks for an extra confirmation.\n- The system partition warning starts at 900 MB free, and Settings can turn it off; cleanup stays on the Overview card.\n- Pages, dialogs and buttons follow the DSM look of UI 0.10.\n- Built on SDK 0.12.1: an administrator approves Syno Reclaim again after the upgrade."
     },
     {
       "key": "synopackageland/SynoPkgConnect",
-      "version": "0.1.0-0052",
+      "version": "0.1.0-0053",
       "name": "Connect",
       "official": true,
       "category": "connect",
-      "notes": "0.1.0-0052\n- One overview page lists every connection method. Turn Cloudflare Tunnel, Tailscale, NetBird or IPv6 direct access on or off independently, or turn them all off.\n- Cloudflare Tunnel: a temporary URL with no account, your own domain after signing in to Cloudflare (an existing DNS record is never overwritten), or your own tunnel token. Only the DSM web page is published.\n- Tailscale: reach selected NAS web services from your own computers and phones; Funnel can make selected web services public.\n- NetBird: sign in with your NetBird account, or use a setup key and your own management server in Advanced. Access to the NAS follows your management server's policy.\n- IPv6 direct: use the NAS's global IPv6 address with checklists for the DSM firewall, router and DDNS. Connect does not change the firewall or your router.\n- The cloudflared, Tailscale and NetBird clients are the vendors' official releases, downloaded and verified on the NAS before use.\n- Only DSM administrators (local, AD or LDAP, as resolved by DSM) can open Connect and call its API. Everything runs as the package account, with no root helper.\n- Nine languages; DSM 7.1 or later on x86_64, aarch64 and armv7.\n- Fixed since 0.1.0-0047: starting and then stopping Tailscale or IPv6 direct no longer clears their saved services; NetBird failures show one clear message, and copying the NetBird IP works over http; Settings names GitHub's rate limit and when to retry, and says it is checking while a check runs; a page DSM gave no sign-in token asks you to sign in to DSM again.\n- Upgrading from 0.1.0-0047 needs no administrator approval."
+      "notes": "0.1.0-0053\n- Buttons, dialogs, scrollbars and corners follow DSM: page and form actions are pill-shaped buttons, toolbar buttons are grey, and dialogs size to their content.\n- Each page spaces its sections like DSM.\n- Stopping a connection uses the same button as the actions under it.\n- Upgrading from 0.1.0-0052 needs no administrator approval."
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
-      "version": "0.2.2-0037",
+      "version": "0.2.2-0038",
       "name": "Download Hub",
       "official": true,
       "category": "download-hub",
-      "notes": "0.2.2-0037\n- Removing the entry from its portal page asks for confirmation and explains how to enable it again from the DSM desktop.\n- Page headers keep titles and actions readable in narrow windows."
+      "notes": "0.2.2-0038\n- Buttons, dialogs, scrollbars and corners follow DSM: dialog actions are pill-shaped buttons, toolbar buttons are grey, and dialogs such as New download size to their content.\n- Each page spaces its sections like DSM.\n- Upgrading from 0.2.2-0037 needs no administrator approval."
     }
   ],
   "multiRepoReviewNeeded": false

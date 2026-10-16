@@ -1,6 +1,75 @@
 {
-	"archivedAt": "2026-10-16T09:04:38.479Z",
+	"archivedAt": "2026-10-16T13:59:17.423Z",
 	"discussions": [
+		{
+			"id": "D_kwDOVLwbas4AqHP-",
+			"number": 9,
+			"title": "Download Hub 0.2.2-0038",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgGopeed:0.2.2-0038 -->\n\nDownload Hub **0.2.2-0038**\n\n0.2.2-0038\n- Buttons, dialogs, scrollbars and corners follow DSM: dialog actions are pill-shaped buttons, toolbar buttons are grey, and dialogs such as New download size to their content.\n- Each page spaces its sections like DSM.\n- Upgrading from 0.2.2-0037 needs no administrator approval.\n\nPackage: `synopackageland/SynoPkgGopeed`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-16T13:59:15Z",
+			"updatedAt": "2026-10-16T13:59:15Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqHP9",
+			"number": 8,
+			"title": "Connect 0.1.0-0053",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgConnect:0.1.0-0053 -->\n\nConnect **0.1.0-0053**\n\n0.1.0-0053\n- Buttons, dialogs, scrollbars and corners follow DSM: page and form actions are pill-shaped buttons, toolbar buttons are grey, and dialogs size to their content.\n- Each page spaces its sections like DSM.\n- Stopping a connection uses the same button as the actions under it.\n- Upgrading from 0.1.0-0052 needs no administrator approval.\n\nPackage: `synopackageland/SynoPkgConnect`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-16T13:59:15Z",
+			"updatedAt": "2026-10-16T13:59:15Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqHP8",
+			"number": 7,
+			"title": "Reclaim 0.1.1-1572",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoReclaim:0.1.1-1572 -->\n\nReclaim **0.1.1-1572**\n\n0.1.1-1572\n- System partition cleanup offers Standard and Deep modes; Deep previews each item's effect and asks for an extra confirmation.\n- The system partition warning starts at 900 MB free, and Settings can turn it off; cleanup stays on the Overview card.\n- Pages, dialogs and buttons follow the DSM look of UI 0.10.\n- Built on SDK 0.12.1: an administrator approves Syno Reclaim again after the upgrade.\n\nPackage: `synopackageland/SynoReclaim`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-16T13:59:14Z",
+			"updatedAt": "2026-10-16T13:59:14Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
 		{
 			"id": "D_kwDOVLwbas4AqF4s",
 			"number": 5,
