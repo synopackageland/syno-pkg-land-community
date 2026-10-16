@@ -52,6 +52,8 @@
 
 	// inline moderation editor
 	let editing = $state(false);
+	/** The phone-width ⋯ menu holding Edit/Delete/Report */
+	let actionsOpen = $state(false);
 	let editTitle = $state('');
 	let editCategoryId = $state('');
 	let editBody = $state('');
@@ -198,6 +200,43 @@
 	}
 </script>
 
+<!-- Edit/Delete/Report, inline on wide screens and in the ⋯ menu on phones -->
+{#snippet postActions(cls: string)}
+	{#if canModerate && !editing}
+		<button
+			type="button"
+			onclick={() => {
+				actionsOpen = false;
+				startEdit();
+			}}
+			class={cls}
+		>
+			Edit
+		</button>
+		<button
+			type="button"
+			onclick={() => {
+				actionsOpen = false;
+				removeDiscussion();
+			}}
+			disabled={deleteBusy}
+			class="{cls} text-red-600 hover:bg-red-500/10 hover:text-red-600 dark:text-red-400 dark:hover:text-red-400"
+		>
+			{deleteBusy ? 'Deleting…' : 'Delete'}
+		</button>
+	{/if}
+	<a
+		href={reportUrl}
+		target="_blank"
+		rel="noreferrer"
+		title="Report this content to GitHub"
+		onclick={() => (actionsOpen = false)}
+		class={cls}
+	>
+		Report
+	</a>
+{/snippet}
+
 <svelte:head>
 	<title>{discussion ? `${discussion.title} — ${forumConfig.site.name}` : forumConfig.site.name}</title>
 </svelte:head>
@@ -261,28 +300,20 @@
 					<span class="badge bg-fd-muted text-fd-muted-foreground">Pinned</span>
 				{/if}
 
-				<span class="ml-auto inline-flex items-center gap-0.5 text-[12.5px]">
-					{#if canModerate && !editing}
-						<button type="button" onclick={startEdit} class="btn btn-quiet h-7 px-2 text-[12.5px]">Edit</button>
-						<button
-							type="button"
-							onclick={removeDiscussion}
-							disabled={deleteBusy}
-							class="btn h-7 px-2 text-[12.5px] text-red-600 hover:bg-red-500/10 dark:text-red-400"
-						>
-							{deleteBusy ? 'Deleting…' : 'Delete'}
-						</button>
-					{/if}
-					<a
-						href={reportUrl}
-						target="_blank"
-						rel="noreferrer"
-						title="Report this content to GitHub"
-						class="btn btn-quiet h-7 px-2 text-[12.5px]"
-					>
-						Report
-					</a>
+				<span class="ml-auto hidden items-center gap-0.5 sm:inline-flex">
+					{@render postActions('btn btn-quiet h-7 px-2 text-[12.5px]')}
 				</span>
+				<details class="relative ml-auto sm:hidden" bind:open={actionsOpen}>
+					<summary
+						class="flex size-7 cursor-pointer list-none items-center justify-center rounded-md hover:bg-fd-muted [&::-webkit-details-marker]:hidden"
+						aria-label="Post actions"
+					>
+						<svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.6" /><circle cx="12" cy="12" r="1.6" /><circle cx="19" cy="12" r="1.6" /></svg>
+					</summary>
+					<div class="absolute right-0 z-50 mt-1 flex w-40 flex-col rounded-lg border border-fd-border bg-fd-card p-1 shadow-float">
+						{@render postActions('btn btn-quiet h-9 w-full justify-start px-2.5 text-sm')}
+					</div>
+				</details>
 			</div>
 
 			{#if editing}
