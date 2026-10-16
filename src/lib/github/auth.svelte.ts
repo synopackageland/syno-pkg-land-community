@@ -1,5 +1,6 @@
 import { clearCache, setCacheScope } from '$lib/cache';
 import { forumConfig } from '$lib/config';
+import { localStore, sessionStore } from '$lib/storage';
 import type { Viewer } from './types';
 
 const TOKEN_KEY = 'dk:token';
@@ -25,7 +26,7 @@ class Auth {
 
 	/** Restore a persisted token and resolve the viewer behind it. */
 	async init() {
-		const stored = localStorage.getItem(TOKEN_KEY);
+		const stored = localStore.get(TOKEN_KEY);
 		if (stored) {
 			this.token = stored;
 			try {
@@ -41,7 +42,7 @@ class Auth {
 	async signInWithToken(token: string) {
 		this.token = token.trim();
 		await this.fetchViewer();
-		localStorage.setItem(TOKEN_KEY, this.token);
+		localStore.set(TOKEN_KEY, this.token);
 	}
 
 	get oauthAvailable() {
@@ -51,7 +52,7 @@ class Auth {
 	/** Kick off the GitHub OAuth web flow (requires a token-exchange proxy). */
 	beginOAuth(redirectUri: string) {
 		const state = crypto.randomUUID();
-		sessionStorage.setItem(STATE_KEY, state);
+		sessionStore.set(STATE_KEY, state);
 		const url = new URL('https://github.com/login/oauth/authorize');
 		url.searchParams.set('client_id', this.oauthClientId || forumConfig.auth.oauth.clientId);
 		url.searchParams.set('redirect_uri', redirectUri);
@@ -62,8 +63,8 @@ class Auth {
 
 	/** Complete the OAuth flow on the callback page. */
 	async completeOAuth(code: string, state: string) {
-		const expected = sessionStorage.getItem(STATE_KEY);
-		sessionStorage.removeItem(STATE_KEY);
+		const expected = sessionStore.get(STATE_KEY);
+		sessionStore.remove(STATE_KEY);
 		if (!expected || expected !== state) {
 			throw new Error('OAuth state mismatch — please try signing in again.');
 		}
@@ -81,7 +82,7 @@ class Auth {
 	signOut() {
 		this.token = null;
 		this.viewer = null;
-		localStorage.removeItem(TOKEN_KEY);
+		localStore.remove(TOKEN_KEY);
 		// cached GraphQL data may contain viewer-specific fields — drop it all
 		clearCache();
 		setCacheScope(null);

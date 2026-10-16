@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
 
 const { mockConfig, setCacheScope, clearCache } = vi.hoisted(() => ({
 	mockConfig: {
@@ -161,5 +161,42 @@ describe('signOut', () => {
 		// cached GraphQL data is wiped and the scope reset
 		expect(clearCache).toHaveBeenCalled();
 		expect(setCacheScope).toHaveBeenCalledWith(null);
+	});
+});
+
+describe('blocked storage', () => {
+	afterEach(() => vi.restoreAllMocks());
+	beforeEach(() => {
+		const boom = () => {
+			throw new DOMException('blocked', 'SecurityError');
+		};
+		vi.spyOn(window, 'localStorage', 'get').mockImplementation(boom);
+		vi.spyOn(window, 'sessionStorage', 'get').mockImplementation(boom);
+	});
+
+	it('boots signed out without throwing', async () => {
+		await auth.init();
+		expect(auth.loading).toBe(false);
+		expect(auth.signedIn).toBe(false);
+	});
+
+	it('still signs in for this page view when the token cannot be saved', async () => {
+		fetchMock.mockResolvedValue(viewerOk);
+		await auth.signInWithToken('tok');
+		expect(auth.viewer).toEqual(viewer);
+	});
+
+	it('signs out without throwing', async () => {
+		fetchMock.mockResolvedValue(viewerOk);
+		await auth.signInWithToken('tok');
+		expect(() => auth.signOut()).not.toThrow();
+		expect(auth.viewer).toBeNull();
+	});
+
+	it('starts OAuth and fails the callback cleanly when the state cannot be kept', async () => {
+		mockConfig.auth.oauth = { clientId: 'cid', proxyUrl: '/p' };
+		vi.stubGlobal('location', { href: '' });
+		expect(() => auth.beginOAuth('http://x/cb')).not.toThrow();
+		await expect(auth.completeOAuth('code', 'state')).rejects.toThrow('state mismatch');
 	});
 });

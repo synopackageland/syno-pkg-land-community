@@ -14,6 +14,7 @@
  *                   entries and retry once, then degrade to network-only
  */
 import { forumConfig } from './config';
+import { localStore } from './storage';
 
 /** Bump when the shape of cached GraphQL data changes */
 const VERSION = 3;
@@ -39,18 +40,18 @@ interface Entry<T> {
 
 export function readCache<T>(key: string): T | null {
 	if (!forumConfig.cache.enabled) return null;
-	const raw = localStorage.getItem(storageKey(key));
+	const raw = localStore.get(storageKey(key));
 	if (raw === null) return null;
 	try {
 		const entry = JSON.parse(raw) as Entry<T>;
 		if (typeof entry.t !== 'number' || Date.now() - entry.t > forumConfig.cache.ttlSeconds * 1000) {
-			localStorage.removeItem(storageKey(key));
+			localStore.remove(storageKey(key));
 			return null;
 		}
 		return entry.data;
 	} catch {
 		// corrupt entry — drop it
-		localStorage.removeItem(storageKey(key));
+		localStore.remove(storageKey(key));
 		return null;
 	}
 }
@@ -58,28 +59,21 @@ export function readCache<T>(key: string): T | null {
 export function writeCache<T>(key: string, data: T): void {
 	if (!forumConfig.cache.enabled) return;
 	const payload = JSON.stringify({ t: Date.now(), data } satisfies Entry<T>);
-	try {
-		localStorage.setItem(storageKey(key), payload);
-	} catch {
-		// quota exceeded — evict the oldest half and retry once
-		prune();
-		try {
-			localStorage.setItem(storageKey(key), payload);
-		} catch {
-			// still full: run network-only, the app works fine without cache
-		}
-	}
+	if (localStore.set(storageKey(key), payload)) return;
+	// quota exceeded — evict the oldest half and retry once; if still full (or
+	// storage is blocked) run network-only, the app works fine without cache
+	prune();
+	localStore.set(storageKey(key), payload);
 }
 
 /** Remove the oldest half of all cache entries (any scope/version). */
 function prune(): void {
 	const entries: [string, number][] = [];
-	for (let i = 0; i < localStorage.length; i++) {
-		const key = localStorage.key(i)!;
+	for (const key of localStore.keys()) {
 		if (!key.startsWith(BASE)) continue;
 		let t = 0;
 		try {
-			t = (JSON.parse(localStorage.getItem(key)!) as Entry<unknown>).t ?? 0;
+			t = (JSON.parse(localStore.get(key)!) as Entry<unknown>).t ?? 0;
 		} catch {
 			// unreadable — treat as oldest
 		}
@@ -87,22 +81,22 @@ function prune(): void {
 	}
 	entries.sort((a, b) => a[1] - b[1]);
 	for (const [key] of entries.slice(0, Math.max(1, Math.ceil(entries.length / 2)))) {
-		localStorage.removeItem(key);
+		localStore.remove(key);
 	}
 }
 
 /** Drop every entry for the current user whose key starts with `prefix`. */
 export function invalidateCache(prefix: string): void {
 	const match = storageKey(prefix);
-	for (const key of Object.keys(localStorage)) {
-		if (key.startsWith(match)) localStorage.removeItem(key);
+	for (const key of localStore.keys()) {
+		if (key.startsWith(match)) localStore.remove(key);
 	}
 }
 
 /** Drop every cache entry for every user and version (used on sign-out). */
 export function clearCache(): void {
-	for (const key of Object.keys(localStorage)) {
-		if (key.startsWith(BASE)) localStorage.removeItem(key);
+	for (const key of localStore.keys()) {
+		if (key.startsWith(BASE)) localStore.remove(key);
 	}
 }
 
