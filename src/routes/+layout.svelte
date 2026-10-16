@@ -67,8 +67,8 @@
 
 	{#if archiveMode() && ui.bootedFromArchive}
 		<div class="border-b border-fd-border bg-fd-muted/60">
-			<div class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-2 gap-y-0.5 px-4 py-1.5 text-[12.5px] text-fd-muted-foreground sm:px-6">
-				<span>Read-only snapshot. Sign in to post, comment and react. / 唯讀快照，登入後可發文與回覆。</span>
+			<div class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-2 gap-y-0.5 px-4 py-2 text-[12.5px] text-fd-muted-foreground sm:px-6">
+				<span>Read-only snapshot. Sign in to post, comment and react.</span>
 				<button
 					type="button"
 					onclick={() => (ui.signInOpen = true)}
@@ -80,13 +80,13 @@
 		</div>
 	{/if}
 
-	<div class="mx-auto flex w-full max-w-6xl gap-10 px-4 sm:px-6">
+	<div class="mx-auto flex w-full max-w-6xl gap-12 px-4 sm:px-6">
 		{#if ui.categories.length > 0}
-			<aside class="sticky top-14 hidden h-[calc(100dvh-3.5rem)] w-48 shrink-0 overflow-y-auto py-8 md:block">
+			<aside class="sticky top-14 hidden h-[calc(100dvh-3.5rem)] w-52 shrink-0 overflow-y-auto py-10 md:block">
 				<Sidebar categories={ui.categories} />
 			</aside>
 		{/if}
-		<main id="content" class="min-w-0 flex-1 pt-6 pb-16 md:pt-8">
+		<main id="content" class="min-w-0 flex-1 pt-7 pb-20 md:pt-10">
 			{@render children()}
 		</main>
 	</div>

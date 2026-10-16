@@ -12,7 +12,7 @@ export interface Head {
 }
 
 const SITE_NAME = 'Syno Package Land Community';
-const SITE_DESCRIPTION = 'Package support, ideas and releases / 套件討論、建議與更新';
+const SITE_DESCRIPTION = 'Package support, ideas and releases';
 
 const escapeXml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const escapeAttr = (s: string) => escapeXml(s).replace(/"/g, '&quot;');
