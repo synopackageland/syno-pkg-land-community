@@ -9,8 +9,5 @@ export default defineForumConfig({
  badges: {},
  content: { sort: 'UPDATED_AT', articles: { enabled: false }, topics: { exclude: ['polls', 'ideas', 'q-a', 'show-and-tell'], restricted: ['announcements'] } },
  rep: { enabled: false },
- archive: { enabled: true },
- theme: {
-  light: { background: '#f4f5f7', foreground: '#17212b', muted: '#f4f5f7', mutedForeground: '#46535f', card: '#ffffff', cardForeground: '#17212b', border: '#cdd2d9', primary: '#1f78e5', primaryForeground: '#ffffff', accent: '#e3eefc', accentForeground: '#135bb8', ring: '#1f78e5', link: '#135bb8' }
- }
+ archive: { enabled: true }
 });

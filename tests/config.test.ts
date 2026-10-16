@@ -17,6 +17,6 @@ describe('resolved config', () => {
 	});
 
 	it('compiles theme overrides (none in the shipped config)', () => {
-		expect(themeCss).toContain('--fd-primary:#1f78e5');
+		expect(themeCss).toBe('');
 	});
 });
