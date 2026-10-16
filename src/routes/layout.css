@@ -3,13 +3,14 @@
 @import '@fontsource-variable/noto-sans-tc';
 @import 'tailwindcss';
 
-/* Dark follows the system preference. */
-@custom-variant dark (@media (prefers-color-scheme: dark));
+/* The theme lives on <html data-theme>: set before first paint by app.html,
+   then by the header toggle. Without a stored choice it follows the system. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
 /* Syno Package Land palette: one cool neutral family, one quiet blue accent.
    Surfaces step in tone (ground → card → muted) instead of using shadows. */
 :root {
-	color-scheme: light dark;
+	color-scheme: light;
 	--fd-background: #f6f7f9;
 	--fd-foreground: #18202a;
 	--fd-muted: #eef1f4;
@@ -26,23 +27,22 @@
 	--fd-shadow-float: 0 1px 2px rgb(24 32 42 / 0.06), 0 16px 40px -12px rgb(24 32 42 / 0.22);
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--fd-background: #0f1217;
-		--fd-foreground: #e5e9ee;
-		--fd-muted: #1b2028;
-		--fd-muted-foreground: #99a3af;
-		--fd-card: #151a21;
-		--fd-card-foreground: #e5e9ee;
-		--fd-border: #252c36;
-		--fd-primary: #8db4f5;
-		--fd-primary-foreground: #0f1217;
-		--fd-accent: #1b2534;
-		--fd-accent-foreground: #b3cdf9;
-		--fd-ring: #6ea0f0;
-		--fd-link: #93b8f7;
-		--fd-shadow-float: 0 1px 2px rgb(0 0 0 / 0.4), 0 16px 40px -12px rgb(0 0 0 / 0.6);
-	}
+:root[data-theme='dark'] {
+	color-scheme: dark;
+	--fd-background: #0f1217;
+	--fd-foreground: #e5e9ee;
+	--fd-muted: #1b2028;
+	--fd-muted-foreground: #99a3af;
+	--fd-card: #151a21;
+	--fd-card-foreground: #e5e9ee;
+	--fd-border: #252c36;
+	--fd-primary: #8db4f5;
+	--fd-primary-foreground: #0f1217;
+	--fd-accent: #1b2534;
+	--fd-accent-foreground: #b3cdf9;
+	--fd-ring: #6ea0f0;
+	--fd-link: #93b8f7;
+	--fd-shadow-float: 0 1px 2px rgb(0 0 0 / 0.4), 0 16px 40px -12px rgb(0 0 0 / 0.6);
 }
 
 @theme inline {

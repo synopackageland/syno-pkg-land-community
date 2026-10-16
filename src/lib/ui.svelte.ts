@@ -164,8 +164,3 @@ export function postActionsMenu({ canModerate, editing }: { canModerate: boolean
 export function postableCategories(): Category[] {
 	return ui.categories.filter(canPostIn);
 }
-
-export function toggleTheme() {
-	const dark = document.documentElement.classList.toggle('dark');
-	localStorage.setItem('dk:theme', dark ? 'dark' : 'light');
-}

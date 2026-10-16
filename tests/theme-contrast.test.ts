@@ -10,7 +10,7 @@ function tokens(block: string): Record<string, string> {
 }
 
 const lightStart = css.indexOf(':root {');
-const darkStart = css.indexOf('@media (prefers-color-scheme: dark) {', lightStart);
+const darkStart = css.indexOf(":root[data-theme='dark'] {", lightStart);
 const light = tokens(css.slice(lightStart, darkStart));
 const dark = tokens(css.slice(darkStart, css.indexOf('@theme inline')));
 
