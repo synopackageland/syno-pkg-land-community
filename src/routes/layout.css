@@ -123,30 +123,33 @@ textarea {
 /* Shared controls                                                     */
 /* ------------------------------------------------------------------ */
 
-.btn {
-	@apply inline-flex h-8 items-center justify-center gap-1.5 rounded-md px-3 text-[13px] font-medium whitespace-nowrap transition-[background-color,color,opacity,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50;
-}
-.btn-primary {
-	@apply bg-fd-primary text-fd-primary-foreground hover:opacity-90;
-}
-.btn-quiet {
-	@apply text-fd-muted-foreground hover:bg-fd-muted hover:text-fd-foreground;
-}
-.btn-outline {
-	@apply border border-fd-border bg-fd-card text-fd-foreground hover:bg-fd-muted;
-}
+/* In the components layer so utilities on an element can override them. */
+@layer components {
+	.btn {
+		@apply inline-flex h-8 items-center justify-center gap-1.5 rounded-md px-3 text-[13px] font-medium whitespace-nowrap transition-[background-color,color,opacity,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50;
+	}
+	.btn-primary {
+		@apply bg-fd-primary text-fd-primary-foreground hover:opacity-90;
+	}
+	.btn-quiet {
+		@apply text-fd-muted-foreground hover:bg-fd-muted hover:text-fd-foreground;
+	}
+	.btn-outline {
+		@apply border border-fd-border bg-fd-card text-fd-foreground hover:bg-fd-muted;
+	}
 
-.field {
-	@apply w-full rounded-md border border-fd-border bg-fd-card px-3 py-2 text-sm text-fd-foreground transition-colors outline-none placeholder:text-fd-muted-foreground focus:border-fd-ring focus:ring-3 focus:ring-fd-ring/20;
-}
+	.field {
+		@apply w-full rounded-md border border-fd-border bg-fd-card px-3 py-2 text-sm text-fd-foreground transition-colors outline-none placeholder:text-fd-muted-foreground focus:border-fd-ring focus:ring-3 focus:ring-fd-ring/20;
+	}
 
-/* A grouped list on one surface: rows separated by tone, not by cards. */
-.panel {
-	@apply overflow-hidden rounded-xl border border-fd-border bg-fd-card;
-}
+	/* A grouped list on one surface: rows separated by tone, not by cards. */
+	.panel {
+		@apply overflow-hidden rounded-xl border border-fd-border bg-fd-card;
+	}
 
-.badge {
-	@apply inline-flex items-center rounded px-1.5 py-px text-[11px] leading-4 font-medium;
+	.badge {
+		@apply inline-flex items-center rounded px-1.5 py-px text-[11px] leading-4 font-medium;
+	}
 }
 
 /* ------------------------------------------------------------------ */
