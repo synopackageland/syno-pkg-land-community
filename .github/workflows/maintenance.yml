@@ -1,0 +1,43 @@
+name: Community maintenance
+on:
+  discussion:
+    types: [created, edited, category_changed, answered, unanswered, deleted]
+  discussion_comment:
+    types: [created, edited, deleted]
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  discussions: read
+concurrency:
+  group: community-maintenance
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Synchronize catalog and announce releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CATALOG_SYNC_TOKEN: ${{ secrets.CATALOG_SYNC_TOKEN }}
+          OUT_DIR: .data-out
+        run: npx tsx .github/scripts/catalog-sync.ts
+      - name: Build anonymous archive
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OUT_DIR: .data-out
+        run: npx tsx .github/scripts/data-sync.ts
+      - name: Publish archive without force-pushing
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OUT_DIR: .data-out
+        run: npx tsx .github/scripts/publish-snapshot.ts

@@ -19,7 +19,7 @@ export default defineConfig({
 			// Static SPA build for GitHub Pages: every non-prerendered URL is
 			// served by the 404.html fallback, which boots the client router.
 			adapter: adapter({
-				fallback: '404.html'
+				fallback: 'index.html'
 			}),
 
 			paths: {

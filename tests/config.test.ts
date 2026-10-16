@@ -5,9 +5,9 @@ import { configIncomplete, forumConfig, themeCss } from '$lib/config';
 // defaults, repo fallback applied, theme compiled.
 describe('resolved config', () => {
 	it('merges the root forum.config.ts over defaults', () => {
-		expect(forumConfig.repo.owner).toBe('NotReeceHarris');
-		expect(forumConfig.repo.name).toBe('discussion-kit');
-		expect(forumConfig.site.name).toBe('Discussion Kit');
+		expect(forumConfig.repo.owner).toBe('synopackageland');
+		expect(forumConfig.repo.name).toBe('community');
+		expect(forumConfig.site.name).toBe('Syno Package Land Community');
 		// default that forum.config.ts does not override
 		expect(forumConfig.content.articles.marker).toBe('<!-- dk:article -->');
 	});
@@ -17,6 +17,6 @@ describe('resolved config', () => {
 	});
 
 	it('compiles theme overrides (none in the shipped config)', () => {
-		expect(themeCss).toBe('');
+		expect(themeCss).toContain('--fd-primary:#1f78e5');
 	});
 });

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
+	const favicon = '/favicon.ico';
 	import Header from '$lib/components/Header.svelte';
 	import Sidebar from '$lib/components/Sidebar.svelte';
 	import SignInDialog from '$lib/components/SignInDialog.svelte';
@@ -12,6 +12,7 @@
 
 	$effect(() => {
 		if (configIncomplete) return;
+		auth.configureOAuth();
 		auth.init();
 	});
 
@@ -71,7 +72,7 @@
 	{/if}
 
 	<div class="mx-auto flex w-full max-w-[1400px] gap-8 px-4">
-		{#if auth.signedIn && ui.categories.length > 0}
+		{#if ui.categories.length > 0}
 			<aside class="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-56 shrink-0 overflow-y-auto py-6 md:block">
 				<Sidebar categories={ui.categories} />
 			</aside>

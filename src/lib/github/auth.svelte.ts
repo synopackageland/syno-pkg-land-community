@@ -6,6 +6,14 @@ const TOKEN_KEY = 'dk:token';
 const STATE_KEY = 'dk:oauth-state';
 
 class Auth {
+ oauthClientId = $state(forumConfig.auth.oauth.clientId);
+ async configureOAuth() {
+  try {
+   const response = await fetch('/api/auth/config');
+   if (response.ok) this.oauthClientId = (await response.json()).clientId || '';
+  } catch { /* Public browsing and direct GitHub participation remain available. */ }
+ }
+
 	token = $state<string | null>(null);
 	viewer = $state<Viewer | null>(null);
 	/** true while the stored token is being validated on boot */
@@ -37,7 +45,7 @@ class Auth {
 	}
 
 	get oauthAvailable() {
-		return Boolean(forumConfig.auth.oauth.clientId && forumConfig.auth.oauth.proxyUrl);
+		return Boolean((this.oauthClientId || forumConfig.auth.oauth.clientId) && forumConfig.auth.oauth.proxyUrl);
 	}
 
 	/** Kick off the GitHub OAuth web flow (requires a token-exchange proxy). */
@@ -45,7 +53,7 @@ class Auth {
 		const state = crypto.randomUUID();
 		sessionStorage.setItem(STATE_KEY, state);
 		const url = new URL('https://github.com/login/oauth/authorize');
-		url.searchParams.set('client_id', forumConfig.auth.oauth.clientId);
+		url.searchParams.set('client_id', this.oauthClientId || forumConfig.auth.oauth.clientId);
 		url.searchParams.set('redirect_uri', redirectUri);
 		url.searchParams.set('scope', 'public_repo');
 		url.searchParams.set('state', state);

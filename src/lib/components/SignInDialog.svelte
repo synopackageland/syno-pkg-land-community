@@ -65,8 +65,7 @@
 				</button>
 			</div>
 			<p class="mb-4 text-sm text-fd-muted-foreground">
-				The forum runs entirely on the GitHub API, so a GitHub account is required to browse and
-				post.
+				Read discussions without signing in. Use your GitHub account to participate. / 閱讀不需登入，發文請使用 GitHub 帳號。
 			</p>
 
 			{#if auth.oauthAvailable}
@@ -83,10 +82,8 @@
 					Continue with GitHub
 				</button>
 			{:else if !tokenSignIn}
-				<p class="rounded-xl border border-red-500/30 bg-red-500/5 p-3 text-sm text-red-500">
-					No sign-in method is enabled — set <code>auth.allowToken</code> or configure OAuth in
-					<code>forum.config.ts</code>.
-				</p>
+                <p class="mb-3 text-sm text-fd-muted-foreground">Continue on GitHub to post or reply. / 前往 GitHub 發文或回覆。</p>
+                <a class="inline-flex rounded-lg bg-fd-primary px-4 py-2 text-fd-primary-foreground" href="https://github.com/synopackageland/community/discussions">Open GitHub Discussions</a>
 			{/if}
 
 			{#if tokenSignIn}
