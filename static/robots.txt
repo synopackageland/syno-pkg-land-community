@@ -1,3 +1,8 @@
-# allow crawling everything by default
+# Crawling is allowed; these paths are app plumbing, not content.
 User-agent: *
-Disallow:
+Disallow: /api/
+Disallow: /auth/
+Disallow: /new
+Disallow: /search
+
+Sitemap: https://community.synopkgland.com/sitemap.xml
