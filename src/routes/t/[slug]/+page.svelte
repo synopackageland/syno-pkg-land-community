@@ -11,7 +11,7 @@
 	import { isArticle, listDiscussions } from '$lib/github/api';
 	import { auth } from '$lib/github/auth.svelte';
 	import type { DiscussionListItem, PageInfo } from '$lib/github/types';
-	import { archiveMode, canPostIn, repRequirement, ui } from '$lib/ui.svelte';
+	import { archiveMode, postAction, repRequirement, ui } from '$lib/ui.svelte';
 
 	const category = $derived(ui.categories.find((c) => c.slug === page.params.slug));
 
@@ -119,7 +119,11 @@
 				<p class="mt-1 text-[13.5px] text-fd-muted-foreground">{category.description}</p>
 			{/if}
 		</div>
-		{#if canPostIn(category)}
+		{#if postAction(category) === 'sign-in'}
+			<button type="button" onclick={() => (ui.signInOpen = true)} class="btn btn-outline">
+				Sign in to post
+			</button>
+		{:else if postAction(category) === 'post'}
 			<a href="{resolve('/new')}?topic={category.slug}" class="btn btn-primary">
 				<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
 				New post
