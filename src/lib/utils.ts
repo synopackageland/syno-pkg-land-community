@@ -25,7 +25,12 @@ export function formatDate(iso: string): string {
 
 /** Rough plain-text excerpt from raw markdown for list previews */
 export function excerpt(markdown: string, length = 160): string {
-	const text = markdown
+	const text = plainText(markdown);
+	return text.length > length ? `${text.slice(0, length).trimEnd()}…` : text;
+}
+
+function plainText(markdown: string): string {
+	return markdown
 		.replace(/<!--[\s\S]*?-->/g, '')
 		.replace(/```[\s\S]*?```/g, '')
 		.replace(/!\[[^\]]*\]\([^)]*\)/g, '')
@@ -34,5 +39,5 @@ export function excerpt(markdown: string, length = 160): string {
 		.replace(/[#>*_`~|]/g, '')
 		.replace(/\s+/g, ' ')
 		.trim();
-	return text.length > length ? `${text.slice(0, length).trimEnd()}…` : text;
 }
+
