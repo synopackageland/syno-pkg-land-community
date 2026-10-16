@@ -19,6 +19,15 @@ function required(value: unknown, field: string): string {
   return value;
 }
 
+const CJK = /[\u3000-\u303f\u3040-\u30ff\u3400-\u9fff\uff00-\uffef]/;
+const FALLBACK_NOTES = 'A new package version is available.';
+
+/** The forum is English only: keep the English changelog and drop every other language. */
+function englishNotes(changelog: unknown): string {
+  const text = changelog && typeof changelog === 'object' ? (changelog as Record<string, unknown>).en : changelog;
+  return typeof text === 'string' && !CJK.test(text) ? text : '';
+}
+
 export function normalizeCatalog(input: unknown, settings: Settings): PackageRelease[] {
   const catalog = record(input);
   if (catalog.schema !== 3 || !Array.isArray(catalog.packages)) throw new Error('Expected catalog schema 3');
@@ -29,9 +38,7 @@ export function normalizeCatalog(input: unknown, settings: Settings): PackageRel
     if (!Array.isArray(pkg.pins) || !pkg.pins.length) throw new Error('Expected package pins');
     const metadata = pkg.metadata ? record(pkg.metadata) : {};
     const changelog = metadata.changelog;
-    const notes = typeof changelog === 'string' ? changelog : changelog && typeof changelog === 'object'
-      ? Object.entries(changelog).filter(([language, text]) => ['zh-TW', 'en'].includes(language) && typeof text === 'string')
-        .map(([language, text]) => `### ${language}\n\n${text}`).join('\n\n') : '';
+    const notes = englishNotes(changelog);
     for (const rawPin of pkg.pins) {
       const pin = record(rawPin);
       const id = required(pin.package, 'package');
@@ -64,9 +71,9 @@ export function planSync(packages: PackageRelease[], categories: Category[], exi
     }
     const marker = releaseMarker(pkg.key, pkg.version);
     const title = `${pkg.official ? '' : `[${pkg.key}] `}${pkg.name} ${pkg.version}`;
-    const body = `${marker}\n\n${pkg.name} **${pkg.version}**\n\n${pkg.notes || 'A new package version is available. / 套件已有新版本。'}\n\n` +
-      `Package: \`${pkg.key}\`\n\n[Browse packages / 瀏覽套件](https://synopkgland.com/apps/)\n\n` +
-      (pkg.official ? '' : 'Shared by the catalog automation. Third-party packages are maintained by their authors. / 第三方套件由原作者維護。\n');
+    const body = `${marker}\n\n${pkg.name} **${pkg.version}**\n\n${pkg.notes || FALLBACK_NOTES}\n\n` +
+      `Package: \`${pkg.key}\`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n` +
+      (pkg.official ? '' : 'Shared by the catalog automation. Third-party packages are maintained by their authors.\n');
     const post = existing.find((d) => d.author?.login === settings.owner && d.body.includes(marker));
     if (!post) plan.posts.push({ kind: 'create', categoryId: category.id, title, body });
     else if (post.title !== title || post.body !== body) plan.posts.push({ kind: 'update', id: post.id, categoryId: category.id, title, body });
