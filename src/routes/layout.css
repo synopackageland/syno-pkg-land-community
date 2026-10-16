@@ -172,7 +172,7 @@ body {
 }
 
 /* Thin brand layer: the upstream forum composition and interactions stay intact. */
-:root { color-scheme: light; }
+:root { color-scheme: light; --fd-background: #f4f5f7; --fd-foreground: #17212b; --fd-muted: #f4f5f7; --fd-muted-foreground: #46535f; --fd-card: #ffffff; --fd-card-foreground: #17212b; --fd-border: #cdd2d9; --fd-primary: #1f78e5; --fd-primary-foreground: #ffffff; --fd-accent: #e3eefc; --fd-accent-foreground: #135bb8; --fd-ring: #1f78e5; --fd-link: #135bb8; }
 header { background: #fff; }
 header > div { max-width: 76rem; }
 main { background: var(--fd-card); border-radius: 12px; margin-block: 1.5rem; padding: clamp(1rem, 3vw, 2rem); box-shadow: 0 1px 2px rgb(16 24 40 / .05), 0 12px 28px -12px rgb(16 24 40 / .14); }
