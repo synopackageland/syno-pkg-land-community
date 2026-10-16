@@ -107,7 +107,7 @@
 {:else}
 	<TopicStrip categories={ui.categories} current={category.slug} />
 
-	<div class="mb-5 flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
+	<div class="mb-6 flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
 		<div class="min-w-0">
 			<p class="mb-1 text-[12.5px] text-fd-muted-foreground">
 				<a href={resolve('/')} class="hover:text-fd-foreground">Forum</a>

@@ -38,6 +38,9 @@ const pairs: [string, string][] = [
 	['accent-foreground', 'accent']
 ];
 
+// Topic tints are icon/dot marks (non-text): 3:1 is the WCAG bar for those.
+const tints = ['amber', 'slate', 'teal', 'violet', 'sky', 'rose'].map((t) => `tag-${t}`);
+
 describe.each([
 	['light', light],
 	['dark', dark]
@@ -51,5 +54,15 @@ describe.each([
 
 	it.each(pairs)('%s on %s meets 4.5:1', (fg, bg) => {
 		expect(contrast(palette[fg], palette[bg])).toBeGreaterThanOrEqual(4.5);
+	});
+});
+
+describe.each([
+	['light', light],
+	['dark', dark]
+])('%s topic tints', (_name, palette) => {
+	it.each(tints.flatMap((t) => [[t, 'card'], [t, 'background']]))('%s on %s meets 3:1', (fg, bg) => {
+		expect(palette[fg], fg).toMatch(/^#/);
+		expect(contrast(palette[fg], palette[bg])).toBeGreaterThanOrEqual(3);
 	});
 });

@@ -24,6 +24,13 @@
 	--fd-accent-foreground: #1a5bb8;
 	--fd-ring: #3b7fe6;
 	--fd-link: #1a5bb8;
+	/* soft hues that mark topics (icons and dots, never text) */
+	--fd-tag-amber: #b4690e;
+	--fd-tag-slate: #64748b;
+	--fd-tag-teal: #0f7f74;
+	--fd-tag-violet: #7c5fd3;
+	--fd-tag-sky: #0a74b8;
+	--fd-tag-rose: #c0446f;
 	--fd-shadow-float: 0 1px 2px rgb(24 32 42 / 0.06), 0 16px 40px -12px rgb(24 32 42 / 0.22);
 }
 
@@ -42,6 +49,12 @@
 	--fd-accent-foreground: #b3cdf9;
 	--fd-ring: #6ea0f0;
 	--fd-link: #93b8f7;
+	--fd-tag-amber: #e0a458;
+	--fd-tag-slate: #94a3b8;
+	--fd-tag-teal: #4fc3b4;
+	--fd-tag-violet: #a99bf0;
+	--fd-tag-sky: #6cb6e8;
+	--fd-tag-rose: #f08ab0;
 	--fd-shadow-float: 0 1px 2px rgb(0 0 0 / 0.4), 0 16px 40px -12px rgb(0 0 0 / 0.6);
 }
 
@@ -59,6 +72,12 @@
 	--color-fd-accent-foreground: var(--fd-accent-foreground);
 	--color-fd-ring: var(--fd-ring);
 	--color-fd-link: var(--fd-link);
+	--color-fd-tag-amber: var(--fd-tag-amber);
+	--color-fd-tag-slate: var(--fd-tag-slate);
+	--color-fd-tag-teal: var(--fd-tag-teal);
+	--color-fd-tag-violet: var(--fd-tag-violet);
+	--color-fd-tag-sky: var(--fd-tag-sky);
+	--color-fd-tag-rose: var(--fd-tag-rose);
 	--shadow-float: var(--fd-shadow-float);
 
 	/* Geist for Latin, then the platform's best Traditional Chinese face;
@@ -145,6 +164,27 @@ textarea {
 	/* A grouped list on one surface: rows separated by tone, not by cards. */
 	.panel {
 		@apply overflow-hidden rounded-xl border border-fd-border bg-fd-card;
+	}
+
+	/* Quiet intro block: a faint dot grid fading out toward the left, no fills or shadows. */
+	.hero {
+		position: relative;
+	}
+	.hero > * {
+		position: relative;
+	}
+	@media (min-width: 640px) {
+		.hero::before {
+			content: '';
+			position: absolute;
+			inset: 0 0 0 auto;
+			width: 46%;
+			background-image: radial-gradient(color-mix(in srgb, var(--fd-muted-foreground) 32%, transparent) 1.1px, transparent 1.5px);
+			background-size: 18px 18px;
+			-webkit-mask-image: linear-gradient(to left, #000, transparent);
+			mask-image: linear-gradient(to left, #000, transparent);
+			pointer-events: none;
+		}
 	}
 
 	.badge {

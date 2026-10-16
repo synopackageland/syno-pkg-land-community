@@ -57,18 +57,30 @@
 {#if auth.loading}
 	<Loading />
 {:else if !auth.signedIn && !(archiveMode() && ui.bootedFromArchive)}
-	<div class="mx-auto max-w-xl pt-8">
+	<div class="mx-auto max-w-xl pt-10">
 		<h1 class="mb-1.5 text-center text-2xl font-semibold tracking-[-0.02em]">{forumConfig.site.name}</h1>
 		<p class="mb-8 text-center text-fd-muted-foreground">{forumConfig.site.description}</p>
 		<SignInPrompt />
 	</div>
 {:else}
-	<div class="mb-5">
-		<h1 class="text-[22px] leading-tight font-semibold tracking-[-0.02em]">Latest discussions</h1>
-		<p class="mt-1 text-[13.5px] text-fd-muted-foreground">{forumConfig.site.description}</p>
-	</div>
+	<section class="hero panel mb-8 px-6 py-7 sm:px-8 sm:py-9">
+		<h1 class="max-w-[22ch] text-[26px] leading-[1.2] font-semibold tracking-[-0.025em] sm:text-[30px]">
+			Questions, ideas and release notes for Synology packages
+		</h1>
+		<p class="mt-3 max-w-[52ch] text-[14.5px] leading-[1.65] text-fd-muted-foreground">
+			Follow updates for Reclaim, Connect and Download Hub, ask for help, or share what you are building.
+		</p>
+		<div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13.5px]">
+			<a href="https://synopkgland.com/apps/" class="btn btn-outline">Browse packages</a>
+			<a href="https://github.com/synopackageland/syno-pkg-land-community/discussions" target="_blank" rel="noreferrer" class="text-fd-muted-foreground transition-colors hover:text-fd-foreground">
+				View on GitHub
+			</a>
+		</div>
+	</section>
 
 	<TopicStrip categories={ui.categories} />
+
+	<h2 class="mb-3 text-[15px] font-semibold tracking-[-0.01em]">Latest discussions</h2>
 
 	<PinnedList discussions={ui.pinned} />
 
@@ -84,7 +96,7 @@
 		</div>
 	{:else}
 		{#if ui.pinned.length > 0}
-			<h2 class="mb-2 text-[13px] font-medium text-fd-muted-foreground">Recent</h2>
+			<h2 class="mb-3 text-[13px] font-medium text-fd-muted-foreground">Recent</h2>
 		{/if}
 		<ul class="panel divide-y divide-fd-border">
 			{#each discussions as discussion (discussion.id)}
