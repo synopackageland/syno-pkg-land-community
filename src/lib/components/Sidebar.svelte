@@ -2,11 +2,12 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import type { Category } from '$lib/github/types';
+	import { allDiscussionsActive } from '$lib/nav';
 
 	let { categories }: { categories: Category[] } = $props();
 
 	const current = $derived(page.params.slug);
-	const allActive = $derived(!current && !page.url.pathname.endsWith('/search'));
+	const allActive = $derived(allDiscussionsActive(page.url.pathname, resolve('/')));
 </script>
 
 <nav class="flex flex-col gap-px text-[13.5px]" aria-label="Topics">
