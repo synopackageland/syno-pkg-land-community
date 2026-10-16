@@ -8,14 +8,14 @@ App implementation repositories remain private. Upstream: Discussion Kit
 
 Sign in as **synopackageland** before changing repository settings.
 
-1. Open https://github.com/synopackageland/community/discussions/categories.
+1. Open https://github.com/synopackageland/syno-pkg-land-community/discussions/categories.
 2. Keep **Announcements** (announcement format) and **General** (open discussion).
 3. Create **Reclaim**, **Download Hub**, **Connect**, and **Third-party** using
    open discussion format. Their generated slugs must be `reclaim`,
    `download-hub`, `connect`, `third-party`. Unused default categories are hidden
    in the website, so deleting them is unnecessary.
 4. Create a fine-grained personal access token as synopackageland. Select only
-   `community`, grant Discussions read/write, and leave unrelated permissions off.
+   `syno-pkg-land-community`, grant Discussions read/write, and leave unrelated permissions off.
    Store it as the repository Actions secret `CATALOG_SYNC_TOKEN`.
 5. Run **Community maintenance** from Actions. Its summary lists any categories
    still requiring creation. No public API for creating categories exists in the

@@ -16,7 +16,7 @@ export default {
       catch { return json({ error: 'invalid_package' }, 400); }
       if (!/^[A-Za-z0-9_.-]{1,160}$/.test(id)) return json({ error: 'invalid_package' }, 400);
       try {
-        const raw = 'https://raw.githubusercontent.com/synopackageland/community/data/';
+        const raw = 'https://raw.githubusercontent.com/synopackageland/syno-pkg-land-community/data/';
         const [status, meta] = await Promise.all([fetch(raw + 'catalog-sync.json'), fetch(raw + 'meta.json')]);
         if (status.ok && meta.ok) {
           const catalog = await status.json() as { packages: { key: string; category: string; official: boolean }[] };
@@ -26,14 +26,14 @@ export default {
           if (pkg && categories.categories.some((c) => c.slug === slug)) return Response.redirect(new URL(`/t/${encodeURIComponent(slug)}`, url).href, 302);
         }
       } catch { /* The GitHub entry point remains available if the snapshot is not ready. */ }
-      const target = new URL('https://github.com/synopackageland/community/discussions');
+      const target = new URL('https://github.com/synopackageland/syno-pkg-land-community/discussions');
       target.searchParams.set('discussions_q', id);
       return Response.redirect(target.href, 302);
     }
     if (url.pathname === '/api/auth/config' && request.method === 'GET') {
       return json({ clientId: env.GITHUB_CLIENT_SECRET ? env.GITHUB_CLIENT_ID ?? '' : '' });
     }
-    if (url.pathname === '/api/health') return json({ service: 'synopkgland-community', repository: 'synopackageland/community' });
+    if (url.pathname === '/api/health') return json({ service: 'synopkgland-community', repository: 'synopackageland/syno-pkg-land-community' });
     if (url.pathname === '/api/oauth/token') {
       if (request.headers.get('Origin') !== url.origin) return json({ error: 'forbidden_origin' }, 403);
       if (request.method !== 'POST') return json({ error: 'method_not_allowed' }, 405);

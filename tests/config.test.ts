@@ -6,7 +6,7 @@ import { configIncomplete, forumConfig, themeCss } from '$lib/config';
 describe('resolved config', () => {
 	it('merges the root forum.config.ts over defaults', () => {
 		expect(forumConfig.repo.owner).toBe('synopackageland');
-		expect(forumConfig.repo.name).toBe('community');
+		expect(forumConfig.repo.name).toBe('syno-pkg-land-community');
 		expect(forumConfig.site.name).toBe('Syno Package Land Community');
 		// default that forum.config.ts does not override
 		expect(forumConfig.content.articles.marker).toBe('<!-- dk:article -->');
