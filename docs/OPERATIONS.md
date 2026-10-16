@@ -4,27 +4,41 @@ One public repository hosts the forum source, Discussions and anonymous archive.
 App implementation repositories remain private. Upstream: Discussion Kit
 `1971c4352e490575811586718381779cc7c420dc` (GPL-3.0, LICENSE preserved).
 
-## GitHub setup requiring the account owner
+## GitHub setup
 
-Sign in as **synopackageland** before changing repository settings.
+All GitHub settings belong to **synopackageland**; sign in as that account
+before changing them.
 
-1. Open https://github.com/synopackageland/syno-pkg-land-community/discussions/categories.
-2. Keep **Announcements** (announcement format) and **General** (open discussion).
-3. Create **Reclaim**, **Download Hub**, **Connect**, and **Third-party** using
-   open discussion format. Their generated slugs must be `reclaim`,
-   `download-hub`, `connect`, `third-party`. Unused default categories are hidden
-   in the website, so deleting them is unnecessary.
-4. Create a fine-grained personal access token as synopackageland. Select only
-   `syno-pkg-land-community`, grant Discussions read/write, and leave unrelated permissions off.
-   Store it as the repository Actions secret `CATALOG_SYNC_TOKEN`.
-5. Run **Community maintenance** from Actions. Its summary lists any categories
-   still requiring creation. No public API for creating categories exists in the
-   GitHub GraphQL schema inspected on 2026-10-16; the automation does not pretend
-   otherwise. Future new official packages appear in this pending list.
+Discussion categories: **Announcements** (announcement format), **General**,
+**Reclaim** (`reclaim`), **Connect** (`connect`), **Download Hub**
+(`download-hub`) and **Third-party** (`third-party`), all open discussion
+format except Announcements. Unused default categories are hidden in the
+website. GitHub has no API for creating categories, so a new official package
+needs its category created at
+https://github.com/synopackageland/syno-pkg-land-community/discussions/categories ;
+**Community maintenance** lists any missing category in its summary
+(`pendingCategories`).
 
-Catalog source is **synopackageland/catalog**, verified against the local catalog
-remote and GitHub. The requested name `synopackageland/syno-pkg-land-catalog`
-returned 404. The source is configured once in `forum/catalog-settings.json`.
+The repository Actions secret `CATALOG_SYNC_TOKEN` holds a fine-grained personal
+access token named "syno-pkg-land-community catalog sync": resource owner
+synopackageland, only `syno-pkg-land-community`, Discussions read/write and
+Metadata read-only. It expires on **2027-10-16**.
+
+### Renewing CATALOG_SYNC_TOKEN
+
+Renew it about a month before it expires:
+
+1. As synopackageland, open https://github.com/settings/personal-access-tokens ,
+   open the token and choose **Regenerate token** (or create a new one with the
+   same repository and permissions). Pick the longest expiration offered.
+2. Open the repository's Settings → Secrets and variables → Actions and update
+   `CATALOG_SYNC_TOKEN` with the new value. Do not paste it anywhere else.
+3. Run **Community maintenance** from Actions and confirm the summary line shows
+   `"mode":"write"`.
+4. Update the expiry date in this file.
+
+Catalog source is **synopackageland/catalog** (`catalog.yaml`), configured once
+in `forum/catalog-settings.json`.
 
 Every hour (minute 17), the job reads catalog.yaml and current discussions. It
 deduplicates architecture pins, posts a new announcement per package/version and
@@ -33,8 +47,10 @@ updates generated notes for the same version. Third-party titles use
 an entry never deletes its category or discussions. Existing official display
 names/slugs are configured; future names default to the SPK package ID.
 
-Without `CATALOG_SYNC_TOKEN`, the job reports pending announcements and still
-refreshes the anonymous archive using the built-in repository GITHUB_TOKEN.
+If `CATALOG_SYNC_TOKEN` is not set, the job reports `needs-catalog-sync-token`
+with pending announcements and still refreshes the anonymous archive using the
+built-in repository GITHUB_TOKEN. An expired or revoked token makes the
+catalog step fail, so a red **Community maintenance** run is the signal to renew it.
 The long-lived token is never substituted with an unrelated workstation token.
 All catalog writes verify `/user` is synopackageland before each mutation.
 
@@ -42,46 +58,41 @@ Snapshots keep normal Git history. Publishing creates a commit with the previous
 data commit as parent and updates the ref with `force: false`; no force-push,
 tag move, R2, KV, D1 or private App credentials are involved.
 
-## OAuth setup requiring the account owner
+## OAuth
 
-Create a GitHub OAuth App at https://github.com/settings/developers:
+Sign-in uses the GitHub OAuth App **Syno Package Land Community**, owned by
+synopackageland (https://github.com/settings/developers):
 
 - Homepage: `https://community.synopkgland.com/`
 - Callback: `https://community.synopkgland.com/auth/callback`
-- The existing upstream flow requests `public_repo` (broader than forum-only
+- The upstream flow requests `public_repo` (broader than forum-only
   permission). Visitor tokens belong to the visitor, never to the site owner.
+  User tokens expire; the forum asks the visitor to sign in again.
 
-Set **only on the new synopkgland-community Worker**:
+`GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` are secrets on the
+synopkgland-community Worker only. To rotate the client secret, generate a new
+one in the OAuth App, then set it through interactive stdin:
 
 ```sh
-npx wrangler secret put GITHUB_CLIENT_ID
 npx wrangler secret put GITHUB_CLIENT_SECRET
 ```
 
-Use interactive stdin; never paste secrets into command arguments, files tracked
-by Git, issue comments or logs. Both values are read at runtime; no rebuild is
-needed after configuring them. Until then, visitors can read the archive and use
-the direct GitHub Discussions link to post/reply. PAT sign-in is disabled.
+Never paste secrets into command arguments, files tracked by Git, issue
+comments or logs. Both values are read at runtime; no rebuild is needed.
+PAT sign-in is disabled.
 
 ## Cloudflare and deployment
 
 The dedicated Worker serves static SPA assets plus `/api/auth/config`,
 `/api/oauth/token`, `/api/health`, and `/package/<SPK ID>`. A direct package link
-opens its native category when available and falls back to a package search on
-GitHub while the category is pending. Browser requests and the token exchange
+opens its native category and falls back to a package search on GitHub when
+the category does not exist yet. Browser requests and the token exchange
 use the same origin.
 
-If the custom domain is not already bound, the account owner must add
-`community.synopkgland.com` under the Worker's Settings → Domains & Routes.
+The Worker is served at the custom domain `community.synopkgland.com`
+(Settings → Domains & Routes). The main website links to it through
+`communityUrl` in the website repository's `website/src/data/public-origin.json`.
 Do not change DNS records belonging to the existing website or package source.
-
-The initial live endpoint is
-https://synopkgland-community.bidacumen.workers.dev/ . The main website links to
-this working endpoint until the custom domain is ready. After binding and
-verifying the custom domain, change `communityUrl` in the website repository's
-`website/src/data/public-origin.json` to `https://community.synopkgland.com/`,
-run the website build/gates and redeploy the website. Then configure the OAuth
-App against the final domain above, rather than creating a temporary App.
 
 ```sh
 npm ci
