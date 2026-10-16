@@ -1,6 +1,28 @@
 {
-	"archivedAt": "2026-10-16T05:50:47.719Z",
+	"archivedAt": "2026-10-16T05:55:04.593Z",
 	"discussions": [
+		{
+			"id": "D_kwDOVLwbas4AqF-7",
+			"number": 6,
+			"title": "[Test] Forum sign-in check — please ignore",
+			"body": "Automated check that signing in, posting and replying work on https://community.synopkgland.com/. This test discussion will be closed and deleted.",
+			"createdAt": "2026-10-16T05:54:47Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxR",
+				"name": "General",
+				"slug": "general",
+				"emojiHTML": "<div>💬</div>"
+			},
+			"comments": {
+				"totalCount": 1
+			}
+		},
 		{
 			"id": "D_kwDOVLwbas4AqF4s",
 			"number": 5,
