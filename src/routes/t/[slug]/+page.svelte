@@ -6,6 +6,7 @@
 	import Loading from '$lib/components/Loading.svelte';
 	import PinnedList from '$lib/components/PinnedList.svelte';
 	import SignInPrompt from '$lib/components/SignInPrompt.svelte';
+	import TopicStrip from '$lib/components/TopicStrip.svelte';
 	import { forumConfig } from '$lib/config';
 	import { isArticle, listDiscussions } from '$lib/github/api';
 	import { auth } from '$lib/github/auth.svelte';
@@ -97,40 +98,41 @@
 {:else if !ui.categoriesLoaded}
 	<Loading />
 {:else if !category}
-	<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
+	<div class="panel px-6 py-14 text-center">
 		<p class="font-medium">Topic not found</p>
 		<a href={resolve('/')} class="mt-2 inline-block text-sm text-fd-link hover:underline">
 			Back to all discussions
 		</a>
 	</div>
 {:else}
-	<div class="mb-6 flex flex-wrap items-start justify-between gap-4">
-		<div>
-			<h1 class="flex items-center gap-2.5 text-2xl font-bold tracking-tight">
-				<span class="leading-none">{@html category.emojiHTML}</span>
-				{category.name}
-			</h1>
+	<TopicStrip categories={ui.categories} current={category.slug} />
+
+	<div class="mb-5 flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
+		<div class="min-w-0">
+			<p class="mb-1 text-[12.5px] text-fd-muted-foreground">
+				<a href={resolve('/')} class="hover:text-fd-foreground">Forum</a>
+				<span class="mx-1" aria-hidden="true">/</span>
+				Topic
+			</p>
+			<h1 class="text-[22px] leading-tight font-semibold tracking-[-0.02em]">{category.name}</h1>
 			{#if category.description}
-				<p class="mt-1 text-sm text-fd-muted-foreground">{category.description}</p>
+				<p class="mt-1 text-[13.5px] text-fd-muted-foreground">{category.description}</p>
 			{/if}
 		</div>
 		{#if canPostIn(category)}
-			<a
-				href="{resolve('/new')}?topic={category.slug}"
-				class="inline-flex items-center gap-1.5 rounded-lg bg-fd-primary px-3 py-1.5 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90"
-			>
-				<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
+			<a href="{resolve('/new')}?topic={category.slug}" class="btn btn-primary">
+				<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
 				New post
 			</a>
 		{:else}
 			{@const restricted = forumConfig.content.topics.restricted.includes(category.slug)}
 			<span
-				class="inline-flex items-center gap-1.5 rounded-lg border border-fd-border px-3 py-1.5 text-sm text-fd-muted-foreground"
+				class="inline-flex h-8 items-center gap-1.5 rounded-md bg-fd-muted px-3 text-[13px] text-fd-muted-foreground"
 				title={restricted
 					? 'Only repository maintainers can post in this topic'
 					: `Posting here requires ${repRequirement(category.slug)} reputation`}
 			>
-				<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+				<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
 				{restricted ? 'Maintainers only' : `Requires ${repRequirement(category.slug)} rep`}
 			</span>
 		{/if}
@@ -139,13 +141,15 @@
 	<PinnedList discussions={pinned} showCategory={false} />
 
 	{#if forumConfig.content.articles.enabled}
-	<div class="mb-4 flex gap-1 rounded-lg border border-fd-border bg-fd-muted/50 p-1 text-sm w-fit">
+	<div class="mb-4 flex w-fit gap-1 rounded-lg bg-fd-muted p-1 text-[13px]" role="tablist">
 		{#each tabs as tab (tab.id)}
 			<button
 				type="button"
+				role="tab"
+				aria-selected={filter === tab.id}
 				onclick={() => (filter = tab.id)}
 				class="rounded-md px-3 py-1 transition-colors {filter === tab.id
-					? 'bg-fd-background font-medium shadow-sm'
+					? 'bg-fd-card font-medium text-fd-foreground'
 					: 'text-fd-muted-foreground hover:text-fd-foreground'}"
 			>
 				{tab.label}
@@ -157,28 +161,23 @@
 	{#if loading}
 		<Loading />
 	{:else if error}
-		<p class="rounded-xl border border-red-500/30 bg-red-500/5 p-4 text-sm text-red-500">{error}</p>
+		<p class="rounded-lg border border-red-500/30 bg-red-500/5 p-4 text-sm text-red-600 dark:text-red-400">{error}</p>
 	{:else if filtered.length === 0}
-		<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
+		<div class="panel px-6 py-14 text-center">
 			<p class="font-medium">Nothing here yet</p>
 			<p class="mt-1 text-sm text-fd-muted-foreground">
 				No {filter === 'all' ? 'discussions' : filter} in this topic.
 			</p>
 		</div>
 	{:else}
-		<div class="flex flex-col gap-3">
+		<ul class="panel divide-y divide-fd-border">
 			{#each filtered as discussion (discussion.id)}
 				<DiscussionRow {discussion} showCategory={false} />
 			{/each}
-		</div>
+		</ul>
 		{#if pageInfo?.hasNextPage}
-			<div class="mt-6 flex justify-center">
-				<button
-					type="button"
-					onclick={loadMore}
-					disabled={loadingMore}
-					class="rounded-lg border border-fd-border px-4 py-2 text-sm font-medium hover:bg-fd-accent disabled:opacity-50"
-				>
+			<div class="mt-5 flex justify-center">
+				<button type="button" onclick={loadMore} disabled={loadingMore} class="btn btn-outline">
 					{loadingMore ? 'Loading…' : 'Load more'}
 				</button>
 			</div>

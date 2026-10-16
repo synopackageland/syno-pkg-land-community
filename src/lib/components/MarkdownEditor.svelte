@@ -21,30 +21,30 @@
 		try {
 			previewHTML = await renderMarkdown(value);
 		} catch {
-			previewHTML = '<p class="text-red-500">Preview failed.</p>';
+			previewHTML = '<p class="text-red-600">Preview failed.</p>';
 		} finally {
 			previewLoading = false;
 		}
 	}
 </script>
 
-<div class="overflow-hidden rounded-xl border border-fd-border bg-fd-card">
-	<div class="flex border-b border-fd-border bg-fd-muted/50 text-sm">
+<div class="overflow-hidden rounded-lg border border-fd-border bg-fd-card transition-shadow focus-within:border-fd-ring focus-within:ring-3 focus-within:ring-fd-ring/20">
+	<div class="flex gap-1 border-b border-fd-border px-1.5 pt-1.5 text-[13px]">
 		<button
 			type="button"
 			onclick={() => (tab = 'write')}
-			class="px-4 py-2 transition-colors {tab === 'write'
-				? 'border-b-2 border-fd-primary bg-fd-card font-medium'
-				: 'text-fd-muted-foreground hover:text-fd-foreground'}"
+			class="-mb-px border-b-2 px-3 py-1.5 transition-colors {tab === 'write'
+				? 'border-fd-foreground font-medium text-fd-foreground'
+				: 'border-transparent text-fd-muted-foreground hover:text-fd-foreground'}"
 		>
 			Write
 		</button>
 		<button
 			type="button"
 			onclick={showPreview}
-			class="px-4 py-2 transition-colors {tab === 'preview'
-				? 'border-b-2 border-fd-primary bg-fd-card font-medium'
-				: 'text-fd-muted-foreground hover:text-fd-foreground'}"
+			class="-mb-px border-b-2 px-3 py-1.5 transition-colors {tab === 'preview'
+				? 'border-fd-foreground font-medium text-fd-foreground'
+				: 'border-transparent text-fd-muted-foreground hover:text-fd-foreground'}"
 		>
 			Preview
 		</button>
@@ -55,7 +55,8 @@
 			bind:value
 			{placeholder}
 			{rows}
-			class="block w-full resize-y bg-transparent p-3 font-mono text-sm outline-none placeholder:text-fd-muted-foreground"
+			class="block w-full resize-y bg-transparent p-3 text-sm leading-relaxed outline-none placeholder:text-fd-muted-foreground"
+			aria-label={placeholder}
 		></textarea>
 	{:else}
 		<div class="markdown min-h-24 p-3">

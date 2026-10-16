@@ -1,40 +1,48 @@
-@import '@fontsource/public-sans/400.css';
-@import '@fontsource/public-sans/600.css';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+@import '@fontsource-variable/noto-sans-tc';
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
+/* Dark follows the system preference. */
+@custom-variant dark (@media (prefers-color-scheme: dark));
 
-/* Fumadocs-style neutral palette */
+/* Syno Package Land palette: one cool neutral family, one quiet blue accent.
+   Surfaces step in tone (ground → card → muted) instead of using shadows. */
 :root {
-	--fd-background: hsl(0 0% 100%);
-	--fd-foreground: hsl(0 0% 3.9%);
-	--fd-muted: hsl(0 0% 96.1%);
-	--fd-muted-foreground: hsl(0 0% 45.1%);
-	--fd-card: hsl(0 0% 99.7%);
-	--fd-card-foreground: hsl(0 0% 3.9%);
-	--fd-border: hsl(0 0% 89.8%);
-	--fd-primary: hsl(0 0% 9%);
-	--fd-primary-foreground: hsl(0 0% 98%);
-	--fd-accent: hsl(0 0% 94.1%);
-	--fd-accent-foreground: hsl(0 0% 9%);
-	--fd-ring: hsl(0 0% 63.9%);
-	--fd-link: hsl(210 100% 42%);
+	color-scheme: light dark;
+	--fd-background: #f6f7f9;
+	--fd-foreground: #18202a;
+	--fd-muted: #eef1f4;
+	--fd-muted-foreground: #5b6572;
+	--fd-card: #ffffff;
+	--fd-card-foreground: #18202a;
+	--fd-border: #e4e7ec;
+	--fd-primary: #1d64cc;
+	--fd-primary-foreground: #ffffff;
+	--fd-accent: #edf2fb;
+	--fd-accent-foreground: #1a5bb8;
+	--fd-ring: #3b7fe6;
+	--fd-link: #1a5bb8;
+	--fd-shadow-float: 0 1px 2px rgb(24 32 42 / 0.06), 0 16px 40px -12px rgb(24 32 42 / 0.22);
 }
 
-.dark {
-	--fd-background: hsl(0 0% 5.5%);
-	--fd-foreground: hsl(0 0% 92%);
-	--fd-muted: hsl(0 0% 12.9%);
-	--fd-muted-foreground: hsl(0 0% 60.9%);
-	--fd-card: hsl(0 0% 8%);
-	--fd-card-foreground: hsl(0 0% 92%);
-	--fd-border: hsl(0 0% 15.5%);
-	--fd-primary: hsl(0 0% 98%);
-	--fd-primary-foreground: hsl(0 0% 9%);
-	--fd-accent: hsl(0 0% 14.9%);
-	--fd-accent-foreground: hsl(0 0% 98%);
-	--fd-ring: hsl(0 0% 40%);
-	--fd-link: hsl(210 100% 66%);
+@media (prefers-color-scheme: dark) {
+	:root {
+		--fd-background: #0f1217;
+		--fd-foreground: #e5e9ee;
+		--fd-muted: #1b2028;
+		--fd-muted-foreground: #99a3af;
+		--fd-card: #151a21;
+		--fd-card-foreground: #e5e9ee;
+		--fd-border: #252c36;
+		--fd-primary: #8db4f5;
+		--fd-primary-foreground: #0f1217;
+		--fd-accent: #1b2534;
+		--fd-accent-foreground: #b3cdf9;
+		--fd-ring: #6ea0f0;
+		--fd-link: #93b8f7;
+		--fd-shadow-float: 0 1px 2px rgb(0 0 0 / 0.4), 0 16px 40px -12px rgb(0 0 0 / 0.6);
+	}
 }
 
 @theme inline {
@@ -51,22 +59,35 @@
 	--color-fd-accent-foreground: var(--fd-accent-foreground);
 	--color-fd-ring: var(--fd-ring);
 	--color-fd-link: var(--fd-link);
+	--shadow-float: var(--fd-shadow-float);
 
+	/* Geist for Latin, then the platform's best Traditional Chinese face;
+	   Noto Sans TC (self-hosted, unicode-range sliced) covers the rest. */
 	--font-sans:
-		'Public Sans', -apple-system, BlinkMacSystemFont, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', system-ui, sans-serif;
+		'Geist Variable', 'PingFang TC', 'Hiragino Sans TC', 'Noto Sans TC Variable', 'Microsoft JhengHei',
+		system-ui, sans-serif;
+	--font-mono:
+		'Geist Mono Variable', ui-monospace, 'SF Mono', Menlo, Consolas, 'PingFang TC', monospace;
 }
 
 html {
 	@apply bg-fd-background text-fd-foreground antialiased;
 	scrollbar-gutter: stable;
+	text-rendering: optimizeLegibility;
 }
 
 body {
-	@apply font-sans text-[15px];
+	@apply font-sans text-[14.5px] leading-normal;
+}
+
+h1,
+h2,
+h3 {
+	text-wrap: balance;
 }
 
 ::selection {
-	@apply bg-fd-primary/90 text-fd-primary-foreground;
+	@apply bg-fd-accent text-fd-accent-foreground;
 }
 
 * {
@@ -74,13 +95,69 @@ body {
 	scrollbar-color: var(--fd-border) transparent;
 }
 
+a,
+button,
+input,
+select,
+textarea,
+summary {
+	-webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+	outline: 2px solid var(--fd-ring);
+	outline-offset: 2px;
+	border-radius: 6px;
+}
+
+input,
+textarea {
+	caret-color: var(--fd-primary);
+}
+
+.tabular {
+	font-variant-numeric: tabular-nums;
+}
+
 /* ------------------------------------------------------------------ */
-/* GitHub-rendered markdown (bodyHTML) — fumadocs-flavoured prose      */
+/* Shared controls                                                     */
+/* ------------------------------------------------------------------ */
+
+.btn {
+	@apply inline-flex h-8 items-center justify-center gap-1.5 rounded-md px-3 text-[13px] font-medium whitespace-nowrap transition-[background-color,color,opacity,transform] duration-150 active:translate-y-px disabled:pointer-events-none disabled:opacity-50;
+}
+.btn-primary {
+	@apply bg-fd-primary text-fd-primary-foreground hover:opacity-90;
+}
+.btn-quiet {
+	@apply text-fd-muted-foreground hover:bg-fd-muted hover:text-fd-foreground;
+}
+.btn-outline {
+	@apply border border-fd-border bg-fd-card text-fd-foreground hover:bg-fd-muted;
+}
+
+.field {
+	@apply w-full rounded-md border border-fd-border bg-fd-card px-3 py-2 text-sm text-fd-foreground transition-colors outline-none placeholder:text-fd-muted-foreground focus:border-fd-ring focus:ring-3 focus:ring-fd-ring/20;
+}
+
+/* A grouped list on one surface: rows separated by tone, not by cards. */
+.panel {
+	@apply overflow-hidden rounded-xl border border-fd-border bg-fd-card;
+}
+
+.badge {
+	@apply inline-flex items-center rounded px-1.5 py-px text-[11px] leading-4 font-medium;
+}
+
+/* ------------------------------------------------------------------ */
+/* GitHub-rendered markdown (bodyHTML)                                 */
 /* ------------------------------------------------------------------ */
 
 .markdown {
-	@apply text-[15px] leading-7 text-fd-foreground/90;
+	@apply text-[15px] leading-[1.72] text-fd-foreground;
 	overflow-wrap: anywhere;
+	max-width: 72ch;
+	text-wrap: pretty;
 }
 
 .markdown > *:first-child {
@@ -103,30 +180,38 @@ body {
 .markdown h2,
 .markdown h3,
 .markdown h4 {
-	@apply mt-6 mb-3 font-semibold tracking-tight text-fd-foreground;
+	@apply mt-7 mb-2 font-semibold tracking-[-0.01em] text-fd-foreground;
 }
 .markdown h1 {
-	@apply border-b border-fd-border pb-2 text-2xl;
+	@apply text-xl;
 }
 .markdown h2 {
-	@apply border-b border-fd-border pb-2 text-xl;
+	@apply text-[17px];
 }
-.markdown h3 {
-	@apply text-lg;
+.markdown h3,
+.markdown h4 {
+	@apply text-[15px];
 }
 
 .markdown a {
-	@apply font-medium text-fd-link no-underline hover:underline;
+	@apply text-fd-link underline decoration-fd-link/30 underline-offset-[0.2em] transition-colors hover:decoration-fd-link;
+}
+
+.markdown strong {
+	@apply font-semibold;
 }
 
 .markdown ul {
-	@apply list-disc pl-6;
+	@apply list-disc pl-5;
 }
 .markdown ol {
-	@apply list-decimal pl-6;
+	@apply list-decimal pl-5;
 }
 .markdown li + li {
 	@apply mt-1;
+}
+.markdown li::marker {
+	@apply text-fd-muted-foreground;
 }
 
 .markdown blockquote {
@@ -134,18 +219,18 @@ body {
 }
 
 .markdown code {
-	@apply rounded-md border border-fd-border bg-fd-muted px-1.5 py-0.5 font-mono text-[13px];
+	@apply rounded bg-fd-muted px-1.5 py-0.5 font-mono text-[0.86em];
 }
 
 .markdown pre {
-	@apply overflow-x-auto rounded-xl border border-fd-border bg-fd-card p-4;
+	@apply overflow-x-auto rounded-lg bg-fd-muted p-4;
 }
 .markdown pre code {
-	@apply border-0 bg-transparent p-0 text-[13px] leading-6;
+	@apply bg-transparent p-0 text-[13px] leading-6;
 }
 
 .markdown img {
-	@apply max-w-full rounded-lg border border-fd-border;
+	@apply max-w-full rounded-lg;
 }
 
 .markdown hr {
@@ -171,16 +256,11 @@ body {
 	font-family: inherit;
 }
 
-/* Thin brand layer: the upstream forum composition and interactions stay intact. */
-:root { color-scheme: light; --fd-background: #f4f5f7; --fd-foreground: #17212b; --fd-muted: #f4f5f7; --fd-muted-foreground: #46535f; --fd-card: #ffffff; --fd-card-foreground: #17212b; --fd-border: #cdd2d9; --fd-primary: #1f78e5; --fd-primary-foreground: #ffffff; --fd-accent: #e3eefc; --fd-accent-foreground: #135bb8; --fd-ring: #1f78e5; --fd-link: #135bb8; }
-header { background: #fff; }
-header > div { max-width: 76rem; }
-main { background: var(--fd-card); border-radius: 12px; margin-block: 1.5rem; padding: clamp(1rem, 3vw, 2rem); box-shadow: 0 1px 2px rgb(16 24 40 / .05), 0 12px 28px -12px rgb(16 24 40 / .14); }
-a, button, input { -webkit-tap-highlight-color: transparent; }
-:focus-visible { outline: 2px solid var(--fd-ring); outline-offset: 3px; }
-input, textarea { caret-color: var(--fd-primary); }
-@media (max-width: 640px) {
- .community-wordmark { display: none; }
- header nav a { padding-inline: .4rem; font-size: .75rem; }
- main { padding: 1rem; margin-block: 1rem; }
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+	}
 }

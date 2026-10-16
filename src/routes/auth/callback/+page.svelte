@@ -24,8 +24,8 @@
 </script>
 
 {#if error}
-	<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
-		<p class="font-medium text-red-500">{error}</p>
+	<div class="panel px-6 py-14 text-center">
+		<p class="font-medium text-red-600 dark:text-red-400">{error}</p>
 		<a href={resolve('/')} class="mt-2 inline-block text-sm text-fd-link hover:underline">Back to the forum</a>
 	</div>
 {:else}

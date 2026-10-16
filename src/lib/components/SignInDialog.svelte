@@ -40,23 +40,23 @@
 
 {#if ui.signInOpen}
 	<div
-		class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
+		class="fixed inset-0 z-50 flex items-center justify-center bg-[rgb(10_14_20/0.45)] p-4"
 		onclick={(e) => e.target === e.currentTarget && close()}
 		onkeydown={(e) => e.key === 'Escape' && close()}
 		role="presentation"
 	>
 		<div
-			class="w-full max-w-md rounded-2xl border border-fd-border bg-fd-card p-6 shadow-2xl"
+			class="w-full max-w-sm rounded-xl border border-fd-border bg-fd-card p-6 shadow-float"
 			role="dialog"
 			aria-modal="true"
 			aria-label="Sign in with GitHub"
 		>
-			<div class="mb-1 flex items-center justify-between">
-				<h2 class="text-lg font-semibold">Sign in with GitHub</h2>
+			<div class="mb-2 flex items-center justify-between">
+				<h2 class="text-[17px] font-semibold tracking-[-0.01em]">Sign in with GitHub</h2>
 				<button
 					type="button"
 					onclick={close}
-					class="rounded-md p-1 text-fd-muted-foreground hover:bg-fd-accent hover:text-fd-accent-foreground"
+					class="-mr-1.5 rounded-md p-1.5 text-fd-muted-foreground transition-colors hover:bg-fd-muted hover:text-fd-foreground"
 					aria-label="Close"
 				>
 					<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -64,15 +64,15 @@
 					>
 				</button>
 			</div>
-			<p class="mb-4 text-sm text-fd-muted-foreground">
-				Read discussions without signing in. Use your GitHub account to participate. / 閱讀不需登入，發文請使用 GitHub 帳號。
+			<p class="mb-5 text-[13.5px] leading-relaxed text-fd-muted-foreground">
+				Read discussions without signing in. Use your GitHub account to participate.<br />閱讀不需登入，發文請使用 GitHub 帳號。
 			</p>
 
 			{#if auth.oauthAvailable}
 				<button
 					type="button"
 					onclick={startOAuth}
-					class="mb-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-fd-primary px-4 py-2 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90"
+					class="btn btn-primary h-10 w-full text-sm"
 				>
 					<svg class="size-4" viewBox="0 0 16 16" fill="currentColor">
 						<path
@@ -82,8 +82,8 @@
 					Continue with GitHub
 				</button>
 			{:else if !tokenSignIn}
-                <p class="mb-3 text-sm text-fd-muted-foreground">Continue on GitHub to post or reply. / 前往 GitHub 發文或回覆。</p>
-                <a class="inline-flex rounded-lg bg-fd-primary px-4 py-2 text-fd-primary-foreground" href="https://github.com/synopackageland/syno-pkg-land-community/discussions">Open GitHub Discussions</a>
+                <p class="mb-3 text-[13.5px] text-fd-muted-foreground">Continue on GitHub to post or reply. / 前往 GitHub 發文或回覆。</p>
+				<a class="btn btn-primary h-10 w-full text-sm" href="https://github.com/synopackageland/syno-pkg-land-community/discussions">Open GitHub Discussions</a>
 			{/if}
 
 			{#if tokenSignIn}
@@ -95,7 +95,7 @@
 					bind:value={token}
 					placeholder="github_pat_…"
 					autocomplete="off"
-					class="mb-2 w-full rounded-lg border border-fd-border bg-fd-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-fd-ring"
+					class="field mb-2"
 				/>
 				<p class="mb-3 text-xs text-fd-muted-foreground">
 					Create a
@@ -109,12 +109,12 @@
 					repository. It is stored only in this browser.
 				</p>
 				{#if error}
-					<p class="mb-3 text-sm text-red-500">{error}</p>
+					<p class="mb-3 text-sm text-red-600 dark:text-red-400">{error}</p>
 				{/if}
 				<button
 					type="submit"
 					disabled={busy || !token.trim()}
-					class="inline-flex w-full items-center justify-center rounded-lg border border-fd-border bg-fd-accent px-4 py-2 text-sm font-medium text-fd-accent-foreground transition-colors hover:bg-fd-muted disabled:opacity-50"
+					class="btn btn-outline h-10 w-full text-sm"
 				>
 					{busy ? 'Signing in…' : 'Sign in with token'}
 				</button>
