@@ -1,5 +1,5 @@
 import config from '../forum.config';
-import { injectHead, pageHead, sitemapXml, type Snapshot } from './seo';
+import { homeHead, injectHead, pageHead, sitemapXml, type Snapshot } from './seo';
 
 interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> };
@@ -35,8 +35,8 @@ async function sitemap(url: URL): Promise<Response> {
 async function page(request: Request, env: Env, url: URL): Promise<Response> {
   const shell = await env.ASSETS.fetch(request);
   if (!shell.ok || !shell.headers.get('Content-Type')?.includes('text/html')) return shell;
-  const snapshot = await loadSnapshot();
-  const head = snapshot && pageHead(url.origin, url.pathname, snapshot, hiddenTopics);
+  const snapshot = url.pathname === '/' ? null : await loadSnapshot();
+  const head = url.pathname === '/' ? homeHead(url.origin) : snapshot && pageHead(url.origin, url.pathname, snapshot, hiddenTopics);
   if (!head) return shell;
   const headers = new Headers(shell.headers);
   headers.delete('Content-Length');
@@ -90,7 +90,7 @@ export default {
     }
     if (url.pathname.startsWith('/api/')) return json({ error: 'not_found' }, 404);
     if (url.pathname === '/sitemap.xml' && request.method === 'GET') return sitemap(url);
-    if (request.method === 'GET' && /^\/(d|t)\//.test(url.pathname)) return page(request, env, url);
+    if (request.method === 'GET' && (url.pathname === '/' || /^\/(d|t)\//.test(url.pathname))) return page(request, env, url);
     return env.ASSETS.fetch(request);
   }
 };
