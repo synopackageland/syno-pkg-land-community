@@ -1,6 +1,50 @@
 {
-	"archivedAt": "2026-10-16T04:13:57.507Z",
+	"archivedAt": "2026-10-16T04:21:25.612Z",
 	"discussions": [
+		{
+			"id": "D_kwDOVLwbas4AqF4s",
+			"number": 5,
+			"title": "Download Hub 0.2.2-0037",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgGopeed:0.2.2-0037 -->\n\nDownload Hub **0.2.2-0037**\n\n### en\n\n0.2.2-0037\n- Removing the entry from its portal page asks for confirmation and explains how to enable it again from the DSM desktop.\n- Page headers keep titles and actions readable in narrow windows.\n\n### zh-TW\n\n0.2.2-0037\n- 在入口頁移除入口前先確認，並說明如何從 DSM 桌面重新啟用。\n- 標題列在窄視窗不再擠壓。\n\nPackage: `synopackageland/SynoPkgGopeed`\n\n[Browse packages / 瀏覽套件](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-16T04:21:11Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqF4r",
+			"number": 4,
+			"title": "Reclaim 0.1.1-1570",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoReclaim:0.1.1-1570 -->\n\nReclaim **0.1.1-1570**\n\n### en\n\n0.1.1-1570\n- Full-volume ext4 scans show progress during aggregation.\n- Page headers keep titles and actions readable in narrow windows.\n- One click opens page notes from the info button.\n- Removing the entry from its portal page asks for confirmation and explains how to enable it again from the DSM desktop.\n\n### zh-TW\n\n0.1.1-1570\n- ext4 整卷掃描在彙整階段顯示進度。\n- 標題列在窄視窗不再擠壓。\n- 頁面附註的 ⓘ 一點就開。\n- 在入口頁移除入口前先確認，並說明如何從 DSM 桌面重新啟用。\n\nPackage: `synopackageland/SynoReclaim`\n\n[Browse packages / 瀏覽套件](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-16T04:21:10Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
 		{
 			"id": "D_kwDOVLwbas4AqF2Z",
 			"number": 3,
