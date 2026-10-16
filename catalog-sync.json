@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-16T13:59:44.532Z",
+  "syncedAt": "2026-10-16T18:05:27.554Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "write",
   "pendingCategories": [],
@@ -7,27 +7,27 @@
   "packages": [
     {
       "key": "synopackageland/SynoReclaim",
-      "version": "0.1.1-1572",
+      "version": "0.1.1-1573",
       "name": "Reclaim",
       "official": true,
       "category": "reclaim",
-      "notes": "0.1.1-1572\n- System partition cleanup offers Standard and Deep modes; Deep previews each item's effect and asks for an extra confirmation.\n- The system partition warning starts at 900 MB free, and Settings can turn it off; cleanup stays on the Overview card.\n- Pages, dialogs and buttons follow the DSM look of UI 0.10.\n- Built on SDK 0.12.1: an administrator approves Syno Reclaim again after the upgrade."
+      "notes": "0.1.1-1573\n- Titled dialogs use DSM's 3px corners and stay within the DSM window.\n- Two messages that showed as raw keys now have text in every language.\n- Built on SDK 0.12.2 and UI 0.10.3; no new approval is needed after the upgrade from 0.1.1-1572."
     },
     {
       "key": "synopackageland/SynoPkgConnect",
-      "version": "0.1.0-0053",
+      "version": "0.1.0-0054",
       "name": "Connect",
       "official": true,
       "category": "connect",
-      "notes": "0.1.0-0053\n- Buttons, dialogs, scrollbars and corners follow DSM: page and form actions are pill-shaped buttons, toolbar buttons are grey, and dialogs size to their content.\n- Each page spaces its sections like DSM.\n- Stopping a connection uses the same button as the actions under it.\n- Upgrading from 0.1.0-0052 needs no administrator approval."
+      "notes": "0.1.0-0054\n- Dialogs take DSM's widths and corners and stay inside the Connect window.\n- Page titles are followed by the same spacing as DSM's, instead of a double gap.\n- Opening Connect again from the DSM main menu while it is open rechecks the connections.\n- Upgrading from 0.1.0-0053 needs no administrator approval."
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
-      "version": "0.2.2-0038",
+      "version": "0.2.2-0039",
       "name": "Download Hub",
       "official": true,
       "category": "download-hub",
-      "notes": "0.2.2-0038\n- Buttons, dialogs, scrollbars and corners follow DSM: dialog actions are pill-shaped buttons, toolbar buttons are grey, and dialogs such as New download size to their content.\n- Each page spaces its sections like DSM.\n- Upgrading from 0.2.2-0037 needs no administrator approval."
+      "notes": "0.2.2-0039\n- New download is as wide as DSM's own dialogs with a text box (530 px), so long links wrap less; dialogs with a title have DSM's 3 px corners.\n- Dialogs stay inside a narrow DSM window and fill the width on a phone.\n- The buttons on Core updates are DSM's pill-shaped action buttons.\n- Upgrading from 0.2.2-0038 needs no administrator approval."
     }
   ],
   "multiRepoReviewNeeded": false

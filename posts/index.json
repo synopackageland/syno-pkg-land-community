@@ -1,6 +1,75 @@
 {
-	"archivedAt": "2026-10-16T13:59:45.640Z",
+	"archivedAt": "2026-10-16T18:05:28.871Z",
 	"discussions": [
+		{
+			"id": "D_kwDOVLwbas4AqHny",
+			"number": 12,
+			"title": "Download Hub 0.2.2-0039",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgGopeed:0.2.2-0039 -->\n\nDownload Hub **0.2.2-0039**\n\n0.2.2-0039\n- New download is as wide as DSM's own dialogs with a text box (530 px), so long links wrap less; dialogs with a title have DSM's 3 px corners.\n- Dialogs stay inside a narrow DSM window and fill the width on a phone.\n- The buttons on Core updates are DSM's pill-shaped action buttons.\n- Upgrading from 0.2.2-0038 needs no administrator approval.\n\nPackage: `synopackageland/SynoPkgGopeed`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-16T18:05:27Z",
+			"updatedAt": "2026-10-16T18:05:27Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqHnx",
+			"number": 11,
+			"title": "Connect 0.1.0-0054",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgConnect:0.1.0-0054 -->\n\nConnect **0.1.0-0054**\n\n0.1.0-0054\n- Dialogs take DSM's widths and corners and stay inside the Connect window.\n- Page titles are followed by the same spacing as DSM's, instead of a double gap.\n- Opening Connect again from the DSM main menu while it is open rechecks the connections.\n- Upgrading from 0.1.0-0053 needs no administrator approval.\n\nPackage: `synopackageland/SynoPkgConnect`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-16T18:05:26Z",
+			"updatedAt": "2026-10-16T18:05:26Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqHnw",
+			"number": 10,
+			"title": "Reclaim 0.1.1-1573",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoReclaim:0.1.1-1573 -->\n\nReclaim **0.1.1-1573**\n\n0.1.1-1573\n- Titled dialogs use DSM's 3px corners and stay within the DSM window.\n- Two messages that showed as raw keys now have text in every language.\n- Built on SDK 0.12.2 and UI 0.10.3; no new approval is needed after the upgrade from 0.1.1-1572.\n\nPackage: `synopackageland/SynoReclaim`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-16T18:05:25Z",
+			"updatedAt": "2026-10-16T18:05:25Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
 		{
 			"id": "D_kwDOVLwbas4AqHP-",
 			"number": 9,
