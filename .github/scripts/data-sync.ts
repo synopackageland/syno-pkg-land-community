@@ -1,8 +1,8 @@
 /**
- * Data-sync workflow entrypoint (run via `npx tsx` from data-sync.yml).
+ * Archive scan entrypoint (run via `npx tsx` from maintenance.yml).
  *
  * One scan of all discussions feeds two outputs, written to $OUT_DIR for the
- * workflow to snapshot-force-push onto the data branch:
+ * publisher to commit onto the data branch without force-pushing:
  *
  *   profiles/index.json          compact login → rep map (rep.enabled)
  *   profiles/<login>/rep.json    per-user rep + action breakdown
