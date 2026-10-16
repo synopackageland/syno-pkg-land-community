@@ -136,6 +136,12 @@ describe('permissions', () => {
 		expect(mod.postAction({ slug: 'announcements' })).toBe('locked');
 	});
 
+	it('postActionsMenu collapses only when there is more than Report to show', () => {
+		expect(mod.postActionsMenu({ canModerate: true, editing: false })).toBe(true);
+		expect(mod.postActionsMenu({ canModerate: true, editing: true })).toBe(false);
+		expect(mod.postActionsMenu({ canModerate: false, editing: false })).toBe(false);
+	});
+
 	it('postableCategories filters restricted topics for readers', async () => {
 		await mod.loadOverview();
 		expect(mod.postableCategories().map((c) => c.slug)).toEqual(['general']);
