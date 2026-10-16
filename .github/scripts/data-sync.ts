@@ -20,6 +20,7 @@
 import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { collectPages } from '../lib/pagination';
+import { lastActivityAt } from '../../src/lib/archive/activity';
 import userConfig from '../../forum.config';
 import { mergeConfig } from '../../src/lib/config/schema';
 import {
@@ -241,6 +242,7 @@ function toListItem(d: ScanDiscussion) {
 		title: d.title,
 		body: d.body,
 		createdAt: d.createdAt,
+		updatedAt: lastActivityAt(d),
 		upvoteCount: d.upvoteCount,
 		author: d.author,
 		category: { id: d.category.id, name: d.category.name, slug: d.category.slug, emojiHTML: d.category.emojiHTML },
