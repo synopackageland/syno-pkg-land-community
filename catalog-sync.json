@@ -1,7 +1,7 @@
 {
-  "syncedAt": "2026-10-16T04:09:06.612Z",
+  "syncedAt": "2026-10-16T04:13:56.519Z",
   "catalogRepository": "synopackageland/catalog",
-  "mode": "write",
+  "mode": "needs-catalog-sync-token",
   "pendingCategories": [
     {
       "key": "shared",
@@ -24,15 +24,15 @@
       "slug": "download-hub"
     }
   ],
-  "pendingAnnouncements": 0,
+  "pendingAnnouncements": 2,
   "packages": [
     {
       "key": "synopackageland/SynoReclaim",
-      "version": "0.1.1-1567",
+      "version": "0.1.1-1570",
       "name": "Reclaim",
       "official": true,
       "category": "reclaim",
-      "notes": "### en\n\n0.1.1-1567\n- Overview, Explore, Snapshots and Packages keep page notes behind the info button beside the title.\n- Stale reports are indicated only by the status badge at the top right.\n- Settings lets administrators enable or remove the App entry, including after reinstalling.\n- A visible DSM portal banner shows the App name without repeating it in the sidebar.\n\n### zh-TW\n\n0.1.1-1567\n- 總覽、探索、快照與套件頁將附註收進標題旁的資訊入口。\n- 報告過期僅在右上角狀態標籤提示。\n- 管理員可在設定中啟用或移除 App 入口，重裝後也可啟用。\n- DSM Portal banner 顯示時，側欄不重複顯示 App 名稱。"
+      "notes": "### en\n\n0.1.1-1570\n- Full-volume ext4 scans show progress during aggregation.\n- Page headers keep titles and actions readable in narrow windows.\n- One click opens page notes from the info button.\n- Removing the entry from its portal page asks for confirmation and explains how to enable it again from the DSM desktop.\n\n### zh-TW\n\n0.1.1-1570\n- ext4 整卷掃描在彙整階段顯示進度。\n- 標題列在窄視窗不再擠壓。\n- 頁面附註的 ⓘ 一點就開。\n- 在入口頁移除入口前先確認，並說明如何從 DSM 桌面重新啟用。"
     },
     {
       "key": "synopackageland/SynoPkgConnect",
@@ -44,11 +44,11 @@
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
-      "version": "0.2.2-0036",
+      "version": "0.2.2-0037",
       "name": "Download Hub",
       "official": true,
       "category": "download-hub",
-      "notes": "### en\n\n0.2.2-0036\n- First-time administrator approval explains that system privileges let file jobs finish after users sign out.\n- Settings lets administrators enable or remove the App entry.\n- A visible DSM portal banner shows the App name without repeating it in the sidebar.\n\n### zh-TW\n\n0.2.2-0036\n- 首次管理員核准畫面說明用途：系統權限讓檔案工作在使用者登出後仍可完成。\n- 管理員可在設定中啟用或移除 App 入口。\n- DSM Portal banner 顯示時，側欄不重複顯示 App 名稱。"
+      "notes": "### en\n\n0.2.2-0037\n- Removing the entry from its portal page asks for confirmation and explains how to enable it again from the DSM desktop.\n- Page headers keep titles and actions readable in narrow windows.\n\n### zh-TW\n\n0.2.2-0037\n- 在入口頁移除入口前先確認，並說明如何從 DSM 桌面重新啟用。\n- 標題列在窄視窗不再擠壓。"
     }
   ],
   "multiRepoReviewNeeded": false
