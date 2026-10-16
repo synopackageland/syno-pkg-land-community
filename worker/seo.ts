@@ -4,7 +4,7 @@ import { excerpt } from '../src/lib/utils';
 
 export interface Snapshot {
 	meta: { categories: { slug: string; name: string; description: string }[] };
-	index: { discussions: { number: number; title: string; body?: string; createdAt: string; category: { slug: string } }[] };
+	index: { discussions: { number: number; title: string; body?: string; createdAt: string; updatedAt?: string; category: { slug: string } }[] };
 }
 export interface Head {
 	title: string;
@@ -27,16 +27,18 @@ function visible(snapshot: Snapshot, exclude: string[]) {
 /** Latest of ISO timestamps (same format sorts lexically); undefined when none. */
 const newest = (times: string[]) => times.reduce<string | undefined>((a, t) => (a === undefined || t > a ? t : a), undefined);
 
+const changedAt = (d: Snapshot['index']['discussions'][number]) => d.updatedAt ?? d.createdAt;
+
 export function sitemapXml(origin: string, snapshot: Snapshot, exclude: string[]): string {
 	const { categories, discussions } = visible(snapshot, exclude);
 	const url = (path: string, lastmod?: string) =>
 		`<url><loc>${origin}${path}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}</url>`;
 	const lines = [
-		url('/', newest(discussions.map((d) => d.createdAt))),
+		url('/', newest(discussions.map(changedAt))),
 		...categories.map((c) =>
-			url(`/t/${encodeURIComponent(c.slug)}`, newest(discussions.filter((d) => d.category.slug === c.slug).map((d) => d.createdAt)))
+			url(`/t/${encodeURIComponent(c.slug)}`, newest(discussions.filter((d) => d.category.slug === c.slug).map(changedAt)))
 		),
-		...discussions.map((d) => url(`/d/${d.number}`, d.createdAt))
+		...discussions.map((d) => url(`/d/${d.number}`, changedAt(d)))
 	];
 	return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${lines.join('\n')}\n</urlset>\n`;
 }
@@ -63,6 +65,12 @@ function decode(s: string): string | null {
 	} catch {
 		return null;
 	}
+}
+
+/** The home page needs nothing from the snapshot. */
+export function homeHead(origin: string): Head {
+	const head = headFor(origin, '/', SITE_NAME, SITE_DESCRIPTION, 'website');
+	return { ...head, title: `${SITE_NAME} — Home` };
 }
 
 /** Head for a discussion or topic page in the snapshot; null for anything else. */

@@ -2,7 +2,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { injectHead, pageHead, sitemapXml, type Snapshot } from '../worker/seo';
+import { homeHead, injectHead, pageHead, sitemapXml, type Snapshot } from '../worker/seo';
 
 const origin = 'https://community.synopkgland.com';
 const snapshot: Snapshot = {
@@ -16,7 +16,7 @@ const snapshot: Snapshot = {
 	index: {
 		discussions: [
 			{ number: 5, title: 'Download Hub 0.2.2-0037', body: '<!-- x -->\n\n### en\n\nRemoving the **entry** & more <b>', createdAt: '2026-10-16T04:21:11Z', category: { slug: 'announcements' } },
-			{ number: 2, title: 'Older "post"', body: '', createdAt: '2026-10-10T00:00:00Z', category: { slug: 'announcements' } },
+			{ number: 2, title: 'Older "post"', body: '', createdAt: '2026-10-10T00:00:00Z', updatedAt: '2026-10-18T09:00:00Z', category: { slug: 'announcements' } },
 			{ number: 9, title: 'In hidden topic', body: 'x', createdAt: '2026-10-17T00:00:00Z', category: { slug: 'polls' } }
 		]
 	}
@@ -37,10 +37,13 @@ describe('sitemapXml', () => {
 			`${origin}/d/2`
 		]);
 	});
-	it('uses the discussion time as lastmod, and the newest child for topics and home', () => {
+	it('prefers updatedAt for lastmod and falls back to createdAt', () => {
+		expect(xml).toContain(`<loc>${origin}/d/2</loc><lastmod>2026-10-18T09:00:00Z</lastmod>`);
 		expect(xml).toContain(`<loc>${origin}/d/5</loc><lastmod>2026-10-16T04:21:11Z</lastmod>`);
-		expect(xml).toContain(`<loc>${origin}/t/announcements</loc><lastmod>2026-10-16T04:21:11Z</lastmod>`);
-		expect(xml).toContain(`<loc>${origin}/</loc><lastmod>2026-10-16T04:21:11Z</lastmod>`);
+	});
+	it('uses the newest activity of a topic and of the forum for their lastmod', () => {
+		expect(xml).toContain(`<loc>${origin}/t/announcements</loc><lastmod>2026-10-18T09:00:00Z</lastmod>`);
+		expect(xml).toContain(`<loc>${origin}/</loc><lastmod>2026-10-18T09:00:00Z</lastmod>`);
 	});
 	it('omits lastmod for a topic without discussions', () => {
 		expect(xml).toContain(`<loc>${origin}/t/general</loc></url>`);
@@ -97,6 +100,18 @@ describe('pageHead', () => {
 		expect(pageHead(origin, '/t/%FF', snapshot, exclude)).toBeNull();
 		expect(pageHead(origin, '/new', snapshot, exclude)).toBeNull();
 		expect(pageHead(origin, '/d/5/extra', snapshot, exclude)).toBeNull();
+	});
+});
+
+describe('homeHead', () => {
+	it('describes the forum with canonical and Open Graph, needing no snapshot', () => {
+		const head = homeHead(origin);
+		expect(head.title).toBe('Syno Package Land Community — Home');
+		expect(head.tags).toContain('<link rel="canonical" href="https://community.synopkgland.com/">');
+		expect(head.tags).toContain('<meta name="description" content="Package support, ideas and releases / 套件討論、建議與更新">');
+		expect(head.tags).toContain('<meta property="og:type" content="website">');
+		expect(head.tags).toContain('<meta property="og:title" content="Syno Package Land Community">');
+		expect(head.tags).toContain('<meta property="og:url" content="https://community.synopkgland.com/">');
 	});
 });
 

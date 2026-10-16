@@ -98,6 +98,12 @@ describe('SEO routes', () => {
     expect(down.status).toBe(200);
     expect(await down.text()).toContain('<title>x</title>');
   });
+  it('injects the home head even when the snapshot is down', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => { throw new Error('offline'); }));
+    const html = await (await worker.fetch(new Request('https://community.synopkgland.com/'), shellEnv)).text();
+    expect(html).toContain('<title>Syno Package Land Community — Home</title>');
+    expect(html).toContain('<link rel="canonical" href="https://community.synopkgland.com/">');
+  });
   it('leaves non-HTML shells alone', async () => {
     vi.stubGlobal('fetch', vi.fn(async (url: string) => snapshot(url)));
     const jsonEnv = { ASSETS: { fetch: vi.fn(async () => new Response('{}', { headers: { 'Content-Type': 'application/json' } })) } };
