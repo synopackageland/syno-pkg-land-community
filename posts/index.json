@@ -1,5 +1,5 @@
 {
-	"archivedAt": "2026-10-16T07:37:23.714Z",
+	"archivedAt": "2026-10-16T07:37:59.536Z",
 	"discussions": [
 		{
 			"id": "D_kwDOVLwbas4AqF4s",
@@ -51,9 +51,9 @@
 			"id": "D_kwDOVLwbas4AqF2Z",
 			"number": 3,
 			"title": "Download Hub 0.2.2-0036",
-			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgGopeed:0.2.2-0036 -->\n\nDownload Hub **0.2.2-0036**\n\n### en\n\n0.2.2-0036\n- First-time administrator approval explains that system privileges let file jobs finish after users sign out.\n- Settings lets administrators enable or remove the App entry.\n- A visible DSM portal banner shows the App name without repeating it in the sidebar.\n\n### zh-TW\n\n0.2.2-0036\n- 首次管理員核准畫面說明用途：系統權限讓檔案工作在使用者登出後仍可完成。\n- 管理員可在設定中啟用或移除 App 入口。\n- DSM Portal banner 顯示時，側欄不重複顯示 App 名稱。\n\nPackage: `synopackageland/SynoPkgGopeed`\n\n[Browse packages / 瀏覽套件](https://synopkgland.com/apps/)\n\n",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgGopeed:0.2.2-0036 -->\n\nDownload Hub **0.2.2-0036**\n\n0.2.2-0036\n- First-time administrator approval explains that system privileges let file jobs finish after users sign out.\n- Settings lets administrators enable or remove the App entry.\n- A visible DSM portal banner shows the App name without repeating it in the sidebar.\n\nPackage: `synopackageland/SynoPkgGopeed`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
 			"createdAt": "2026-10-16T04:07:08Z",
-			"updatedAt": "2026-10-16T04:07:08Z",
+			"updatedAt": "2026-10-16T07:37:42Z",
 			"upvoteCount": 1,
 			"author": {
 				"login": "synopackageland",
@@ -97,9 +97,9 @@
 			"id": "D_kwDOVLwbas4AqF2X",
 			"number": 1,
 			"title": "Reclaim 0.1.1-1567",
-			"body": "<!-- synopkgland:release:synopackageland%2FSynoReclaim:0.1.1-1567 -->\n\nReclaim **0.1.1-1567**\n\n### en\n\n0.1.1-1567\n- Overview, Explore, Snapshots and Packages keep page notes behind the info button beside the title.\n- Stale reports are indicated only by the status badge at the top right.\n- Settings lets administrators enable or remove the App entry, including after reinstalling.\n- A visible DSM portal banner shows the App name without repeating it in the sidebar.\n\n### zh-TW\n\n0.1.1-1567\n- 總覽、探索、快照與套件頁將附註收進標題旁的資訊入口。\n- 報告過期僅在右上角狀態標籤提示。\n- 管理員可在設定中啟用或移除 App 入口，重裝後也可啟用。\n- DSM Portal banner 顯示時，側欄不重複顯示 App 名稱。\n\nPackage: `synopackageland/SynoReclaim`\n\n[Browse packages / 瀏覽套件](https://synopkgland.com/apps/)\n\n",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoReclaim:0.1.1-1567 -->\n\nReclaim **0.1.1-1567**\n\n0.1.1-1567\n- Overview, Explore, Snapshots and Packages keep page notes behind the info button beside the title.\n- Stale reports are indicated only by the status badge at the top right.\n- Settings lets administrators enable or remove the App entry, including after reinstalling.\n- A visible DSM portal banner shows the App name without repeating it in the sidebar.\n\nPackage: `synopackageland/SynoReclaim`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
 			"createdAt": "2026-10-16T04:07:06Z",
-			"updatedAt": "2026-10-16T04:07:06Z",
+			"updatedAt": "2026-10-16T07:37:42Z",
 			"upvoteCount": 1,
 			"author": {
 				"login": "synopackageland",
