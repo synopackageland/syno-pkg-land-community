@@ -6,9 +6,12 @@
 	import SignInDialog from '$lib/components/SignInDialog.svelte';
 	import { auth } from '$lib/github/auth.svelte';
 	import { configIncomplete, forumConfig, themeCss } from '$lib/config';
+	import { initTheme } from '$lib/theme.svelte';
 	import { archiveMode, loadOverview, loadRep, ui } from '$lib/ui.svelte';
 
 	let { children } = $props();
+
+	$effect(() => initTheme());
 
 	$effect(() => {
 		if (configIncomplete) return;

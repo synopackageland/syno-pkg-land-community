@@ -324,14 +324,3 @@ describe('reputation', () => {
 		});
 	});
 });
-
-describe('toggleTheme', () => {
-	it('toggles the dark class and persists the choice', () => {
-		mod.toggleTheme();
-		expect(document.documentElement.classList.contains('dark')).toBe(true);
-		expect(localStorage.getItem('dk:theme')).toBe('dark');
-		mod.toggleTheme();
-		expect(document.documentElement.classList.contains('dark')).toBe(false);
-		expect(localStorage.getItem('dk:theme')).toBe('light');
-	});
-});

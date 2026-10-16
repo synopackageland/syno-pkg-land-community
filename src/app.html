@@ -2,11 +2,27 @@
 <html lang="en">
 	<head>
 		<meta name="color-scheme" content="light dark" />
-		<meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)" />
-		<meta name="theme-color" content="#0f1217" media="(prefers-color-scheme: dark)" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="text-scale" content="scale" />
+		<meta name="theme-color" content="#f6f7f9" />
+		<!-- Applies the theme before first paint (see src/lib/theme.svelte.ts). -->
+		<script>
+			(function () {
+				var d = document.documentElement,
+					t = null;
+				try {
+					t = localStorage.getItem('dk:theme');
+				} catch (e) {}
+				if (t !== 'light' && t !== 'dark') {
+					t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				}
+				d.dataset.theme = t;
+				d.style.colorScheme = t;
+				var m = document.querySelector('meta[name="theme-color"]');
+				if (m) m.setAttribute('content', t === 'dark' ? '#0f1217' : '#f6f7f9');
+			})();
+		</script>
 
 		%sveltekit.head%
 	</head>

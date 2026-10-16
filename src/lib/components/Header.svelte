@@ -4,6 +4,7 @@
 	import { forumConfig } from '$lib/config';
 	import { auth } from '$lib/github/auth.svelte';
 	import { archiveMode, ui } from '$lib/ui.svelte';
+	import ThemeToggle from './ThemeToggle.svelte';
 
 	let query = $state('');
 
@@ -65,6 +66,7 @@
 		{/if}
 
 		<div class="flex shrink-0 items-center gap-2">
+			<ThemeToggle />
 			{#if auth.loading}
 				<div class="size-7 animate-pulse rounded-full bg-fd-muted"></div>
 			{:else if auth.viewer}
