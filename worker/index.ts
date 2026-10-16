@@ -1,3 +1,6 @@
+import config from '../forum.config';
+import { injectHead, pageHead, sitemapXml, type Snapshot } from './seo';
+
 interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> };
   GITHUB_CLIENT_ID?: string;
@@ -5,6 +8,39 @@ interface Env {
 }
 function json(body: unknown, status = 200): Response {
   return Response.json(body, { status, headers: { 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' } });
+}
+
+const SNAPSHOT = 'https://raw.githubusercontent.com/synopackageland/syno-pkg-land-community/data/';
+const hiddenTopics = config.content?.topics?.exclude ?? [];
+
+/** The anonymous archive snapshot (raw CDN, not the GitHub API); null when unavailable. */
+async function loadSnapshot(): Promise<Snapshot | null> {
+  try {
+    const init = { cf: { cacheTtl: 300, cacheEverything: true } } as RequestInit; // `cf` is Workers-only
+    const [meta, index] = await Promise.all([fetch(SNAPSHOT + 'meta.json', init), fetch(SNAPSHOT + 'posts/index.json', init)]);
+    if (!meta.ok || !index.ok) return null;
+    return { meta: await meta.json(), index: await index.json() } as Snapshot;
+  } catch { return null; }
+}
+
+async function sitemap(url: URL): Promise<Response> {
+  const snapshot = await loadSnapshot();
+  if (!snapshot) return new Response('sitemap unavailable', { status: 503, headers: { 'Retry-After': '300', 'Cache-Control': 'no-store' } });
+  return new Response(sitemapXml(url.origin, snapshot, hiddenTopics), {
+    headers: { 'Content-Type': 'application/xml; charset=utf-8', 'Cache-Control': 'public, max-age=300', 'X-Content-Type-Options': 'nosniff' }
+  });
+}
+
+/** The app shell, with the page's own title/description/canonical for crawlers that skip JS. */
+async function page(request: Request, env: Env, url: URL): Promise<Response> {
+  const shell = await env.ASSETS.fetch(request);
+  if (!shell.ok || !shell.headers.get('Content-Type')?.includes('text/html')) return shell;
+  const snapshot = await loadSnapshot();
+  const head = snapshot && pageHead(url.origin, url.pathname, snapshot, hiddenTopics);
+  if (!head) return shell;
+  const headers = new Headers(shell.headers);
+  headers.delete('Content-Length');
+  return new Response(injectHead(await shell.text(), head), { status: shell.status, headers });
 }
 
 export default {
@@ -53,6 +89,8 @@ export default {
       } catch { return json({ error: 'sign_in_failed' }, 502); }
     }
     if (url.pathname.startsWith('/api/')) return json({ error: 'not_found' }, 404);
+    if (url.pathname === '/sitemap.xml' && request.method === 'GET') return sitemap(url);
+    if (request.method === 'GET' && /^\/(d|t)\//.test(url.pathname)) return page(request, env, url);
     return env.ASSETS.fetch(request);
   }
 };

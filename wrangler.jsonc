@@ -8,6 +8,6 @@
     "directory": "./build",
     "binding": "ASSETS",
     "not_found_handling": "single-page-application",
-    "run_worker_first": ["/api/*", "/package/*"]
+    "run_worker_first": ["/api/*", "/package/*", "/sitemap.xml", "/d/*", "/t/*"]
   }
 }
