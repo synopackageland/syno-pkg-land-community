@@ -36,6 +36,8 @@ export interface DiscussionListItem {
 	/** Raw markdown; only fetched when excerpts or articles are enabled */
 	body?: string;
 	createdAt: string;
+	/** Last edit, comment or reply; only present in archive rows */
+	updatedAt?: string;
 	upvoteCount: number;
 	author: Actor | null;
 	category: Pick<Category, 'id' | 'name' | 'slug' | 'emojiHTML'>;
