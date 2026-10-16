@@ -63,7 +63,7 @@
 {:else if !ui.categoriesLoaded}
 	<Loading />
 {:else if postable.length === 0}
-	<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
+	<div class="panel px-6 py-14 text-center">
 		<p class="font-medium">No topics available</p>
 		<p class="mt-1 text-sm text-fd-muted-foreground">
 			You don't have permission to post in any topic on this forum.
@@ -71,17 +71,17 @@
 	</div>
 {:else}
 	<div class="mx-auto max-w-3xl">
-		<h1 class="mb-6 text-2xl font-bold tracking-tight">Create a new {kind}</h1>
+		<h1 class="mb-6 text-[22px] leading-tight font-semibold tracking-[-0.02em]">Create a new {kind}</h1>
 
 		<form onsubmit={submit} class="flex flex-col gap-5">
 			{#if forumConfig.content.articles.enabled}
-			<div class="flex gap-1 rounded-lg border border-fd-border bg-fd-muted/50 p-1 text-sm w-fit">
+			<div class="flex gap-1 rounded-lg bg-fd-muted p-1 text-sm w-fit">
 				{#each [{ id: 'post', label: 'Post' }, { id: 'article', label: 'Article' }] as const as option (option.id)}
 					<button
 						type="button"
 						onclick={() => (kind = option.id)}
 						class="rounded-md px-4 py-1.5 transition-colors {kind === option.id
-							? 'bg-fd-background font-medium shadow-sm'
+							? 'bg-fd-card font-medium text-fd-foreground'
 							: 'text-fd-muted-foreground hover:text-fd-foreground'}"
 					>
 						{option.label}
@@ -96,11 +96,11 @@
 			{/if}
 
 			<div>
-				<label class="mb-1 block text-sm font-medium" for="dk-topic">Topic</label>
+				<label class="mb-1 block text-[13px] font-medium" for="dk-topic">Topic</label>
 				<select
 					id="dk-topic"
 					bind:value={categoryId}
-					class="w-full rounded-lg border border-fd-border bg-fd-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-fd-ring sm:max-w-xs"
+					class="field sm:max-w-xs"
 				>
 					{#each postable as category (category.id)}
 						<option value={category.id}>{category.name}</option>
@@ -109,24 +109,24 @@
 			</div>
 
 			<div>
-				<label class="mb-1 block text-sm font-medium" for="dk-title">Title</label>
+				<label class="mb-1 block text-[13px] font-medium" for="dk-title">Title</label>
 				<input
 					id="dk-title"
 					type="text"
 					bind:value={title}
 					maxlength="256"
 					placeholder="A clear, descriptive title"
-					class="w-full rounded-lg border border-fd-border bg-fd-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-fd-ring"
+					class="field"
 				/>
 			</div>
 
 			<div>
-				<span class="mb-1 block text-sm font-medium">Body</span>
+				<span class="mb-1 block text-[13px] font-medium">Body</span>
 				<MarkdownEditor bind:value={body} rows={12} />
 			</div>
 
 			{#if error}
-				<p class="rounded-xl border border-red-500/30 bg-red-500/5 p-3 text-sm text-red-500">
+				<p class="rounded-lg border border-red-500/30 bg-red-500/5 p-3 text-sm text-red-600 dark:text-red-400">
 					{error}
 				</p>
 			{/if}
@@ -134,14 +134,14 @@
 			<div class="flex justify-end gap-2">
 				<a
 					href={resolve('/')}
-					class="rounded-lg px-4 py-2 text-sm text-fd-muted-foreground hover:bg-fd-accent"
+					class="btn btn-quiet"
 				>
 					Cancel
 				</a>
 				<button
 					type="submit"
 					disabled={busy || !title.trim() || !body.trim()}
-					class="rounded-lg bg-fd-primary px-4 py-2 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
+					class="btn btn-primary"
 				>
 					{busy ? 'Publishing…' : `Publish ${kind}`}
 				</button>

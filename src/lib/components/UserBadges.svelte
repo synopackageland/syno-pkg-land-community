@@ -9,18 +9,18 @@
 </script>
 
 {#if login && isAdmin(login)}
-	<span class="rounded bg-fd-primary px-1 py-px text-[10px] font-semibold text-fd-primary-foreground">
+	<span class="badge bg-fd-accent text-fd-accent-foreground">
 		{forumConfig.admins.badgeLabel}
 	</span>
 {/if}
 {#each badges as badge (badge)}
-	<span class="rounded border border-fd-border bg-fd-muted px-1 py-px text-[10px] font-semibold text-fd-muted-foreground">
+	<span class="badge bg-fd-muted text-fd-muted-foreground">
 		{badge}
 	</span>
 {/each}
 {#if rep !== null}
 	<span
-		class="rounded border border-fd-border bg-fd-muted px-1 py-px text-[10px] font-semibold text-fd-muted-foreground"
+		class="badge bg-fd-muted text-fd-muted-foreground"
 		title="Reputation earned on this forum"
 	>
 		{rep} rep

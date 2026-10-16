@@ -138,14 +138,14 @@
 {:else if loading}
 	<Loading />
 {:else if error || !profile}
-	<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
+	<div class="panel px-6 py-14 text-center">
 		<p class="font-medium">{error ?? 'Profile not found'}</p>
 		<a href={resolve('/')} class="mt-2 inline-block text-sm text-fd-link hover:underline">
 			Back to all discussions
 		</a>
 	</div>
 {:else}
-	<div class="mb-6 flex flex-col gap-4 rounded-2xl border border-fd-border bg-fd-card p-5 sm:flex-row sm:items-start sm:gap-5">
+	<div class="mb-6 flex flex-col gap-4 panel p-5 sm:flex-row sm:items-start sm:gap-5">
 		<img
 			src={profile.avatarUrl}
 			alt={profile.login}
@@ -195,13 +195,13 @@
 		</div>
 	</div>
 
-	<div class="mb-4 flex w-fit gap-1 rounded-lg border border-fd-border bg-fd-muted/50 p-1 text-sm">
+	<div class="mb-4 flex w-fit gap-1 rounded-lg bg-fd-muted p-1 text-sm">
 		{#each tabs as t (t.id)}
 			<button
 				type="button"
 				onclick={() => (tab = t.id)}
 				class="rounded-md px-3 py-1 transition-colors {tab === t.id
-					? 'bg-fd-background font-medium shadow-sm'
+					? 'bg-fd-card font-medium text-fd-foreground'
 					: 'text-fd-muted-foreground hover:text-fd-foreground'}"
 			>
 				{t.label}
@@ -210,25 +210,25 @@
 	</div>
 
 	{#if tab === 'overview' && readmeHTML}
-		<div class="rounded-2xl border border-fd-border bg-fd-card p-5">
+		<div class="panel p-5">
 			<div class="markdown">
 				{@html readmeHTML}
 			</div>
 		</div>
 	{:else if tab === 'posts'}
 		{#if profile.discussions.nodes.length === 0}
-			<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
+			<div class="panel px-6 py-14 text-center">
 				<p class="font-medium">No posts yet</p>
 				<p class="mt-1 text-sm text-fd-muted-foreground">
 					@{profile.login} hasn't started any discussions.
 				</p>
 			</div>
 		{:else}
-			<div class="flex flex-col gap-3">
+			<ul class="panel divide-y divide-fd-border">
 				{#each profile.discussions.nodes as discussion (discussion.id)}
 					<DiscussionRow {discussion} />
 				{/each}
-			</div>
+			</ul>
 			{#if profile.discussions.pageInfo.hasNextPage}
 				<div class="mt-6 flex justify-center">
 					<button
@@ -244,25 +244,25 @@
 		{/if}
 	{:else if tab === 'comments'}
 		{#if profile.comments.nodes.length === 0 && profile.comments.totalCount > 0}
-			<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
+			<div class="panel px-6 py-14 text-center">
 				<p class="font-medium">{profile.comments.totalCount} comments</p>
 				<p class="mt-1 text-sm text-fd-muted-foreground">
 					Comment details aren't part of the read-only snapshot — sign in to browse them.
 				</p>
 			</div>
 		{:else if profile.comments.nodes.length === 0}
-			<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
+			<div class="panel px-6 py-14 text-center">
 				<p class="font-medium">No comments yet</p>
 				<p class="mt-1 text-sm text-fd-muted-foreground">
 					@{profile.login} hasn't commented on any discussions.
 				</p>
 			</div>
 		{:else}
-			<div class="flex flex-col gap-3">
+			<div class="panel flex flex-col divide-y divide-fd-border">
 				{#each profile.comments.nodes as comment (comment.id)}
 					<a
 						href="{resolve('/d/[number]', { number: String(comment.discussion.number) })}#{comment.id}"
-						class="group rounded-xl border border-fd-border bg-fd-card p-4 transition-colors hover:border-fd-ring/50 hover:bg-fd-accent/40"
+						class="group px-4 py-3 transition-colors hover:bg-fd-muted/50 sm:px-5"
 					>
 						<p class="line-clamp-2 text-sm">{excerpt(comment.bodyText)}</p>
 						<p class="mt-2 text-xs text-fd-muted-foreground">

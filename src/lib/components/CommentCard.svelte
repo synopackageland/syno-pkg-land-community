@@ -54,103 +54,74 @@
 	}
 </script>
 
-{#snippet authorLine(author: Comment['author'], createdAt: string)}
+{#snippet authorLine(author: Comment['author'], createdAt: string, size = 'size-6')}
 	{#if author}
-		<img
-			src={author.avatarUrl}
-			alt={author.login}
-			class="size-7 rounded-full border border-fd-border"
-			loading="lazy"
-		/>
+		<img src={author.avatarUrl} alt="" class="{size} rounded-full ring-1 ring-fd-border" loading="lazy" />
 		<a
 			href={resolve('/u/[login]', { login: author.login })}
-			class="text-sm font-medium hover:underline"
+			class="text-[13px] font-medium hover:underline"
 		>
 			{author.login}
 		</a>
 		<UserBadges login={author.login} />
 	{:else}
-		<div class="size-7 rounded-full bg-fd-muted"></div>
-		<span class="text-sm font-medium text-fd-muted-foreground">ghost</span>
+		<div class="{size} rounded-full bg-fd-muted"></div>
+		<span class="text-[13px] font-medium text-fd-muted-foreground">ghost</span>
 	{/if}
-	<span class="text-xs text-fd-muted-foreground">{timeAgo(createdAt)}</span>
+	<time datetime={createdAt} class="text-[12px] text-fd-muted-foreground">{timeAgo(createdAt)}</time>
 {/snippet}
 
-<article
-	class="rounded-xl border bg-fd-card {comment.isAnswer
-		? 'border-green-500/40'
-		: 'border-fd-border'}"
-	id={comment.id}
->
-	<div class="flex items-center gap-2 border-b border-fd-border px-4 py-2.5">
+<article class="px-4 py-4 sm:px-6 {comment.isAnswer ? 'bg-green-500/5' : ''}" id={comment.id}>
+	<div class="flex items-center gap-2">
 		{@render authorLine(comment.author, comment.createdAt)}
 		{#if comment.isAnswer}
-			<span
-				class="ml-auto inline-flex items-center gap-1 rounded-full border border-green-500/40 px-2 py-0.5 text-xs font-medium text-green-600 dark:text-green-400"
-			>
-				<svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+			<span class="badge ml-auto gap-1 bg-green-500/10 text-green-700 dark:text-green-400">
+				<svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
 				Answer
 			</span>
 		{/if}
 	</div>
 
-	<div class="markdown px-4 py-3">
+	<div class="markdown mt-2 pl-8">
 		{@html comment.bodyHTML}
 	</div>
 
-	<div class="flex items-center gap-3 px-4 pb-3">
+	<div class="mt-2.5 flex items-center gap-3 pl-8">
 		{#if forumConfig.features.reactions}
 			<ReactionBar subjectId={comment.id} groups={comment.reactionGroups} />
 		{/if}
 		{#if !locked}
-			<button
-				type="button"
-				onclick={startReply}
-				class="ml-auto text-xs font-medium text-fd-muted-foreground hover:text-fd-foreground"
-			>
+			<button type="button" onclick={startReply} class="btn btn-quiet ml-auto h-7 px-2 text-[12.5px]">
 				Reply
 			</button>
 		{/if}
 	</div>
 
 	{#if comment.replies.nodes.length > 0 || replying}
-		<div class="space-y-3 border-t border-fd-border bg-fd-muted/30 px-4 py-3">
+		<div class="mt-3 ml-8 space-y-4 border-l-2 border-fd-border pl-4">
 			{#each comment.replies.nodes as reply (reply.id)}
-				<div class="flex gap-2.5">
-					<div class="mt-1 w-0.5 shrink-0 rounded bg-fd-border"></div>
-					<div class="min-w-0 flex-1">
-						<div class="flex items-center gap-2">
-							{@render authorLine(reply.author, reply.createdAt)}
-						</div>
-						<div class="markdown mt-1 text-sm">
-							{@html reply.bodyHTML}
-						</div>
-						{#if forumConfig.features.reactions}
-							<div class="mt-1.5">
-								<ReactionBar subjectId={reply.id} groups={reply.reactionGroups} />
-							</div>
-						{/if}
+				<div class="min-w-0">
+					<div class="flex items-center gap-2">
+						{@render authorLine(reply.author, reply.createdAt, 'size-5')}
 					</div>
+					<div class="markdown mt-1 text-[14px]">
+						{@html reply.bodyHTML}
+					</div>
+					{#if forumConfig.features.reactions}
+						<div class="mt-1.5">
+							<ReactionBar subjectId={reply.id} groups={reply.reactionGroups} />
+						</div>
+					{/if}
 				</div>
 			{/each}
 
 			{#if replying}
-				<form onsubmit={submitReply} class="pt-1">
+				<form onsubmit={submitReply}>
 					<MarkdownEditor bind:value={replyBody} rows={3} placeholder="Write a reply…" />
-					{#if error}<p class="mt-2 text-sm text-red-500">{error}</p>{/if}
+					{#if error}<p class="mt-2 text-sm text-red-600 dark:text-red-400">{error}</p>{/if}
 					<div class="mt-2 flex justify-end gap-2">
-						<button
-							type="button"
-							onclick={() => (replying = false)}
-							class="rounded-lg px-3 py-1.5 text-sm text-fd-muted-foreground hover:bg-fd-accent"
-						>
-							Cancel
-						</button>
-						<button
-							type="submit"
-							disabled={busy || !replyBody.trim()}
-							class="rounded-lg bg-fd-primary px-3 py-1.5 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
-						>
+						<button type="button" onclick={() => (replying = false)} class="btn btn-quiet">Cancel</button>
+						<button type="submit" disabled={busy || !replyBody.trim()} class="btn btn-primary">
 							{busy ? 'Posting…' : 'Post reply'}
 						</button>
 					</div>

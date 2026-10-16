@@ -53,9 +53,10 @@
 		<button
 			type="button"
 			onclick={() => toggle(group.content)}
-			class="inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs transition-colors {group.viewerHasReacted
-				? 'border-fd-ring bg-fd-accent font-medium'
-				: 'border-fd-border bg-fd-card hover:bg-fd-accent'}"
+			aria-pressed={group.viewerHasReacted}
+			class="tabular inline-flex h-7 items-center gap-1 rounded-full border px-2 text-xs transition-colors {group.viewerHasReacted
+				? 'border-fd-ring/50 bg-fd-accent font-medium text-fd-accent-foreground'
+				: 'border-fd-border hover:bg-fd-muted'}"
 		>
 			<span>{EMOJI[group.content]}</span>
 			{group.reactors.totalCount}
@@ -65,7 +66,8 @@
 	<button
 		type="button"
 		onclick={() => (pickerOpen = !pickerOpen)}
-		class="inline-flex size-6 items-center justify-center rounded-full border border-fd-border text-fd-muted-foreground transition-colors hover:bg-fd-accent"
+		class="inline-flex size-7 items-center justify-center rounded-full border border-fd-border text-fd-muted-foreground transition-colors hover:bg-fd-muted hover:text-fd-foreground"
+		aria-expanded={pickerOpen}
 		aria-label="Add reaction"
 	>
 		<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9" /><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" /></svg>
@@ -73,13 +75,14 @@
 
 	{#if pickerOpen}
 		<div
-			class="absolute bottom-full left-0 z-30 mb-2 flex gap-1 rounded-xl border border-fd-border bg-fd-card p-1.5 shadow-xl"
+			class="absolute bottom-full left-0 z-30 mb-2 flex gap-0.5 rounded-lg border border-fd-border bg-fd-card p-1 shadow-float"
 		>
 			{#each Object.entries(EMOJI) as [content, emoji] (content)}
 				<button
 					type="button"
 					onclick={() => toggle(content as ReactionContent)}
-					class="rounded-lg p-1 text-base transition-colors hover:bg-fd-accent"
+					class="rounded-md p-1 text-base transition-colors hover:bg-fd-muted"
+					aria-label={content.toLowerCase().replace('_', ' ')}
 				>
 					{emoji}
 				</button>

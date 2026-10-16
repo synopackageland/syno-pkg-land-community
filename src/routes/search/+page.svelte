@@ -44,7 +44,7 @@
 {:else if !auth.signedIn}
 	<SignInPrompt />
 {:else}
-	<h1 class="mb-1 text-2xl font-bold tracking-tight">Search</h1>
+	<h1 class="mb-1 text-[22px] leading-tight font-semibold tracking-[-0.02em]">Search</h1>
 	{#if query}
 		<p class="mb-6 text-sm text-fd-muted-foreground">
 			{#if result}{result.discussionCount} result{result.discussionCount === 1 ? '' : 's'} for{:else}Searching for{/if}
@@ -59,17 +59,17 @@
 	{#if loading}
 		<Loading />
 	{:else if error}
-		<p class="rounded-xl border border-red-500/30 bg-red-500/5 p-4 text-sm text-red-500">{error}</p>
+		<p class="rounded-lg border border-red-500/30 bg-red-500/5 p-4 text-sm text-red-600 dark:text-red-400">{error}</p>
 	{:else if result && result.nodes.length === 0}
-		<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
+		<div class="panel px-6 py-14 text-center">
 			<p class="font-medium">No results</p>
 			<p class="mt-1 text-sm text-fd-muted-foreground">Try a different search term.</p>
 		</div>
 	{:else if result}
-		<div class="flex flex-col gap-3">
+		<ul class="panel divide-y divide-fd-border">
 			{#each result.nodes as discussion (discussion.id)}
 				<DiscussionRow {discussion} />
 			{/each}
-		</div>
+		</ul>
 	{/if}
 {/if}
