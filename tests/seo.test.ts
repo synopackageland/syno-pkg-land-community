@@ -64,7 +64,7 @@ describe('pageHead', () => {
 		const head = pageHead(origin, '/d/5', snapshot, exclude)!;
 		expect(head.title).toBe('Download Hub 0.2.2-0037 — Syno Package Land Community');
 		expect(head.tags).toContain('<link rel="canonical" href="https://community.synopkgland.com/d/5">');
-		expect(head.tags).toContain('<meta name="description" content="en Removing the entry &amp; more">');
+		expect(head.tags).toContain('<meta name="description" content="Removing the entry &amp; more">');
 		expect(head.tags).toContain('<meta property="og:type" content="article">');
 		expect(head.tags).toContain('<meta property="og:title" content="Download Hub 0.2.2-0037">');
 		expect(head.tags).toContain('<meta property="og:url" content="https://community.synopkgland.com/d/5">');
@@ -76,7 +76,7 @@ describe('pageHead', () => {
 		const head = pageHead(origin, '/d/2', snapshot, exclude)!;
 		expect(head.title).toBe('Older "post" — Syno Package Land Community');
 		expect(head.tags).toContain('content="Older &quot;post&quot;"');
-		expect(head.tags).toContain('<meta name="description" content="Package support, ideas and releases / 套件討論、建議與更新">');
+		expect(head.tags).toContain('<meta name="description" content="Package support, ideas and releases">');
 	});
 	it('describes a topic with its own description, or the site description', () => {
 		const a = pageHead(origin, '/t/announcements', snapshot, exclude)!;
@@ -108,7 +108,7 @@ describe('homeHead', () => {
 		const head = homeHead(origin);
 		expect(head.title).toBe('Syno Package Land Community — Home');
 		expect(head.tags).toContain('<link rel="canonical" href="https://community.synopkgland.com/">');
-		expect(head.tags).toContain('<meta name="description" content="Package support, ideas and releases / 套件討論、建議與更新">');
+		expect(head.tags).toContain('<meta name="description" content="Package support, ideas and releases">');
 		expect(head.tags).toContain('<meta property="og:type" content="website">');
 		expect(head.tags).toContain('<meta property="og:title" content="Syno Package Land Community">');
 		expect(head.tags).toContain('<meta property="og:url" content="https://community.synopkgland.com/">');

@@ -65,7 +65,7 @@
 				</button>
 			</div>
 			<p class="mb-5 text-[13.5px] leading-relaxed text-fd-muted-foreground">
-				Read discussions without signing in. Use your GitHub account to participate.<br />閱讀不需登入，發文請使用 GitHub 帳號。
+				Read discussions without signing in. Use your GitHub account to participate.
 			</p>
 
 			{#if auth.oauthAvailable}
@@ -82,7 +82,7 @@
 					Continue with GitHub
 				</button>
 			{:else if !tokenSignIn}
-                <p class="mb-3 text-[13.5px] text-fd-muted-foreground">Continue on GitHub to post or reply. / 前往 GitHub 發文或回覆。</p>
+                <p class="mb-3 text-[13.5px] text-fd-muted-foreground">Continue on GitHub to post or reply.</p>
 				<a class="btn btn-primary h-10 w-full text-sm" href="https://github.com/synopackageland/syno-pkg-land-community/discussions">Open GitHub Discussions</a>
 			{/if}
 
