@@ -182,3 +182,31 @@ describe('swr', () => {
 		).rejects.toThrow('offline');
 	});
 });
+
+describe('blocked storage', () => {
+	const block = () => {
+		const boom = () => {
+			throw new DOMException('blocked', 'SecurityError');
+		};
+		vi.spyOn(window, 'localStorage', 'get').mockImplementation(boom);
+	};
+
+	it('reads as a miss and writes as a no-op', () => {
+		block();
+		expect(() => cache.writeCache('k', 1)).not.toThrow();
+		expect(cache.readCache('k')).toBeNull();
+	});
+
+	it('invalidate and clear do nothing instead of throwing', () => {
+		block();
+		expect(() => cache.invalidateCache('k')).not.toThrow();
+		expect(() => cache.clearCache()).not.toThrow();
+	});
+
+	it('swr still serves the network result', async () => {
+		block();
+		const apply = vi.fn();
+		await cache.swr('k', async () => 'fresh', apply);
+		expect(apply).toHaveBeenCalledWith('fresh', { fromCache: false });
+	});
+});
