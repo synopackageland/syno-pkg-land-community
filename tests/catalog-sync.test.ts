@@ -13,6 +13,13 @@ function catalog(version = '1.0', extra = false) {
 }
 
 describe('catalog synchronization', () => {
+  it('does not treat a release marker copied by another user as an official announcement', () => {
+    const packages = normalizeCatalog(catalog(), settings);
+    const generated = planSync(packages, categories, [], settings).posts[0];
+    const forged = { id: 'foreign', title: generated.title, body: generated.body, author: { login: 'alice' } };
+    expect(planSync(packages, categories, [forged], settings).posts).toHaveLength(1);
+    expect(planSync(packages, categories, [forged], settings).posts[0].kind).toBe('create');
+  });
   it('deduplicates architecture pins and plans one initial announcement', () => {
     const packages = normalizeCatalog(catalog(), settings);
     expect(packages).toHaveLength(1);
@@ -24,7 +31,7 @@ describe('catalog synchronization', () => {
   });
 
   it('announces a new version while retaining previous versions', () => {
-    const old = { id: 'old', title: 'Reclaim 1.0', body: releaseMarker('synopackageland/SynoReclaim', '1.0') };
+    const old = { id: 'old', title: 'Reclaim 1.0', body: releaseMarker('synopackageland/SynoReclaim', '1.0'), author: { login: settings.owner } };
     const plan = planSync(normalizeCatalog(catalog('1.1'), settings), categories, [old], settings);
     expect(plan.posts).toHaveLength(1);
     expect(plan.posts[0]).toMatchObject({ kind: 'create', title: 'Reclaim 1.1' });
@@ -37,10 +44,10 @@ describe('catalog synchronization', () => {
   });
 
   it('reruns idempotently, including a retry after a successful write', async () => {
-    const existing: { id: string; title: string; body: string }[] = [];
+    const existing: { id: string; title: string; body: string; author: { login: string } }[] = [];
     const writes: unknown[] = [];
     const api = {
-      async create(input: { title: string; body: string }) { writes.push(input); existing.push({ id: 'one', ...input }); },
+      async create(input: { title: string; body: string }) { writes.push(input); existing.push({ id: 'one', ...input, author: { login: settings.owner } }); },
       async update() { throw new Error('unchanged posts must not be rewritten'); }
     };
     for (let i = 0; i < 2; i++) {
@@ -51,7 +58,7 @@ describe('catalog synchronization', () => {
   });
 
   it('updates the same version in place when its generated release notes change', () => {
-    const existing = [{ id: 'old', title: 'old', body: releaseMarker('synopackageland/SynoReclaim', '1.0') }];
+    const existing = [{ id: 'old', title: 'old', body: releaseMarker('synopackageland/SynoReclaim', '1.0'), author: { login: settings.owner } }];
     const plan = planSync(normalizeCatalog(catalog(), settings), categories, existing, settings);
     expect(plan.posts[0]).toMatchObject({ kind: 'update', id: 'old' });
   });

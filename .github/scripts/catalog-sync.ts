@@ -16,7 +16,7 @@ const repository = (await api.gql<{ repository: { id: string; discussionCategori
   '{repository(owner:"synopackageland",name:"community"){id discussionCategories(first:25){nodes{id slug}}}}')).repository;
 const existing = await collectPages<ExistingPost>(async (cursor) => {
   const result = await api.gql<{ repository: { discussions: { nodes: ExistingPost[]; pageInfo: { hasNextPage: boolean; endCursor: string | null } } } }>(
-    'query($cursor:String){repository(owner:"synopackageland",name:"community"){discussions(first:100,after:$cursor){nodes{id title body} pageInfo{hasNextPage endCursor}}}}', { cursor });
+    'query($cursor:String){repository(owner:"synopackageland",name:"community"){discussions(first:100,after:$cursor){nodes{id title body author{login}} pageInfo{hasNextPage endCursor}}}}', { cursor });
   return result.repository.discussions;
 });
 const plan: ReturnType<typeof planSync> = { pendingCategories: [], posts: [] };

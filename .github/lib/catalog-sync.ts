@@ -6,7 +6,7 @@ export interface Settings {
 }
 export interface PackageRelease { key: string; name: string; version: string; official: boolean; category: string; notes: string }
 export interface Category { id: string; slug: string }
-export interface ExistingPost { id: string; title: string; body: string }
+export interface ExistingPost { id: string; title: string; body: string; author?: { login: string } | null }
 export interface Post { kind: 'create' | 'update'; id?: string; categoryId: string; title: string; body: string }
 export interface Plan { pendingCategories: { key: string; name: string; slug: string }[]; posts: Post[] }
 
@@ -67,7 +67,7 @@ export function planSync(packages: PackageRelease[], categories: Category[], exi
     const body = `${marker}\n\n${pkg.name} **${pkg.version}**\n\n${pkg.notes || 'A new package version is available. / 套件已有新版本。'}\n\n` +
       `Package: \`${pkg.key}\`\n\n[Browse packages / 瀏覽套件](https://synopkgland.com/apps/)\n\n` +
       (pkg.official ? '' : 'Shared by the catalog automation. Third-party packages are maintained by their authors. / 第三方套件由原作者維護。\n');
-    const post = existing.find((d) => d.body.includes(marker));
+    const post = existing.find((d) => d.author?.login === settings.owner && d.body.includes(marker));
     if (!post) plan.posts.push({ kind: 'create', categoryId: category.id, title, body });
     else if (post.title !== title || post.body !== body) plan.posts.push({ kind: 'update', id: post.id, categoryId: category.id, title, body });
   }
