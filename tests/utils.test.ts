@@ -66,6 +66,17 @@ describe('excerpt', () => {
 		expect(out.endsWith('…')).toBe(true);
 	});
 
+	it('drops a leading copy of the title', () => {
+		expect(excerpt('Download Hub **0.2.2-0037**\n\nRemoving the entry', 160, 'Download Hub 0.2.2-0037')).toBe(
+			'Removing the entry'
+		);
+	});
+
+	it('keeps text that only shares a prefix with the title', () => {
+		expect(excerpt('Download Hubs are great', 160, 'Download Hub')).toBe('Download Hubs are great');
+		expect(excerpt('Other text', 160, 'Download Hub')).toBe('Other text');
+	});
+
 	it('returns short text unchanged', () => {
 		expect(excerpt('short text')).toBe('short text');
 	});

@@ -49,7 +49,7 @@
 		</div>
 		{#if forumConfig.content.listExcerpts && discussion.body}
 			<p class="mt-0.5 line-clamp-2 text-[13px] leading-relaxed text-fd-muted-foreground sm:line-clamp-1">
-				{excerpt(discussion.body)}
+				{excerpt(discussion.body, undefined, discussion.title)}
 			</p>
 		{/if}
 		<div class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[12px] text-fd-muted-foreground">

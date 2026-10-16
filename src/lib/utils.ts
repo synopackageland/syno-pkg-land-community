@@ -24,8 +24,8 @@ export function formatDate(iso: string): string {
 }
 
 /** Rough plain-text excerpt from raw markdown for list previews */
-export function excerpt(markdown: string, length = 160): string {
-	const text = plainText(markdown);
+export function excerpt(markdown: string, length = 160, title = ''): string {
+	const text = withoutLeadingTitle(plainText(markdown), title);
 	return text.length > length ? `${text.slice(0, length).trimEnd()}…` : text;
 }
 
@@ -41,3 +41,9 @@ function plainText(markdown: string): string {
 		.trim();
 }
 
+/** Bodies often open by repeating the title; that copy adds nothing to a list row. */
+function withoutLeadingTitle(text: string, title: string): string {
+	if (!title || !text.startsWith(title)) return text;
+	const rest = text.slice(title.length);
+	return /^(\s|$)/.test(rest) ? rest.trim() : text;
+}
