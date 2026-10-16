@@ -2,13 +2,13 @@ import { readdir, readFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 import { GitHub } from '../lib/github';
 
-const repository = 'synopackageland/community';
+const repository = 'synopackageland/syno-pkg-land-community';
 const api = new GitHub(process.env.GITHUB_TOKEN || '', repository);
 const directory = process.env.OUT_DIR || '.data-out';
 const refPath = `repos/${repository}/git/refs/heads/data`;
 // Read refs through GraphQL: a missing first data branch is null, not a swallowed auth error.
 const ref = (await api.gql<{ repository: { ref: { target: { oid: string } } | null } }>(
-  '{repository(owner:"synopackageland",name:"community"){ref(qualifiedName:"refs/heads/data"){target{oid}}}}')).repository.ref;
+  '{repository(owner:"synopackageland",name:"syno-pkg-land-community"){ref(qualifiedName:"refs/heads/data"){target{oid}}}}')).repository.ref;
 async function files(path: string): Promise<string[]> {
   const entries = await readdir(path, { withFileTypes: true });
   return (await Promise.all(entries.map((e) => e.isDirectory() ? files(join(path, e.name)) : [join(path, e.name)]))).flat();

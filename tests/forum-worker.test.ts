@@ -19,7 +19,7 @@ describe('forum Worker', () => {
     vi.stubGlobal('fetch', vi.fn(async () => new Response('', { status: 404 })));
     const response = await worker.fetch(new Request('https://community.synopkgland.com/package/SynoReclaim'), env);
     expect(response.status).toBe(302);
-    expect(response.headers.get('Location')).toContain('github.com/synopackageland/community/discussions');
+    expect(response.headers.get('Location')).toContain('github.com/synopackageland/syno-pkg-land-community/discussions');
     expect(response.headers.get('Location')).toContain('SynoReclaim');
   });
   it('serves deep discussion links through static assets', async () => {

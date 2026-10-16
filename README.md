@@ -4,7 +4,7 @@ Package support, feature ideas and release announcements for Syno Package Land.
 
 - Website: https://synopkgland.com/
 - Forum: https://community.synopkgland.com/
-- GitHub Discussions: https://github.com/synopackageland/community/discussions
+- GitHub Discussions: https://github.com/synopackageland/syno-pkg-land-community/discussions
 
 The forum is based on [Discussion Kit](https://github.com/NotReeceHarris/discussion-kit),
 upstream commit `1971c4352e490575811586718381779cc7c420dc`, GPL-3.0.

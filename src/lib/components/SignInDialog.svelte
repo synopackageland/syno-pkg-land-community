@@ -83,7 +83,7 @@
 				</button>
 			{:else if !tokenSignIn}
                 <p class="mb-3 text-sm text-fd-muted-foreground">Continue on GitHub to post or reply. / 前往 GitHub 發文或回覆。</p>
-                <a class="inline-flex rounded-lg bg-fd-primary px-4 py-2 text-fd-primary-foreground" href="https://github.com/synopackageland/community/discussions">Open GitHub Discussions</a>
+                <a class="inline-flex rounded-lg bg-fd-primary px-4 py-2 text-fd-primary-foreground" href="https://github.com/synopackageland/syno-pkg-land-community/discussions">Open GitHub Discussions</a>
 			{/if}
 
 			{#if tokenSignIn}

@@ -4,19 +4,19 @@ import { normalizeCatalog, planSync, runSync, type Settings, type ExistingPost, 
 import { collectPages } from '../lib/pagination';
 import { GitHub } from '../lib/github';
 
-const settings = JSON.parse(await readFile('forum/catalog-settings.json', 'utf8')) as Settings & { catalogRepository: string; catalogBranch: string };
+const settings = JSON.parse(await readFile('forum/catalog-settings.json', 'utf8')) as Settings & { catalogRepository: string; catalogBranch: string; forumRepository: string };
 const token = process.env.CATALOG_SYNC_TOKEN || process.env.GITHUB_TOKEN || '';
-const api = new GitHub(token, 'synopackageland/community');
+const api = new GitHub(token, settings.forumRepository);
 const canWrite = Boolean(process.env.CATALOG_SYNC_TOKEN);
 if (canWrite) await api.assertOwner();
 const response = await fetch(`https://raw.githubusercontent.com/${settings.catalogRepository}/${settings.catalogBranch}/catalog.yaml`);
 if (!response.ok) throw new Error(`Catalog fetch failed (${response.status}); no writes performed`);
 const packages = normalizeCatalog(parse(await response.text()), settings);
 const repository = (await api.gql<{ repository: { id: string; discussionCategories: { nodes: Category[] } } }>(
-  '{repository(owner:"synopackageland",name:"community"){id discussionCategories(first:25){nodes{id slug}}}}')).repository;
+  '{repository(owner:"synopackageland",name:"syno-pkg-land-community"){id discussionCategories(first:25){nodes{id slug}}}}')).repository;
 const existing = await collectPages<ExistingPost>(async (cursor) => {
   const result = await api.gql<{ repository: { discussions: { nodes: ExistingPost[]; pageInfo: { hasNextPage: boolean; endCursor: string | null } } } }>(
-    'query($cursor:String){repository(owner:"synopackageland",name:"community"){discussions(first:100,after:$cursor){nodes{id title body author{login}} pageInfo{hasNextPage endCursor}}}}', { cursor });
+    'query($cursor:String){repository(owner:"synopackageland",name:"syno-pkg-land-community"){discussions(first:100,after:$cursor){nodes{id title body author{login}} pageInfo{hasNextPage endCursor}}}}', { cursor });
   return result.repository.discussions;
 });
 const plan: ReturnType<typeof planSync> = { pendingCategories: [], posts: [] };
@@ -51,5 +51,5 @@ await writeFile(`${out}/catalog-sync.json`, JSON.stringify(status, null, 2));
 console.log(JSON.stringify({ mode: status.mode, packages: packages.length, announcements: plan.posts.length,
   pendingCategories: plan.pendingCategories.map((c) => c.slug) }));
 if (process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY,
-  `## Catalog sync\nMode: ${status.mode}\n\n` + plan.pendingCategories.map((c) => `- Create category **${c.name}** (slug: \`${c.slug}\`) in [GitHub categories](https://github.com/synopackageland/community/discussions/categories).\n`).join('') +
+  `## Catalog sync\nMode: ${status.mode}\n\n` + plan.pendingCategories.map((c) => `- Create category **${c.name}** (slug: \`${c.slug}\`) in [GitHub categories](https://github.com/synopackageland/syno-pkg-land-community/discussions/categories).\n`).join('') +
   '\nCategory creation has no public GitHub API. Removed packages are never deleted.\n');

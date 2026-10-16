@@ -1,6 +1,6 @@
 export class GitHub {
   constructor(private token: string, readonly repository: string) {
-    if (repository !== 'synopackageland/community') throw new Error('Unexpected forum repository');
+    if (repository !== 'synopackageland/syno-pkg-land-community') throw new Error('Unexpected forum repository');
     if (!token) throw new Error('Missing GitHub credential');
   }
   async request<T>(path: string, method = 'GET', body?: unknown): Promise<T> {
