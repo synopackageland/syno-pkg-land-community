@@ -22,7 +22,7 @@
 	import { auth } from '$lib/github/auth.svelte';
 	import type { Comment, Discussion, Reply } from '$lib/github/types';
 	import { fetchArchivedDiscussion } from '$lib/archive/client';
-	import { archiveMode, isMaintainer, ui } from '$lib/ui.svelte';
+	import { archiveMode, isMaintainer, postActionsMenu, ui } from '$lib/ui.svelte';
 	import { formatDate, timeAgo } from '$lib/utils';
 
 	let discussion = $state<Discussion | null>(null);
@@ -54,6 +54,7 @@
 	let editing = $state(false);
 	/** The phone-width ⋯ menu holding Edit/Delete/Report */
 	let actionsOpen = $state(false);
+	const actionsInMenu = $derived(postActionsMenu({ canModerate, editing }));
 	let editTitle = $state('');
 	let editCategoryId = $state('');
 	let editBody = $state('');
@@ -300,20 +301,22 @@
 					<span class="badge bg-fd-muted text-fd-muted-foreground">Pinned</span>
 				{/if}
 
-				<span class="ml-auto hidden items-center gap-0.5 sm:inline-flex">
+				<span class="ml-auto items-center gap-0.5 {actionsInMenu ? 'hidden sm:inline-flex' : 'inline-flex'}">
 					{@render postActions('btn btn-quiet h-7 px-2 text-[12.5px]')}
 				</span>
-				<details class="relative ml-auto sm:hidden" bind:open={actionsOpen}>
-					<summary
-						class="flex size-7 cursor-pointer list-none items-center justify-center rounded-md hover:bg-fd-muted [&::-webkit-details-marker]:hidden"
-						aria-label="Post actions"
-					>
-						<svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.6" /><circle cx="12" cy="12" r="1.6" /><circle cx="19" cy="12" r="1.6" /></svg>
-					</summary>
-					<div class="absolute right-0 z-50 mt-1 flex w-40 flex-col rounded-lg border border-fd-border bg-fd-card p-1 shadow-float">
-						{@render postActions('btn btn-quiet h-9 w-full justify-start px-2.5 text-sm')}
-					</div>
-				</details>
+				{#if actionsInMenu}
+					<details class="relative ml-auto sm:hidden" bind:open={actionsOpen}>
+						<summary
+							class="flex size-7 cursor-pointer list-none items-center justify-center rounded-md hover:bg-fd-muted [&::-webkit-details-marker]:hidden"
+							aria-label="Post actions"
+						>
+							<svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.6" /><circle cx="12" cy="12" r="1.6" /><circle cx="19" cy="12" r="1.6" /></svg>
+						</summary>
+						<div class="absolute right-0 z-50 mt-1 flex w-40 flex-col rounded-lg border border-fd-border bg-fd-card p-1 shadow-float">
+							{@render postActions('btn btn-quiet h-9 w-full justify-start px-2.5 text-sm')}
+						</div>
+					</details>
+				{/if}
 			</div>
 
 			{#if editing}
