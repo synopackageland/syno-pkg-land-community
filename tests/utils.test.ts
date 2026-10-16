@@ -77,6 +77,24 @@ describe('excerpt', () => {
 		expect(excerpt('Other text', 160, 'Download Hub')).toBe('Other text');
 	});
 
+	it('skips a language heading and the version it repeats', () => {
+		const body = '<!-- m -->\n\nDownload Hub **0.2.2-0037**\n\n### en\n\n0.2.2-0037\n- Removing the entry asks for confirmation.\n\n### zh-TW\n\nx';
+		expect(excerpt(body, 160, 'Download Hub 0.2.2-0037')).toBe('Removing the entry asks for confirmation. x');
+	});
+
+	it('keeps a version that the title does not carry', () => {
+		expect(excerpt('0.3.0 is out', 160, 'Release notes')).toBe('0.3.0 is out');
+	});
+
+	it('keeps text that only shares a prefix with the version', () => {
+		expect(excerpt('0.3.01 is out', 160, 'Release 0.3.0')).toBe('0.3.01 is out');
+		expect(excerpt('0.3.0', 160, 'Release 0.3.0')).toBe('');
+	});
+
+	it('does not treat prose starting with a language code as a heading', () => {
+		expect(excerpt('en route to the hub', 160, 'Trip')).toBe('en route to the hub');
+	});
+
 	it('returns short text unchanged', () => {
 		expect(excerpt('short text')).toBe('short text');
 	});

@@ -25,7 +25,7 @@ export function formatDate(iso: string): string {
 
 /** Rough plain-text excerpt from raw markdown for list previews */
 export function excerpt(markdown: string, length = 160, title = ''): string {
-	const text = withoutLeadingTitle(plainText(markdown), title);
+	const text = withoutRepeatedVersion(withoutLeadingTitle(plainText(markdown), title), title);
 	return text.length > length ? `${text.slice(0, length).trimEnd()}…` : text;
 }
 
@@ -33,6 +33,7 @@ function plainText(markdown: string): string {
 	return markdown
 		.replace(/<!--[\s\S]*?-->/g, '')
 		.replace(/```[\s\S]*?```/g, '')
+		.replace(/^#{1,6}[ \t]*(?:en|zh-[A-Za-z]+)[ \t]*$/gm, '')
 		.replace(/!\[[^\]]*\]\([^)]*\)/g, '')
 		.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
 		.replace(/^\s*(?:[-*+]\s+|-{3,}\s*$)/gm, '')
@@ -45,5 +46,13 @@ function plainText(markdown: string): string {
 function withoutLeadingTitle(text: string, title: string): string {
 	if (!title || !text.startsWith(title)) return text;
 	const rest = text.slice(title.length);
+	return /^(\s|$)/.test(rest) ? rest.trim() : text;
+}
+
+/** Release posts repeat the version right after the title; the summary starts after it. */
+function withoutRepeatedVersion(text: string, title: string): string {
+	const version = title.match(/\d+(?:\.\d+)+(?:-\d+)?/)?.[0];
+	if (!version || !text.startsWith(version)) return text;
+	const rest = text.slice(version.length);
 	return /^(\s|$)/.test(rest) ? rest.trim() : text;
 }
