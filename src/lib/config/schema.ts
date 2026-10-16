@@ -312,6 +312,6 @@ export function buildThemeCss(theme: ForumConfig['theme']): string {
 	const dark = rules(theme.dark);
 	let css = '';
 	if (light) css += `:root{${light}}`;
-	if (dark) css += `.dark{${dark}}`;
+	if (dark) css += `:root[data-theme='dark']{${dark}}`;
 	return css;
 }

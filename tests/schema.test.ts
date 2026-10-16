@@ -89,9 +89,9 @@ describe('buildThemeCss', () => {
 		);
 	});
 
-	it('compiles dark overrides into .dark', () => {
+	it('compiles dark overrides under data-theme=dark', () => {
 		expect(buildThemeCss({ light: {}, dark: { background: '#000' } })).toBe(
-			'.dark{--fd-background:#000;}'
+			":root[data-theme='dark']{--fd-background:#000;}"
 		);
 	});
 
@@ -101,7 +101,7 @@ describe('buildThemeCss', () => {
 			dark: { primaryForeground: 'white' }
 		});
 		expect(css).toBe(
-			':root{--fd-muted-foreground:gray;--fd-link:blue;}.dark{--fd-primary-foreground:white;}'
+			":root{--fd-muted-foreground:gray;--fd-link:blue;}:root[data-theme='dark']{--fd-primary-foreground:white;}"
 		);
 	});
 });
