@@ -54,6 +54,12 @@ describe('excerpt', () => {
 		expect(excerpt('# Title\n> quote *bold* `code`')).toBe('Title quote bold code');
 	});
 
+	it('keeps hyphens inside words while dropping list markers and rules', () => {
+		expect(excerpt('Download Hub 0.2.2-0037\n\n- first-time setup\n* item\n---\nend')).toBe(
+			'Download Hub 0.2.2-0037 first-time setup item end'
+		);
+	});
+
 	it('truncates long text with an ellipsis', () => {
 		const out = excerpt('word '.repeat(100), 20);
 		expect(out.length).toBeLessThanOrEqual(21);
