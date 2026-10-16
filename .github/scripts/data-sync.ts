@@ -19,6 +19,7 @@
  */
 import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
+import { collectPages } from '../lib/pagination';
 import userConfig from '../../forum.config';
 import { mergeConfig } from '../../src/lib/config/schema';
 import {
@@ -167,7 +168,27 @@ async function scan(): Promise<{
 		);
 		categories = data.repository.discussionCategories.nodes;
 		pinnedIds = data.repository.pinnedDiscussions.nodes.map((n) => n.discussion.id);
-		discussions.push(...data.repository.discussions.nodes);
+		for (const discussion of data.repository.discussions.nodes) {
+			if (discussion.comments.totalCount > discussion.comments.nodes.length) {
+				discussion.comments.nodes = await collectPages<ScanComment>(async (cursor) => {
+					const result = await gql<{ node: { comments: { nodes: ScanComment[]; pageInfo: { hasNextPage: boolean; endCursor: string | null } } } }>(
+						`query($id:ID!,$cursor:String){node(id:$id){... on Discussion{comments(first:100,after:$cursor){pageInfo{hasNextPage endCursor} nodes{id bodyHTML createdAt isAnswer ${ACTOR} ${REACTIONS} replies(first:100){totalCount nodes{id bodyHTML createdAt ${ACTOR} ${REACTIONS}}}}}}}}`,
+						{ id: discussion.id, cursor });
+					return result.node.comments;
+				});
+			}
+			for (const comment of discussion.comments.nodes) {
+				if (comment.replies.totalCount > comment.replies.nodes.length) {
+					comment.replies.nodes = await collectPages<ScanReply>(async (cursor) => {
+						const result = await gql<{ node: { replies: { nodes: ScanReply[]; pageInfo: { hasNextPage: boolean; endCursor: string | null } } } }>(
+							`query($id:ID!,$cursor:String){node(id:$id){... on DiscussionComment{replies(first:100,after:$cursor){pageInfo{hasNextPage endCursor} nodes{id bodyHTML createdAt ${ACTOR} ${REACTIONS}}}}}}`,
+							{ id: comment.id, cursor });
+						return result.node.replies;
+					});
+				}
+			}
+			discussions.push(discussion);
+		}
 		if (!data.repository.discussions.pageInfo.hasNextPage) break;
 		after = data.repository.discussions.pageInfo.endCursor;
 	}

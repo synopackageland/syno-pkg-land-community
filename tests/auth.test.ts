@@ -86,6 +86,24 @@ describe('signInWithToken', () => {
 });
 
 describe('oauth', () => {
+  it('loads the runtime client ID without a frontend rebuild', async () => {
+    mockConfig.auth.oauth.proxyUrl = '/api/oauth/token';
+    fetchMock.mockResolvedValue({ ok: true, json: async () => ({ clientId: 'runtime-client' }) });
+    await auth.configureOAuth();
+    expect(auth.oauthAvailable).toBe(true);
+    auth.beginOAuth('http://site/auth/callback');
+    expect(sessionStorage.getItem('dk:oauth-state')).toBeTruthy();
+  });
+  it('keeps direct GitHub participation available if runtime config is missing or fails', async () => {
+    fetchMock.mockResolvedValueOnce({ ok: true, json: async () => ({}) });
+    await auth.configureOAuth();
+    expect(auth.oauthAvailable).toBe(false);
+    fetchMock.mockResolvedValueOnce({ ok: false });
+    await auth.configureOAuth();
+    fetchMock.mockRejectedValueOnce(new Error('offline'));
+    await auth.configureOAuth();
+    expect(auth.oauthAvailable).toBe(false);
+  });
 	it('reports availability only when fully configured', () => {
 		expect(auth.oauthAvailable).toBe(false);
 		mockConfig.auth.oauth = { clientId: 'cid', proxyUrl: 'http://proxy' };

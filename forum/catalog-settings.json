@@ -1,0 +1,12 @@
+{
+  "owner": "synopackageland",
+  "catalogRepository": "synopackageland/catalog",
+  "catalogBranch": "main",
+  "announcements": "announcements",
+  "thirdParty": "third-party",
+  "packages": {
+    "synopackageland/SynoReclaim": { "name": "Reclaim", "category": "reclaim" },
+    "synopackageland/SynoPkgConnect": { "name": "Connect", "category": "connect" },
+    "synopackageland/SynoPkgGopeed": { "name": "Download Hub", "category": "download-hub" }
+  }
+}

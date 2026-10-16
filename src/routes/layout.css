@@ -1,3 +1,5 @@
+@import '@fontsource/public-sans/400.css';
+@import '@fontsource/public-sans/600.css';
 @import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -51,8 +53,7 @@
 	--color-fd-link: var(--fd-link);
 
 	--font-sans:
-		'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
-		Arial, sans-serif;
+		'Public Sans', -apple-system, BlinkMacSystemFont, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', system-ui, sans-serif;
 }
 
 html {
@@ -168,4 +169,18 @@ body {
 }
 .markdown g-emoji {
 	font-family: inherit;
+}
+
+/* Thin brand layer: the upstream forum composition and interactions stay intact. */
+:root { color-scheme: light; }
+header { background: #fff; }
+header > div { max-width: 76rem; }
+main { background: var(--fd-card); border-radius: 12px; margin-block: 1.5rem; padding: clamp(1rem, 3vw, 2rem); box-shadow: 0 1px 2px rgb(16 24 40 / .05), 0 12px 28px -12px rgb(16 24 40 / .14); }
+a, button, input { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid var(--fd-ring); outline-offset: 3px; }
+input, textarea { caret-color: var(--fd-primary); }
+@media (max-width: 640px) {
+ .community-wordmark { display: none; }
+ header nav a { padding-inline: .4rem; font-size: .75rem; }
+ main { padding: 1rem; margin-block: 1rem; }
 }

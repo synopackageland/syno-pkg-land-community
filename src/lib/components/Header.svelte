@@ -4,7 +4,6 @@
 	import { forumConfig } from '$lib/config';
 	import { auth } from '$lib/github/auth.svelte';
 	import { archiveMode, ui } from '$lib/ui.svelte';
-	import ThemeToggle from './ThemeToggle.svelte';
 
 	let query = $state('');
 
@@ -15,24 +14,16 @@
 </script>
 
 <header
-	class="sticky top-0 z-40 border-b border-fd-border bg-fd-background/80 backdrop-blur-lg"
+	class="sticky top-0 z-40 border-b border-fd-border bg-white"
 >
 	<div class="mx-auto flex h-14 max-w-[1400px] items-center gap-4 px-4">
 		<a href={resolve('/')} class="flex items-center gap-2.5 font-semibold tracking-tight">
-			{#if forumConfig.site.logo}
-				<span class="text-lg leading-none">{forumConfig.site.logo}</span>
-			{:else}
-				<svg class="size-5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-					<path
-						d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.061l-2.574 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM14.5 4.75a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.458 1.458 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h1a.25.25 0 0 0 .25-.25Z"
-					/>
-				</svg>
-			{/if}
-			{forumConfig.site.name}
+			<img src="/brand/icon-64.png" alt="" width="28" height="28" />
+			<span class="community-wordmark">{forumConfig.site.name}</span>
 		</a>
 
 		{#if forumConfig.nav.length > 0}
-			<nav class="hidden items-center gap-1 text-sm lg:flex">
+			<nav class="flex items-center gap-1 text-sm">
 				{#each forumConfig.nav as link (link.href)}
 					<a
 						href={link.href}
@@ -70,7 +61,6 @@
 		{/if}
 
 		<div class="ml-auto flex items-center gap-2 sm:ml-0">
-			<ThemeToggle />
 			{#if auth.loading}
 				<div class="size-8 animate-pulse rounded-full bg-fd-muted"></div>
 			{:else if auth.viewer}
