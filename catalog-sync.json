@@ -1,29 +1,8 @@
 {
-  "syncedAt": "2026-10-16T04:34:41.595Z",
+  "syncedAt": "2026-10-16T05:50:06.957Z",
   "catalogRepository": "synopackageland/catalog",
-  "mode": "needs-catalog-sync-token",
-  "pendingCategories": [
-    {
-      "key": "shared",
-      "name": "Third-party",
-      "slug": "third-party"
-    },
-    {
-      "key": "synopackageland/SynoReclaim",
-      "name": "Reclaim",
-      "slug": "reclaim"
-    },
-    {
-      "key": "synopackageland/SynoPkgConnect",
-      "name": "Connect",
-      "slug": "connect"
-    },
-    {
-      "key": "synopackageland/SynoPkgGopeed",
-      "name": "Download Hub",
-      "slug": "download-hub"
-    }
-  ],
+  "mode": "write",
+  "pendingCategories": [],
   "pendingAnnouncements": 0,
   "packages": [
     {
