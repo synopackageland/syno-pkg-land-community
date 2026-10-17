@@ -1,6 +1,75 @@
 {
-	"archivedAt": "2026-10-17T04:31:49.848Z",
+	"archivedAt": "2026-10-17T09:25:07.969Z",
 	"discussions": [
+		{
+			"id": "D_kwDOVLwbas4AqJG5",
+			"number": 17,
+			"title": "Download Hub 0.2.2-0042",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgGopeed:0.2.2-0042 -->\n\nDownload Hub **0.2.2-0042**\n\n0.2.2-0042\n- New Search tab with an updatable built-in site list, your own Cardigann, Torznab, RSS, YouTube and Bilibili sources, and one-click download.\n- Instant add starts downloads directly; every task supports pause and resume.\n- Redesigned download list with a column chooser and clear all completed.\n- Phone mode works correctly when opened from a browser.\n\nPackage: `synopackageland/SynoPkgGopeed`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-17T09:25:06Z",
+			"updatedAt": "2026-10-17T09:25:06Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqJG4",
+			"number": 16,
+			"title": "Connect 0.1.0-0055",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgConnect:0.1.0-0055 -->\n\nConnect **0.1.0-0055**\n\n0.1.0-0055\n- Rebuilt on SDK 0.13.1 and UI 0.11.4 with refreshed UI components.\n- Fixed the iPhone Portal/standalone layout through the updated UI.\n- Upgrading from 0.1.0-0054 needs no administrator approval.\n\nPackage: `synopackageland/SynoPkgConnect`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-17T09:25:05Z",
+			"updatedAt": "2026-10-17T09:25:05Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqJG2",
+			"number": 15,
+			"title": "Reclaim 0.1.1-1575",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoReclaim:0.1.1-1575 -->\n\nReclaim **0.1.1-1575**\n\n0.1.1-1575\n- Phone mode now adapts correctly when opened from a browser, including iOS Safari.\n- Copying error details works inside DSM app windows.\n- Refreshed UI components with UI 0.11.4 and SDK/App/CLI/templates 0.13.1.\n\nPackage: `synopackageland/SynoReclaim`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-17T09:25:04Z",
+			"updatedAt": "2026-10-17T09:25:04Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
 		{
 			"id": "D_kwDOVLwbas4AqIcC",
 			"number": 14,

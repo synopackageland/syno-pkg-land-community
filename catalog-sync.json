@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-17T04:31:48.838Z",
+  "syncedAt": "2026-10-17T09:25:06.740Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "write",
   "pendingCategories": [],
@@ -7,27 +7,27 @@
   "packages": [
     {
       "key": "synopackageland/SynoReclaim",
-      "version": "0.1.1-1574",
+      "version": "0.1.1-1575",
       "name": "Reclaim",
       "official": true,
       "category": "reclaim",
-      "notes": "0.1.1-1574: Rebuilt on UI 0.10.5 / SDK 0.13.0; refined checkbox/radio spacing."
+      "notes": "0.1.1-1575\n- Phone mode now adapts correctly when opened from a browser, including iOS Safari.\n- Copying error details works inside DSM app windows.\n- Refreshed UI components with UI 0.11.4 and SDK/App/CLI/templates 0.13.1."
     },
     {
       "key": "synopackageland/SynoPkgConnect",
-      "version": "0.1.0-0054",
+      "version": "0.1.0-0055",
       "name": "Connect",
       "official": true,
       "category": "connect",
-      "notes": "0.1.0-0054\n- Dialogs take DSM's widths and corners and stay inside the Connect window.\n- Page titles are followed by the same spacing as DSM's, instead of a double gap.\n- Opening Connect again from the DSM main menu while it is open rechecks the connections.\n- Upgrading from 0.1.0-0053 needs no administrator approval."
+      "notes": "0.1.0-0055\n- Rebuilt on SDK 0.13.1 and UI 0.11.4 with refreshed UI components.\n- Fixed the iPhone Portal/standalone layout through the updated UI.\n- Upgrading from 0.1.0-0054 needs no administrator approval."
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
-      "version": "0.2.2-0040",
+      "version": "0.2.2-0042",
       "name": "Download Hub",
       "official": true,
       "category": "download-hub",
-      "notes": "0.2.2-0040 — Rebuilt on UI 0.10.5 / SDK 0.13.0, with refined checkbox/radio spacing."
+      "notes": "0.2.2-0042\n- New Search tab with an updatable built-in site list, your own Cardigann, Torznab, RSS, YouTube and Bilibili sources, and one-click download.\n- Instant add starts downloads directly; every task supports pause and resume.\n- Redesigned download list with a column chooser and clear all completed.\n- Phone mode works correctly when opened from a browser."
     }
   ],
   "multiRepoReviewNeeded": false
