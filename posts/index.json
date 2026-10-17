@@ -1,6 +1,52 @@
 {
-	"archivedAt": "2026-10-16T23:38:42.921Z",
+	"archivedAt": "2026-10-17T04:31:27.169Z",
 	"discussions": [
+		{
+			"id": "D_kwDOVLwbas4AqIcC",
+			"number": 14,
+			"title": "Download Hub 0.2.2-0040",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgGopeed:0.2.2-0040 -->\n\nDownload Hub **0.2.2-0040**\n\n0.2.2-0040 — Rebuilt on UI 0.10.5 / SDK 0.13.0, with refined checkbox/radio spacing.\n\nPackage: `synopackageland/SynoPkgGopeed`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-17T04:31:25Z",
+			"updatedAt": "2026-10-17T04:31:25Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqIcB",
+			"number": 13,
+			"title": "Reclaim 0.1.1-1574",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoReclaim:0.1.1-1574 -->\n\nReclaim **0.1.1-1574**\n\n0.1.1-1574: Rebuilt on UI 0.10.5 / SDK 0.13.0; refined checkbox/radio spacing.\n\nPackage: `synopackageland/SynoReclaim`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-17T04:31:24Z",
+			"updatedAt": "2026-10-17T04:31:24Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
 		{
 			"id": "D_kwDOVLwbas4AqHny",
 			"number": 12,

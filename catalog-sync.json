@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-16T23:38:41.922Z",
+  "syncedAt": "2026-10-17T04:31:25.872Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "write",
   "pendingCategories": [],
@@ -7,11 +7,11 @@
   "packages": [
     {
       "key": "synopackageland/SynoReclaim",
-      "version": "0.1.1-1573",
+      "version": "0.1.1-1574",
       "name": "Reclaim",
       "official": true,
       "category": "reclaim",
-      "notes": "0.1.1-1573\n- Titled dialogs use DSM's 3px corners and stay within the DSM window.\n- Two messages that showed as raw keys now have text in every language.\n- Built on SDK 0.12.2 and UI 0.10.3; no new approval is needed after the upgrade from 0.1.1-1572."
+      "notes": "0.1.1-1574: Rebuilt on UI 0.10.5 / SDK 0.13.0; refined checkbox/radio spacing."
     },
     {
       "key": "synopackageland/SynoPkgConnect",
@@ -23,11 +23,11 @@
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
-      "version": "0.2.2-0039",
+      "version": "0.2.2-0040",
       "name": "Download Hub",
       "official": true,
       "category": "download-hub",
-      "notes": "0.2.2-0039\n- New download is as wide as DSM's own dialogs with a text box (530 px), so long links wrap less; dialogs with a title have DSM's 3 px corners.\n- Dialogs stay inside a narrow DSM window and fill the width on a phone.\n- The buttons on Core updates are DSM's pill-shaped action buttons.\n- Upgrading from 0.2.2-0038 needs no administrator approval."
+      "notes": "0.2.2-0040 — Rebuilt on UI 0.10.5 / SDK 0.13.0, with refined checkbox/radio spacing."
     }
   ],
   "multiRepoReviewNeeded": false
