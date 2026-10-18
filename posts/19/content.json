@@ -1,0 +1,92 @@
+{
+	"id": "D_kwDOVLwbas4AqLpO",
+	"number": 19,
+	"title": "Connect 0.1.0-0056",
+	"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgConnect:0.1.0-0056 -->\n\nConnect **0.1.0-0056**\n\n0.1.0-0056\n- Adds AI and CLI operations through synopkgland ctl (alias: connect): status, connection status, ports list, ipv6 status and connection disconnect.\n- Commands retain DSM administrator-only access. Disconnect requires confirmation; connection output excludes login links, device codes and private URLs.\n- Updates SDK, CLI and templates to 0.15.0. No new root privileges or administrator reapproval.\n\nPackage: `synopackageland/SynoPkgConnect`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+	"bodyHTML": "\n<p dir=\"auto\">Connect <strong>0.1.0-0056</strong></p>\n<p dir=\"auto\">0.1.0-0056</p>\n<ul dir=\"auto\">\n<li>Adds AI and CLI operations through synopkgland ctl (alias: connect): status, connection status, ports list, ipv6 status and connection disconnect.</li>\n<li>Commands retain DSM administrator-only access. Disconnect requires confirmation; connection output excludes login links, device codes and private URLs.</li>\n<li>Updates SDK, CLI and templates to 0.15.0. No new root privileges or administrator reapproval.</li>\n</ul>\n<p dir=\"auto\">Package: <code class=\"notranslate\">synopackageland/SynoPkgConnect</code></p>\n<p dir=\"auto\"><a href=\"https://synopkgland.com/apps/\" rel=\"nofollow\">Browse packages</a></p>",
+	"url": "https://github.com/synopackageland/syno-pkg-land-community/discussions/19",
+	"createdAt": "2026-10-18T05:56:52Z",
+	"lastEditedAt": null,
+	"upvoteCount": 1,
+	"viewerHasUpvoted": false,
+	"locked": false,
+	"author": {
+		"login": "synopackageland",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+		"url": "https://github.com/synopackageland"
+	},
+	"category": {
+		"id": "DIC_kwDOVLwbas4DIkxQ",
+		"name": "Announcements",
+		"slug": "announcements",
+		"emojiHTML": "<div>📣</div>",
+		"description": "Updates from maintainers",
+		"isAnswerable": false
+	},
+	"reactionGroups": [
+		{
+			"content": "THUMBS_UP",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "THUMBS_DOWN",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "LAUGH",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HOORAY",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "CONFUSED",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HEART",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "ROCKET",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "EYES",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		}
+	],
+	"comments": {
+		"totalCount": 0,
+		"pageInfo": {
+			"endCursor": null,
+			"hasNextPage": false
+		},
+		"nodes": []
+	}
+}

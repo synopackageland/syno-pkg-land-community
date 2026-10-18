@@ -1,0 +1,92 @@
+{
+	"id": "D_kwDOVLwbas4AqLpN",
+	"number": 18,
+	"title": "Reclaim 0.1.1-1576",
+	"body": "<!-- synopkgland:release:synopackageland%2FSynoReclaim:0.1.1-1576 -->\n\nReclaim **0.1.1-1576**\n\n0.1.1-1576\n- Add AI/CLI support through synopkgland ctl reclaim: authorization, volumes, jobs, scan status/results, history, overview, top paths, inspection, simulation, recycle bins, snapshots, system partition reports and cache status.\n- Start a bounded scan job with explicit write confirmation; cleanup and permanent deletion are not exposed.\n- Private inputs are masked with writeOnly; command responses return fixed fields. Uses SDK/App/CLI/templates 0.15.0 and UI 0.11.4; no new approval is needed when upgrading from 1574 or 1575.\n- A cold system-partition report may exceed the CLI 10-second request deadline.\n\nPackage: `synopackageland/SynoReclaim`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+	"bodyHTML": "\n<p dir=\"auto\">Reclaim <strong>0.1.1-1576</strong></p>\n<p dir=\"auto\">0.1.1-1576</p>\n<ul dir=\"auto\">\n<li>Add AI/CLI support through synopkgland ctl reclaim: authorization, volumes, jobs, scan status/results, history, overview, top paths, inspection, simulation, recycle bins, snapshots, system partition reports and cache status.</li>\n<li>Start a bounded scan job with explicit write confirmation; cleanup and permanent deletion are not exposed.</li>\n<li>Private inputs are masked with writeOnly; command responses return fixed fields. Uses SDK/App/CLI/templates 0.15.0 and UI 0.11.4; no new approval is needed when upgrading from 1574 or 1575.</li>\n<li>A cold system-partition report may exceed the CLI 10-second request deadline.</li>\n</ul>\n<p dir=\"auto\">Package: <code class=\"notranslate\">synopackageland/SynoReclaim</code></p>\n<p dir=\"auto\"><a href=\"https://synopkgland.com/apps/\" rel=\"nofollow\">Browse packages</a></p>",
+	"url": "https://github.com/synopackageland/syno-pkg-land-community/discussions/18",
+	"createdAt": "2026-10-18T05:56:52Z",
+	"lastEditedAt": null,
+	"upvoteCount": 1,
+	"viewerHasUpvoted": false,
+	"locked": false,
+	"author": {
+		"login": "synopackageland",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+		"url": "https://github.com/synopackageland"
+	},
+	"category": {
+		"id": "DIC_kwDOVLwbas4DIkxQ",
+		"name": "Announcements",
+		"slug": "announcements",
+		"emojiHTML": "<div>📣</div>",
+		"description": "Updates from maintainers",
+		"isAnswerable": false
+	},
+	"reactionGroups": [
+		{
+			"content": "THUMBS_UP",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "THUMBS_DOWN",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "LAUGH",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HOORAY",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "CONFUSED",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HEART",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "ROCKET",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "EYES",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		}
+	],
+	"comments": {
+		"totalCount": 0,
+		"pageInfo": {
+			"endCursor": null,
+			"hasNextPage": false
+		},
+		"nodes": []
+	}
+}

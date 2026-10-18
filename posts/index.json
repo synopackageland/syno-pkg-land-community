@@ -1,6 +1,75 @@
 {
-	"archivedAt": "2026-10-18T01:05:30.728Z",
+	"archivedAt": "2026-10-18T05:56:55.232Z",
 	"discussions": [
+		{
+			"id": "D_kwDOVLwbas4AqLpP",
+			"number": 20,
+			"title": "Download Hub 0.2.2-0043",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgGopeed:0.2.2-0043 -->\n\nDownload Hub **0.2.2-0043**\n\n0.2.2-0043\n- Added AI and CLI operation through synopkgland ctl 0.15.0, under the gopeed alias.\n- Commands cover task list/pause/resume, destination lookup, link and torrent submission, preparation status, search and result downloads.\n- Keeps DSM App Privileges, per-user ownership and destination grants; sensitive URL/torrent/query inputs use standard writeOnly masking.\n- Waiting for a submission confirms source preparation, not download/save completion. Existing executor approval is retained.\n\nPackage: `synopackageland/SynoPkgGopeed`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-18T05:56:53Z",
+			"updatedAt": "2026-10-18T05:56:53Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqLpO",
+			"number": 19,
+			"title": "Connect 0.1.0-0056",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgConnect:0.1.0-0056 -->\n\nConnect **0.1.0-0056**\n\n0.1.0-0056\n- Adds AI and CLI operations through synopkgland ctl (alias: connect): status, connection status, ports list, ipv6 status and connection disconnect.\n- Commands retain DSM administrator-only access. Disconnect requires confirmation; connection output excludes login links, device codes and private URLs.\n- Updates SDK, CLI and templates to 0.15.0. No new root privileges or administrator reapproval.\n\nPackage: `synopackageland/SynoPkgConnect`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-18T05:56:52Z",
+			"updatedAt": "2026-10-18T05:56:52Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqLpN",
+			"number": 18,
+			"title": "Reclaim 0.1.1-1576",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoReclaim:0.1.1-1576 -->\n\nReclaim **0.1.1-1576**\n\n0.1.1-1576\n- Add AI/CLI support through synopkgland ctl reclaim: authorization, volumes, jobs, scan status/results, history, overview, top paths, inspection, simulation, recycle bins, snapshots, system partition reports and cache status.\n- Start a bounded scan job with explicit write confirmation; cleanup and permanent deletion are not exposed.\n- Private inputs are masked with writeOnly; command responses return fixed fields. Uses SDK/App/CLI/templates 0.15.0 and UI 0.11.4; no new approval is needed when upgrading from 1574 or 1575.\n- A cold system-partition report may exceed the CLI 10-second request deadline.\n\nPackage: `synopackageland/SynoReclaim`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-18T05:56:52Z",
+			"updatedAt": "2026-10-18T05:56:52Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
 		{
 			"id": "D_kwDOVLwbas4AqJG5",
 			"number": 17,

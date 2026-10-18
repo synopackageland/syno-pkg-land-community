@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-18T01:05:29.763Z",
+  "syncedAt": "2026-10-18T05:56:54.031Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "write",
   "pendingCategories": [],
@@ -7,27 +7,27 @@
   "packages": [
     {
       "key": "synopackageland/SynoReclaim",
-      "version": "0.1.1-1575",
+      "version": "0.1.1-1576",
       "name": "Reclaim",
       "official": true,
       "category": "reclaim",
-      "notes": "0.1.1-1575\n- Phone mode now adapts correctly when opened from a browser, including iOS Safari.\n- Copying error details works inside DSM app windows.\n- Refreshed UI components with UI 0.11.4 and SDK/App/CLI/templates 0.13.1."
+      "notes": "0.1.1-1576\n- Add AI/CLI support through synopkgland ctl reclaim: authorization, volumes, jobs, scan status/results, history, overview, top paths, inspection, simulation, recycle bins, snapshots, system partition reports and cache status.\n- Start a bounded scan job with explicit write confirmation; cleanup and permanent deletion are not exposed.\n- Private inputs are masked with writeOnly; command responses return fixed fields. Uses SDK/App/CLI/templates 0.15.0 and UI 0.11.4; no new approval is needed when upgrading from 1574 or 1575.\n- A cold system-partition report may exceed the CLI 10-second request deadline."
     },
     {
       "key": "synopackageland/SynoPkgConnect",
-      "version": "0.1.0-0055",
+      "version": "0.1.0-0056",
       "name": "Connect",
       "official": true,
       "category": "connect",
-      "notes": "0.1.0-0055\n- Rebuilt on SDK 0.13.1 and UI 0.11.4 with refreshed UI components.\n- Fixed the iPhone Portal/standalone layout through the updated UI.\n- Upgrading from 0.1.0-0054 needs no administrator approval."
+      "notes": "0.1.0-0056\n- Adds AI and CLI operations through synopkgland ctl (alias: connect): status, connection status, ports list, ipv6 status and connection disconnect.\n- Commands retain DSM administrator-only access. Disconnect requires confirmation; connection output excludes login links, device codes and private URLs.\n- Updates SDK, CLI and templates to 0.15.0. No new root privileges or administrator reapproval."
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
-      "version": "0.2.2-0042",
+      "version": "0.2.2-0043",
       "name": "Download Hub",
       "official": true,
       "category": "download-hub",
-      "notes": "0.2.2-0042\n- New Search tab with an updatable built-in site list, your own Cardigann, Torznab, RSS, YouTube and Bilibili sources, and one-click download.\n- Instant add starts downloads directly; every task supports pause and resume.\n- Redesigned download list with a column chooser and clear all completed.\n- Phone mode works correctly when opened from a browser."
+      "notes": "0.2.2-0043\n- Added AI and CLI operation through synopkgland ctl 0.15.0, under the gopeed alias.\n- Commands cover task list/pause/resume, destination lookup, link and torrent submission, preparation status, search and result downloads.\n- Keeps DSM App Privileges, per-user ownership and destination grants; sensitive URL/torrent/query inputs use standard writeOnly masking.\n- Waiting for a submission confirms source preparation, not download/save completion. Existing executor approval is retained."
     }
   ],
   "multiRepoReviewNeeded": false
