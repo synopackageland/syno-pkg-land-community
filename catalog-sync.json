@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-18T05:57:19.093Z",
+  "syncedAt": "2026-10-18T11:11:13.969Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "write",
   "pendingCategories": [],
@@ -7,27 +7,27 @@
   "packages": [
     {
       "key": "synopackageland/SynoReclaim",
-      "version": "0.1.1-1576",
+      "version": "0.1.1-1577",
       "name": "Reclaim",
       "official": true,
       "category": "reclaim",
-      "notes": "0.1.1-1576\n- Add AI/CLI support through synopkgland ctl reclaim: authorization, volumes, jobs, scan status/results, history, overview, top paths, inspection, simulation, recycle bins, snapshots, system partition reports and cache status.\n- Start a bounded scan job with explicit write confirmation; cleanup and permanent deletion are not exposed.\n- Private inputs are masked with writeOnly; command responses return fixed fields. Uses SDK/App/CLI/templates 0.15.0 and UI 0.11.4; no new approval is needed when upgrading from 1574 or 1575.\n- A cold system-partition report may exceed the CLI 10-second request deadline."
+      "notes": "0.1.1-1577\n- Rebuilt with SDK/CLI/templates 0.15.1 and UI 0.11.5 for all three architectures.\n- control.sh refusals remove staged .executor/.policy.json copies and include SynoReclaim in the log.\n- Administrator action required after upgrade: task definitions changed. Open Syno Reclaim and approve system access once again. Retained reports and settings are preserved.\n- Reclaim does not use AboutDialog and adds no default Terms of Service or Privacy Policy links.\n- Known limitation: a cold rootfs report may exceed the CLI's 10-second synchronous request deadline.\n"
     },
     {
       "key": "synopackageland/SynoPkgConnect",
-      "version": "0.1.0-0056",
+      "version": "0.1.0-0057",
       "name": "Connect",
       "official": true,
       "category": "connect",
-      "notes": "0.1.0-0056\n- Adds AI and CLI operations through synopkgland ctl (alias: connect): status, connection status, ports list, ipv6 status and connection disconnect.\n- Commands retain DSM administrator-only access. Disconnect requires confirmation; connection output excludes login links, device codes and private URLs.\n- Updates SDK, CLI and templates to 0.15.0. No new root privileges or administrator reapproval."
+      "notes": "0.1.0-0057\n- Rebuild with SDK/CLI/templates 0.15.1 and UI 0.11.5.\n- SDK control.sh refusals remove staged .executor / .policy.json and log the package name. Changed executor task definitions require one administrator reapproval after upgrade for Apps using the executor; Connect has no executor or approval flow.\n- AboutDialog no longer supplies default Terms of Service / Privacy URLs. Connect and its SDK AppShell do not use AboutDialog and display no legal links."
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
-      "version": "0.2.2-0043",
+      "version": "0.2.2-0044",
       "name": "Download Hub",
       "official": true,
       "category": "download-hub",
-      "notes": "0.2.2-0043\n- Added AI and CLI operation through synopkgland ctl 0.15.0, under the gopeed alias.\n- Commands cover task list/pause/resume, destination lookup, link and torrent submission, preparation status, search and result downloads.\n- Keeps DSM App Privileges, per-user ownership and destination grants; sensitive URL/torrent/query inputs use standard writeOnly masking.\n- Waiting for a submission confirms source preparation, not download/save completion. Existing executor approval is retained."
+      "notes": "0.2.2-0044\n- Rebuilt with CLI/SDK/templates 0.15.1 and UI 0.11.5.\n- Upgrade requires an administrator to approve the changed executor task definitions once again in Settings before background saves resume. Upgrade directly; do not uninstall first.\n- Refused control.sh clears temporary .executor/.policy.json and logs the package name.\n- UI no longer supplies default legal links. Download Hub does not use AboutDialog; no App-specific legal URLs are configured.\n- Local/kuma verification only; NAS upgrade, reapproval and refusal handling still require device acceptance."
     }
   ],
   "multiRepoReviewNeeded": false
