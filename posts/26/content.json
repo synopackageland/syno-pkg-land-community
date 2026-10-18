@@ -1,0 +1,92 @@
+{
+	"id": "D_kwDOVLwbas4AqMi-",
+	"number": 26,
+	"title": "Download Hub 0.2.2-0045",
+	"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgGopeed:0.2.2-0045 -->\n\nDownload Hub **0.2.2-0045**\n\n0.2.2-0045\n- Updated SDK/templates to 0.15.2, CLI to 0.15.4 and UI to 0.12.0; custom interface colours follow UI tokens.\n- The private engine API token is regenerated on every start (SPG-4).\n- Executor/lifecycle digests match 0044; upgrading from 0044 needs no new administrator approval. Older builds retain the one-time approval required by 0044.\n- Refresh the whole DSM page after upgrading.\n\nPackage: `synopackageland/SynoPkgGopeed`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+	"bodyHTML": "\n<p dir=\"auto\">Download Hub <strong>0.2.2-0045</strong></p>\n<p dir=\"auto\">0.2.2-0045</p>\n<ul dir=\"auto\">\n<li>Updated SDK/templates to 0.15.2, CLI to 0.15.4 and UI to 0.12.0; custom interface colours follow UI tokens.</li>\n<li>The private engine API token is regenerated on every start (SPG-4).</li>\n<li>Executor/lifecycle digests match 0044; upgrading from 0044 needs no new administrator approval. Older builds retain the one-time approval required by 0044.</li>\n<li>Refresh the whole DSM page after upgrading.</li>\n</ul>\n<p dir=\"auto\">Package: <code class=\"notranslate\">synopackageland/SynoPkgGopeed</code></p>\n<p dir=\"auto\"><a href=\"https://synopkgland.com/apps/\" rel=\"nofollow\">Browse packages</a></p>",
+	"url": "https://github.com/synopackageland/syno-pkg-land-community/discussions/26",
+	"createdAt": "2026-10-18T14:37:09Z",
+	"lastEditedAt": null,
+	"upvoteCount": 1,
+	"viewerHasUpvoted": false,
+	"locked": false,
+	"author": {
+		"login": "synopackageland",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+		"url": "https://github.com/synopackageland"
+	},
+	"category": {
+		"id": "DIC_kwDOVLwbas4DIkxQ",
+		"name": "Announcements",
+		"slug": "announcements",
+		"emojiHTML": "<div>📣</div>",
+		"description": "Updates from maintainers",
+		"isAnswerable": false
+	},
+	"reactionGroups": [
+		{
+			"content": "THUMBS_UP",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "THUMBS_DOWN",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "LAUGH",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HOORAY",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "CONFUSED",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HEART",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "ROCKET",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "EYES",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		}
+	],
+	"comments": {
+		"totalCount": 0,
+		"pageInfo": {
+			"endCursor": null,
+			"hasNextPage": false
+		},
+		"nodes": []
+	}
+}

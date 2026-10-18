@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-18T11:11:39.094Z",
+  "syncedAt": "2026-10-18T14:37:09.680Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "write",
   "pendingCategories": [],
@@ -7,27 +7,27 @@
   "packages": [
     {
       "key": "synopackageland/SynoReclaim",
-      "version": "0.1.1-1577",
+      "version": "0.1.1-1578",
       "name": "Reclaim",
       "official": true,
       "category": "reclaim",
-      "notes": "0.1.1-1577\n- Rebuilt with SDK/CLI/templates 0.15.1 and UI 0.11.5 for all three architectures.\n- control.sh refusals remove staged .executor/.policy.json copies and include SynoReclaim in the log.\n- Administrator action required after upgrade: task definitions changed. Open Syno Reclaim and approve system access once again. Retained reports and settings are preserved.\n- Reclaim does not use AboutDialog and adds no default Terms of Service or Privacy Policy links.\n- Known limitation: a cold rootfs report may exceed the CLI's 10-second synchronous request deadline.\n"
+      "notes": "0.1.1-1578\n- SDK/App/templates 0.15.2, CLI 0.15.4, UI 0.12.0; all three architectures.\n- Custom UI colours and chart palettes use UI tokens.\n- Includes parallel SPK builds, reproducibility verification and shared gate-image preservation.\n- Known limitation: a cold rootfs report may exceed the CLI's 10-second synchronous request deadline.\n"
     },
     {
       "key": "synopackageland/SynoPkgConnect",
-      "version": "0.1.0-0057",
+      "version": "0.1.0-0058",
       "name": "Connect",
       "official": true,
       "category": "connect",
-      "notes": "0.1.0-0057\n- Rebuild with SDK/CLI/templates 0.15.1 and UI 0.11.5.\n- SDK control.sh refusals remove staged .executor / .policy.json and log the package name. Changed executor task definitions require one administrator reapproval after upgrade for Apps using the executor; Connect has no executor or approval flow.\n- AboutDialog no longer supplies default Terms of Service / Privacy URLs. Connect and its SDK AppShell do not use AboutDialog and display no legal links."
+      "notes": "0.1.0-0058\n- SDK/templates 0.15.2, CLI 0.15.4 and UI 0.12.0.\n- Replace hardcoded waiting-page and QR colors with UI tokens.\n- Executor/lifecycle digests match 0.15.1; upgrading from 0057 adds no reapproval requirement. Connect has no executor or AboutDialog."
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
-      "version": "0.2.2-0044",
+      "version": "0.2.2-0045",
       "name": "Download Hub",
       "official": true,
       "category": "download-hub",
-      "notes": "0.2.2-0044\n- Rebuilt with CLI/SDK/templates 0.15.1 and UI 0.11.5.\n- Upgrade requires an administrator to approve the changed executor task definitions once again in Settings before background saves resume. Upgrade directly; do not uninstall first.\n- Refused control.sh clears temporary .executor/.policy.json and logs the package name.\n- UI no longer supplies default legal links. Download Hub does not use AboutDialog; no App-specific legal URLs are configured.\n- Local/kuma verification only; NAS upgrade, reapproval and refusal handling still require device acceptance."
+      "notes": "0.2.2-0045\n- Updated SDK/templates to 0.15.2, CLI to 0.15.4 and UI to 0.12.0; custom interface colours follow UI tokens.\n- The private engine API token is regenerated on every start (SPG-4).\n- Executor/lifecycle digests match 0044; upgrading from 0044 needs no new administrator approval. Older builds retain the one-time approval required by 0044.\n- Refresh the whole DSM page after upgrading."
     }
   ],
   "multiRepoReviewNeeded": false
