@@ -1,6 +1,144 @@
 {
-	"archivedAt": "2026-10-19T07:50:25.077Z",
+	"archivedAt": "2026-10-20T17:11:58.257Z",
 	"discussions": [
+		{
+			"id": "D_kwDOVLwbas4AqTP_",
+			"number": 32,
+			"title": "SynoPkgFreshRSS 1.30.1-0015",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgFreshRSS:1.30.1-0015 -->\n\nSynoPkgFreshRSS **1.30.1-0015**\n\n1.30.1-0015\n- First catalog preview with native OIDC single sign-on and DSM administrator-only access; non-administrators receive HTTP 403.\n- Official FreshRSS 1.30.1 container pinned by immutable digest, a nonroot runtime, private package data and automatic feed refresh.\n- Released CLI/templates/SDK/App 0.19.0, executor/v0.19.0 and UI release-set pin 0.12.5; check/build/inspect findings=[].\n- Rebuilt SPK is byte-identical to the device-verified candidate for upgrade retention, main-menu OIDC and non-administrator denial. Compose volume retention is reported during uninstall.\n\nPackage: `synopackageland/SynoPkgFreshRSS`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-20T17:11:55Z",
+			"updatedAt": "2026-10-20T17:11:55Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqTP-",
+			"number": 31,
+			"title": "SynoPkgUptimeKuma 2.5.6-0009",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgUptimeKuma:2.5.6-0009 -->\n\nSynoPkgUptimeKuma **2.5.6-0009**\n\n2.5.6-0009\n- Official upstream icon and digest-locked Uptime Kuma 2.5.6 container.\n- DSM-managed HTTPS, DSM administrator sign-in, explicit non-admin HTTP 403 and no published container port.\n- HTTP monitoring, Socket.IO, data-preserving upgrade, restart and uninstall retention checked on DSM.\n- SDK/App 0.17.5, templates 0.17.8, UI 0.12.4; original build inspected with CLI 0.17.7, findings=[].\n- Delete-data still retains the Compose named volume; the wizard reports the exact retained name. No ctl interface.\n\nPackage: `synopackageland/SynoPkgUptimeKuma`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-20T17:11:54Z",
+			"updatedAt": "2026-10-20T17:11:54Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqTP9",
+			"number": 30,
+			"title": "SynoPkgOpenList 4.2.7-0013",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgOpenList:4.2.7-0013 -->\n\nSynoPkgOpenList **4.2.7-0013**\n\n4.2.7-0013\n- Native OIDC single sign-on from the DSM main menu; DSM administrators only. One designated administrator owns the OpenList admin account; other administrators receive ordinary OpenList accounts.\n- Adds 49 bounded ctl commands; business commands verify the designated owner and writes require confirmation.\n- Rebuilt with released CLI/templates/SDK/App 0.19.0, executor/v0.19.0 and UI 0.12.5. CLI check/build/inspect pass with findings=[].\n- Upgrade from 0012 preserves existing data and settings; OIDC, non-administrator denial and three read-only ctl commands were checked. Manual shared-folder permissions and Local storage setup remain required. External WebDAV is not enabled.\n\nPackage: `synopackageland/SynoPkgOpenList`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-20T17:11:53Z",
+			"updatedAt": "2026-10-20T17:11:53Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqTP8",
+			"number": 29,
+			"title": "Download Hub 0.2.2-0048",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgGopeed:0.2.2-0048 -->\n\nDownload Hub **0.2.2-0048**\n\n0.2.2-0048\n- Rebuilt with SDK/App 0.17.7, CLI 0.17.8, templates 0.17.10 and UI 0.12.4.\n- Fix administrator authorization for DSM administrators group members, including domain accounts, using the shared native DSM check.\n- Executor payload changed; open Download Hub and approve system access again after upgrading. Existing data and settings are retained.\n\nPackage: `synopackageland/SynoPkgGopeed`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-20T17:11:52Z",
+			"updatedAt": "2026-10-20T17:11:52Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqTP7",
+			"number": 28,
+			"title": "Connect 0.1.0-0059",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgConnect:0.1.0-0059 -->\n\nConnect **0.1.0-0059**\n\n0.1.0-0059\n- Rebuilt with CLI 0.17.5, templates 0.17.8, SDK/App 0.17.5 and UI 0.12.4.\n- Full-page layout uses flush content without an outer page card.\n\nPackage: `synopackageland/SynoPkgConnect`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-20T17:11:52Z",
+			"updatedAt": "2026-10-20T17:11:52Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqTP6",
+			"number": 27,
+			"title": "Reclaim 0.1.1-1580",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoReclaim:0.1.1-1580 -->\n\nReclaim **0.1.1-1580**\n\n0.1.1-1580\n- Rebuilt with SDK/App 0.17.7, CLI 0.17.8, templates 0.17.10 and UI 0.12.4.\n- Fix administrator authorization for DSM administrators group members, including domain accounts, using the shared native DSM check.\n- Executor payload changed; open Syno Reclaim and approve system access again after upgrading. Existing data and settings are retained.\n\nPackage: `synopackageland/SynoReclaim`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-20T17:11:51Z",
+			"updatedAt": "2026-10-20T17:11:51Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
 		{
 			"id": "D_kwDOVLwbas4AqMi-",
 			"number": 26,

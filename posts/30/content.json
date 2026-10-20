@@ -1,0 +1,92 @@
+{
+	"id": "D_kwDOVLwbas4AqTP9",
+	"number": 30,
+	"title": "SynoPkgOpenList 4.2.7-0013",
+	"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgOpenList:4.2.7-0013 -->\n\nSynoPkgOpenList **4.2.7-0013**\n\n4.2.7-0013\n- Native OIDC single sign-on from the DSM main menu; DSM administrators only. One designated administrator owns the OpenList admin account; other administrators receive ordinary OpenList accounts.\n- Adds 49 bounded ctl commands; business commands verify the designated owner and writes require confirmation.\n- Rebuilt with released CLI/templates/SDK/App 0.19.0, executor/v0.19.0 and UI 0.12.5. CLI check/build/inspect pass with findings=[].\n- Upgrade from 0012 preserves existing data and settings; OIDC, non-administrator denial and three read-only ctl commands were checked. Manual shared-folder permissions and Local storage setup remain required. External WebDAV is not enabled.\n\nPackage: `synopackageland/SynoPkgOpenList`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+	"bodyHTML": "\n<p dir=\"auto\">SynoPkgOpenList <strong>4.2.7-0013</strong></p>\n<p dir=\"auto\">4.2.7-0013</p>\n<ul dir=\"auto\">\n<li>Native OIDC single sign-on from the DSM main menu; DSM administrators only. One designated administrator owns the OpenList admin account; other administrators receive ordinary OpenList accounts.</li>\n<li>Adds 49 bounded ctl commands; business commands verify the designated owner and writes require confirmation.</li>\n<li>Rebuilt with released CLI/templates/SDK/App 0.19.0, executor/v0.19.0 and UI 0.12.5. CLI check/build/inspect pass with findings=[].</li>\n<li>Upgrade from 0012 preserves existing data and settings; OIDC, non-administrator denial and three read-only ctl commands were checked. Manual shared-folder permissions and Local storage setup remain required. External WebDAV is not enabled.</li>\n</ul>\n<p dir=\"auto\">Package: <code class=\"notranslate\">synopackageland/SynoPkgOpenList</code></p>\n<p dir=\"auto\"><a href=\"https://synopkgland.com/apps/\" rel=\"nofollow\">Browse packages</a></p>",
+	"url": "https://github.com/synopackageland/syno-pkg-land-community/discussions/30",
+	"createdAt": "2026-10-20T17:11:53Z",
+	"lastEditedAt": null,
+	"upvoteCount": 1,
+	"viewerHasUpvoted": false,
+	"locked": false,
+	"author": {
+		"login": "synopackageland",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+		"url": "https://github.com/synopackageland"
+	},
+	"category": {
+		"id": "DIC_kwDOVLwbas4DIkxQ",
+		"name": "Announcements",
+		"slug": "announcements",
+		"emojiHTML": "<div>📣</div>",
+		"description": "Updates from maintainers",
+		"isAnswerable": false
+	},
+	"reactionGroups": [
+		{
+			"content": "THUMBS_UP",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "THUMBS_DOWN",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "LAUGH",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HOORAY",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "CONFUSED",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HEART",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "ROCKET",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "EYES",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		}
+	],
+	"comments": {
+		"totalCount": 0,
+		"pageInfo": {
+			"endCursor": null,
+			"hasNextPage": false
+		},
+		"nodes": []
+	}
+}
