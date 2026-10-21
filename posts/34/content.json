@@ -1,0 +1,92 @@
+{
+	"id": "D_kwDOVLwbas4AqUFB",
+	"number": 34,
+	"title": "SynoPkgAudiobookshelf 2.37.1-0001",
+	"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgAudiobookshelf:2.37.1-0001 -->\n\nSynoPkgAudiobookshelf **2.37.1-0001**\n\n2.37.1-0001\n- Initial catalog preview with DSM main-menu OIDC sign-in and an install-selected read-only media share; grant package-account Read access separately in DSM.\n- Published CLI/templates/SDK/App 0.20.0, executor/v0.20.0 and UI 0.12.5; npm lock integrity verified and check/build/inspect findings=[].\n- Fresh installation, administrator sign-in, synthetic media playback, native stop/start and uninstall cleanup verified; broader identity evidence retains its documented scope.\n- Named App data volumes are retained during uninstall. Native-client support and immediate session revocation are not certified.\n\nPackage: `synopackageland/SynoPkgAudiobookshelf`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+	"bodyHTML": "\n<p dir=\"auto\">SynoPkgAudiobookshelf <strong>2.37.1-0001</strong></p>\n<p dir=\"auto\">2.37.1-0001</p>\n<ul dir=\"auto\">\n<li>Initial catalog preview with DSM main-menu OIDC sign-in and an install-selected read-only media share; grant package-account Read access separately in DSM.</li>\n<li>Published CLI/templates/SDK/App 0.20.0, executor/v0.20.0 and UI 0.12.5; npm lock integrity verified and check/build/inspect findings=[].</li>\n<li>Fresh installation, administrator sign-in, synthetic media playback, native stop/start and uninstall cleanup verified; broader identity evidence retains its documented scope.</li>\n<li>Named App data volumes are retained during uninstall. Native-client support and immediate session revocation are not certified.</li>\n</ul>\n<p dir=\"auto\">Package: <code class=\"notranslate\">synopackageland/SynoPkgAudiobookshelf</code></p>\n<p dir=\"auto\"><a href=\"https://synopkgland.com/apps/\" rel=\"nofollow\">Browse packages</a></p>",
+	"url": "https://github.com/synopackageland/syno-pkg-land-community/discussions/34",
+	"createdAt": "2026-10-21T04:52:55Z",
+	"lastEditedAt": null,
+	"upvoteCount": 1,
+	"viewerHasUpvoted": false,
+	"locked": false,
+	"author": {
+		"login": "synopackageland",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+		"url": "https://github.com/synopackageland"
+	},
+	"category": {
+		"id": "DIC_kwDOVLwbas4DIkxQ",
+		"name": "Announcements",
+		"slug": "announcements",
+		"emojiHTML": "<div>📣</div>",
+		"description": "Updates from maintainers",
+		"isAnswerable": false
+	},
+	"reactionGroups": [
+		{
+			"content": "THUMBS_UP",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "THUMBS_DOWN",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "LAUGH",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HOORAY",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "CONFUSED",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HEART",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "ROCKET",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "EYES",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		}
+	],
+	"comments": {
+		"totalCount": 0,
+		"pageInfo": {
+			"endCursor": null,
+			"hasNextPage": false
+		},
+		"nodes": []
+	}
+}

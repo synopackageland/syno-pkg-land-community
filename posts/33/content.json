@@ -1,0 +1,92 @@
+{
+	"id": "D_kwDOVLwbas4AqUFA",
+	"number": 33,
+	"title": "SynoPkgFreshRSS 1.30.2-0001",
+	"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgFreshRSS:1.30.2-0001 -->\n\nSynoPkgFreshRSS **1.30.2-0001**\n\n1.30.2-0001\n- Update the official FreshRSS image to 1.30.2 with an immutable digest; upstream source is unchanged.\n- Keep released CLI/templates/SDK/App 0.19.0, executor/v0.19.0 and UI 0.12.5. The SPK is the exact verified artifact; check/build/inspect findings=[].\n- Verified upgrade from 1.30.1-0015 preserves feeds, entries and configuration; DSM main-menu OIDC and non-administrator refusal passed.\n- Administrator-only preview; uninstall retains the named App data volume even when delete-data is selected.\n\nPackage: `synopackageland/SynoPkgFreshRSS`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+	"bodyHTML": "\n<p dir=\"auto\">SynoPkgFreshRSS <strong>1.30.2-0001</strong></p>\n<p dir=\"auto\">1.30.2-0001</p>\n<ul dir=\"auto\">\n<li>Update the official FreshRSS image to 1.30.2 with an immutable digest; upstream source is unchanged.</li>\n<li>Keep released CLI/templates/SDK/App 0.19.0, executor/v0.19.0 and UI 0.12.5. The SPK is the exact verified artifact; check/build/inspect findings=[].</li>\n<li>Verified upgrade from 1.30.1-0015 preserves feeds, entries and configuration; DSM main-menu OIDC and non-administrator refusal passed.</li>\n<li>Administrator-only preview; uninstall retains the named App data volume even when delete-data is selected.</li>\n</ul>\n<p dir=\"auto\">Package: <code class=\"notranslate\">synopackageland/SynoPkgFreshRSS</code></p>\n<p dir=\"auto\"><a href=\"https://synopkgland.com/apps/\" rel=\"nofollow\">Browse packages</a></p>",
+	"url": "https://github.com/synopackageland/syno-pkg-land-community/discussions/33",
+	"createdAt": "2026-10-21T04:52:54Z",
+	"lastEditedAt": null,
+	"upvoteCount": 1,
+	"viewerHasUpvoted": false,
+	"locked": false,
+	"author": {
+		"login": "synopackageland",
+		"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+		"url": "https://github.com/synopackageland"
+	},
+	"category": {
+		"id": "DIC_kwDOVLwbas4DIkxQ",
+		"name": "Announcements",
+		"slug": "announcements",
+		"emojiHTML": "<div>📣</div>",
+		"description": "Updates from maintainers",
+		"isAnswerable": false
+	},
+	"reactionGroups": [
+		{
+			"content": "THUMBS_UP",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "THUMBS_DOWN",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "LAUGH",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HOORAY",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "CONFUSED",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "HEART",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "ROCKET",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		},
+		{
+			"content": "EYES",
+			"viewerHasReacted": false,
+			"reactors": {
+				"totalCount": 0
+			}
+		}
+	],
+	"comments": {
+		"totalCount": 0,
+		"pageInfo": {
+			"endCursor": null,
+			"hasNextPage": false
+		},
+		"nodes": []
+	}
+}

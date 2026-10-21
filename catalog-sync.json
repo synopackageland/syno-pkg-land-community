@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-20T23:55:37.831Z",
+  "syncedAt": "2026-10-21T04:52:56.631Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "write",
   "pendingCategories": [
@@ -17,6 +17,16 @@
       "key": "synopackageland/SynoPkgFreshRSS",
       "name": "SynoPkgFreshRSS",
       "slug": "synopkgfreshrss"
+    },
+    {
+      "key": "synopackageland/SynoPkgAudiobookshelf",
+      "name": "SynoPkgAudiobookshelf",
+      "slug": "synopkgaudiobookshelf"
+    },
+    {
+      "key": "synopackageland/SynoPkgJellyfin",
+      "name": "SynoPkgJellyfin",
+      "slug": "synopkgjellyfin"
     }
   ],
   "pendingAnnouncements": 0,
@@ -63,11 +73,27 @@
     },
     {
       "key": "synopackageland/SynoPkgFreshRSS",
-      "version": "1.30.1-0015",
+      "version": "1.30.2-0001",
       "name": "SynoPkgFreshRSS",
       "official": true,
       "category": "synopkgfreshrss",
-      "notes": "1.30.1-0015\n- First catalog preview with native OIDC single sign-on and DSM administrator-only access; non-administrators receive HTTP 403.\n- Official FreshRSS 1.30.1 container pinned by immutable digest, a nonroot runtime, private package data and automatic feed refresh.\n- Released CLI/templates/SDK/App 0.19.0, executor/v0.19.0 and UI release-set pin 0.12.5; check/build/inspect findings=[].\n- Rebuilt SPK is byte-identical to the device-verified candidate for upgrade retention, main-menu OIDC and non-administrator denial. Compose volume retention is reported during uninstall."
+      "notes": "1.30.2-0001\n- Update the official FreshRSS image to 1.30.2 with an immutable digest; upstream source is unchanged.\n- Keep released CLI/templates/SDK/App 0.19.0, executor/v0.19.0 and UI 0.12.5. The SPK is the exact verified artifact; check/build/inspect findings=[].\n- Verified upgrade from 1.30.1-0015 preserves feeds, entries and configuration; DSM main-menu OIDC and non-administrator refusal passed.\n- Administrator-only preview; uninstall retains the named App data volume even when delete-data is selected."
+    },
+    {
+      "key": "synopackageland/SynoPkgAudiobookshelf",
+      "version": "2.37.1-0001",
+      "name": "SynoPkgAudiobookshelf",
+      "official": true,
+      "category": "synopkgaudiobookshelf",
+      "notes": "2.37.1-0001\n- Initial catalog preview with DSM main-menu OIDC sign-in and an install-selected read-only media share; grant package-account Read access separately in DSM.\n- Published CLI/templates/SDK/App 0.20.0, executor/v0.20.0 and UI 0.12.5; npm lock integrity verified and check/build/inspect findings=[].\n- Fresh installation, administrator sign-in, synthetic media playback, native stop/start and uninstall cleanup verified; broader identity evidence retains its documented scope.\n- Named App data volumes are retained during uninstall. Native-client support and immediate session revocation are not certified."
+    },
+    {
+      "key": "synopackageland/SynoPkgJellyfin",
+      "version": "12.2-0001",
+      "name": "SynoPkgJellyfin",
+      "official": true,
+      "category": "synopkgjellyfin",
+      "notes": "12.2-0001\n- Initial catalog preview with DSM main-menu OIDC sign-in and an install-selected read-only media share; grant package-account Read access separately in DSM.\n- Published CLI/templates/SDK/App 0.20.0, executor/v0.20.0 and UI 0.12.5; npm lock integrity verified and check/build/inspect findings=[].\n- Fresh installation, administrator sign-in, synthetic media playback, native stop/start and uninstall cleanup verified; broader identity evidence retains its documented scope.\n- Named App data volumes are retained during uninstall. Native-client support and immediate session revocation are not certified."
     }
   ],
   "multiRepoReviewNeeded": false

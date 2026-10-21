@@ -1,6 +1,75 @@
 {
-	"archivedAt": "2026-10-20T23:55:39.648Z",
+	"archivedAt": "2026-10-21T04:52:58.641Z",
 	"discussions": [
+		{
+			"id": "D_kwDOVLwbas4AqUFC",
+			"number": 35,
+			"title": "SynoPkgJellyfin 12.2-0001",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgJellyfin:12.2-0001 -->\n\nSynoPkgJellyfin **12.2-0001**\n\n12.2-0001\n- Initial catalog preview with DSM main-menu OIDC sign-in and an install-selected read-only media share; grant package-account Read access separately in DSM.\n- Published CLI/templates/SDK/App 0.20.0, executor/v0.20.0 and UI 0.12.5; npm lock integrity verified and check/build/inspect findings=[].\n- Fresh installation, administrator sign-in, synthetic media playback, native stop/start and uninstall cleanup verified; broader identity evidence retains its documented scope.\n- Named App data volumes are retained during uninstall. Native-client support and immediate session revocation are not certified.\n\nPackage: `synopackageland/SynoPkgJellyfin`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-21T04:52:56Z",
+			"updatedAt": "2026-10-21T04:52:56Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqUFB",
+			"number": 34,
+			"title": "SynoPkgAudiobookshelf 2.37.1-0001",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgAudiobookshelf:2.37.1-0001 -->\n\nSynoPkgAudiobookshelf **2.37.1-0001**\n\n2.37.1-0001\n- Initial catalog preview with DSM main-menu OIDC sign-in and an install-selected read-only media share; grant package-account Read access separately in DSM.\n- Published CLI/templates/SDK/App 0.20.0, executor/v0.20.0 and UI 0.12.5; npm lock integrity verified and check/build/inspect findings=[].\n- Fresh installation, administrator sign-in, synthetic media playback, native stop/start and uninstall cleanup verified; broader identity evidence retains its documented scope.\n- Named App data volumes are retained during uninstall. Native-client support and immediate session revocation are not certified.\n\nPackage: `synopackageland/SynoPkgAudiobookshelf`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-21T04:52:55Z",
+			"updatedAt": "2026-10-21T04:52:55Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
+		{
+			"id": "D_kwDOVLwbas4AqUFA",
+			"number": 33,
+			"title": "SynoPkgFreshRSS 1.30.2-0001",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgFreshRSS:1.30.2-0001 -->\n\nSynoPkgFreshRSS **1.30.2-0001**\n\n1.30.2-0001\n- Update the official FreshRSS image to 1.30.2 with an immutable digest; upstream source is unchanged.\n- Keep released CLI/templates/SDK/App 0.19.0, executor/v0.19.0 and UI 0.12.5. The SPK is the exact verified artifact; check/build/inspect findings=[].\n- Verified upgrade from 1.30.1-0015 preserves feeds, entries and configuration; DSM main-menu OIDC and non-administrator refusal passed.\n- Administrator-only preview; uninstall retains the named App data volume even when delete-data is selected.\n\nPackage: `synopackageland/SynoPkgFreshRSS`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"createdAt": "2026-10-21T04:52:54Z",
+			"updatedAt": "2026-10-21T04:52:54Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "synopackageland",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/316781378?u=57deb5ac6ea7ce89a59eea57d9acbf2065a08ab4&v=4",
+				"url": "https://github.com/synopackageland"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxQ",
+				"name": "Announcements",
+				"slug": "announcements",
+				"emojiHTML": "<div>📣</div>"
+			},
+			"comments": {
+				"totalCount": 0
+			}
+		},
 		{
 			"id": "D_kwDOVLwbas4AqTP_",
 			"number": 32,
