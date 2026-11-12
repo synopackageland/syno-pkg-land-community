@@ -264,80 +264,6 @@ describe('searchDiscussions', () => {
 	});
 });
 
-describe('createDiscussion', () => {
-	const setup = () => {
-		fetchMock
-			.mockResolvedValueOnce(gqlOk(categoriesData([cat('a')])))
-			.mockResolvedValueOnce(gqlOk({ createDiscussion: { discussion: { number: 42 } } }));
-	};
-
-	it('resolves the repo id, then creates a plain post', async () => {
-		setup();
-		const number = await api.createDiscussion({ categoryId: 'C', title: 'T', body: 'B' });
-		expect(number).toBe(42);
-		const body = JSON.parse(fetchMock.mock.calls[1][1].body);
-		expect(body.variables.input).toEqual({ repositoryId: 'RID', categoryId: 'C', title: 'T', body: 'B' });
-		expect(invalidateCache).toHaveBeenCalledWith('discussions');
-	});
-
-	it('prepends the article marker for articles', async () => {
-		setup();
-		await api.createDiscussion({ categoryId: 'C', title: 'T', body: 'B', article: true });
-		const body = JSON.parse(fetchMock.mock.calls[1][1].body);
-		expect(body.variables.input.body).toBe('<!-- dk:article -->\n\nB');
-	});
-
-	it('reuses the cached repo id on later posts', async () => {
-		setup();
-		await api.createDiscussion({ categoryId: 'C', title: 'T', body: 'B' });
-		fetchMock.mockResolvedValueOnce(
-			gqlOk({ createDiscussion: { discussion: { number: 43 } } })
-		);
-		expect(await api.createDiscussion({ categoryId: 'C', title: 'T2', body: 'B2' })).toBe(43);
-		// one categories lookup + two mutations
-		expect(fetchMock).toHaveBeenCalledTimes(3);
-	});
-});
-
-describe('addComment', () => {
-	it('sends a top-level comment', async () => {
-		fetchMock.mockResolvedValue(gqlOk({ addDiscussionComment: { comment: { id: 'c' } } }));
-		await api.addComment('DID', 'hello');
-		const body = JSON.parse(fetchMock.mock.calls[0][1].body);
-		expect(body.variables.input).toEqual({ discussionId: 'DID', body: 'hello' });
-		expect(invalidateCache).toHaveBeenCalledWith('discussion');
-	});
-
-	it('sends a threaded reply', async () => {
-		fetchMock.mockResolvedValue(gqlOk({ addDiscussionComment: { comment: { id: 'c' } } }));
-		await api.addComment('DID', 'hello', 'PARENT');
-		const body = JSON.parse(fetchMock.mock.calls[0][1].body);
-		expect(body.variables.input).toEqual({ discussionId: 'DID', body: 'hello', replyToId: 'PARENT' });
-	});
-});
-
-describe('updateDiscussion', () => {
-	it('sends the changed fields and returns the updated discussion', async () => {
-		const updated = { title: 'New', body: 'B2', bodyHTML: '<p>B2</p>', category: cat('a') };
-		fetchMock.mockResolvedValue(gqlOk({ updateDiscussion: { discussion: updated } }));
-		const result = await api.updateDiscussion('DID', {
-			title: 'New',
-			body: 'B2',
-			categoryId: 'CID'
-		});
-		expect(result).toEqual(updated);
-		const body = JSON.parse(fetchMock.mock.calls[0][1].body);
-		expect(body.query).toContain('updateDiscussion');
-		expect(body.variables.input).toEqual({
-			discussionId: 'DID',
-			title: 'New',
-			body: 'B2',
-			categoryId: 'CID'
-		});
-		expect(invalidateCache).toHaveBeenCalledWith('discussion');
-	});
-});
-
 describe('deleteDiscussion', () => {
 	it('deletes by node id and invalidates caches', async () => {
 		fetchMock.mockResolvedValue(gqlOk({ deleteDiscussion: { clientMutationId: null } }));
@@ -540,6 +466,18 @@ describe('user profiles', () => {
 		it('throws a 404 when the user does not exist', async () => {
 			setup(gqlOk({ user: null }));
 			await expect(api.listUserDiscussions('nobody', null)).rejects.toThrow(/User not found/);
+		});
+
+		it('reuses the cached repository id on later pages', async () => {
+			const page = gqlOk({
+				user: { repositoryDiscussions: { totalCount: 0, pageInfo: { endCursor: null, hasNextPage: false }, nodes: [] } }
+			});
+			setup(page);
+			await api.listUserDiscussions('alice', null);
+			fetchMock.mockResolvedValueOnce(page);
+			await api.listUserDiscussions('alice', 'C2');
+			// one repository lookup + two pages
+			expect(fetchMock).toHaveBeenCalledTimes(3);
 		});
 	});
 });

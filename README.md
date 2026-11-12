@@ -11,8 +11,10 @@ upstream commit `1971c4352e490575811586718381779cc7c420dc`, GPL-3.0.
 See [operations and remaining account setup](docs/OPERATIONS.md) for deployment,
 OAuth, category creation, catalog automation and anonymous snapshots.
 
-Read the forum without an account. Use GitHub to participate; the website's
-OAuth button becomes available when the owner configures its dedicated OAuth App.
+Read the forum without an account. New posts, comments, replies and edits open
+the matching GitHub Discussions page in a new tab, so writing, images and
+attachments use GitHub's own editor and storage. Signing in on the forum only
+adds live data, reactions and upvotes.
 Third-party discussions use `[publisher/package]` in their titles.
 
 ```sh

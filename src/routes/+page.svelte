@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
 	import DiscussionRow from '$lib/components/DiscussionRow.svelte';
 	import Loading from '$lib/components/Loading.svelte';
 	import PinnedList from '$lib/components/PinnedList.svelte';
@@ -8,6 +7,7 @@
 	import { forumConfig } from '$lib/config';
 	import { listDiscussions } from '$lib/github/api';
 	import { auth } from '$lib/github/auth.svelte';
+	import { newPostUrl } from '$lib/github/links';
 	import type { DiscussionListItem, PageInfo } from '$lib/github/types';
 	import { archiveMode, loadOverview, ui } from '$lib/ui.svelte';
 
@@ -92,7 +92,7 @@
 		<div class="panel px-6 py-14 text-center">
 			<p class="font-medium">No discussions yet</p>
 			<p class="mt-1 text-sm text-fd-muted-foreground">Be the first to start one.</p>
-			<a href={resolve('/new')} class="btn btn-primary mt-4">New post</a>
+			<a href={newPostUrl()} target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-4">New post</a>
 		</div>
 	{:else}
 		{#if ui.pinned.length > 0}

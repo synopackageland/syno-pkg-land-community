@@ -66,6 +66,8 @@ export interface Reply {
 }
 
 export interface Comment extends Reply {
+	/** github.com permalink; archived snapshots may not carry it */
+	url?: string;
 	isAnswer: boolean;
 	replies: { totalCount: number; nodes: Reply[] };
 }

@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { forumConfig } from '$lib/config';
 	import { auth } from '$lib/github/auth.svelte';
+	import { newPostUrl } from '$lib/github/links';
 	import { archiveMode, ui } from '$lib/ui.svelte';
 	import ThemeToggle from './ThemeToggle.svelte';
 
@@ -67,13 +68,13 @@
 
 		<div class="flex shrink-0 items-center gap-2">
 			<ThemeToggle />
+			<a href={newPostUrl()} target="_blank" rel="noopener noreferrer" title="Write a post on GitHub" class="btn btn-primary hidden sm:inline-flex">
+				<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+				New post
+			</a>
 			{#if auth.loading}
 				<div class="size-7 animate-pulse rounded-full bg-fd-muted"></div>
 			{:else if auth.viewer}
-				<a href={resolve('/new')} class="btn btn-primary hidden sm:inline-flex">
-					<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
-					New post
-				</a>
 				<details class="relative">
 					<summary
 						class="flex cursor-pointer list-none items-center rounded-full [&::-webkit-details-marker]:hidden"
@@ -95,7 +96,7 @@
 							<span class="block font-medium">{auth.viewer.name ?? auth.viewer.login}</span>
 							<span class="block text-xs text-fd-muted-foreground">@{auth.viewer.login}</span>
 						</a>
-						<a href={resolve('/new')} class="block rounded-md px-2.5 py-2 text-sm hover:bg-fd-muted sm:hidden">
+						<a href={newPostUrl()} target="_blank" rel="noopener noreferrer" class="block rounded-md px-2.5 py-2 text-sm hover:bg-fd-muted sm:hidden">
 							New post
 						</a>
 						<button
@@ -108,7 +109,7 @@
 					</div>
 				</details>
 			{:else}
-				<button type="button" onclick={() => (ui.signInOpen = true)} class="btn btn-primary">
+				<button type="button" onclick={() => (ui.signInOpen = true)} class="btn btn-outline">
 					Sign in
 				</button>
 			{/if}

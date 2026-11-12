@@ -81,6 +81,18 @@ Never paste secrets into command arguments, files tracked by Git, issue
 comments or logs. Both values are read at runtime; no rebuild is needed.
 PAT sign-in is disabled.
 
+## Writing on GitHub
+
+The forum is for reading. **New post**, **Comment on GitHub**, **Reply on GitHub**
+and **Edit** open GitHub Discussions in a new tab (`/discussions/new?category=<slug>`,
+the discussion page or the comment permalink); the old `/new` path forwards
+there. GitHub stores pasted images as its own attachments, so the forum keeps
+no editor, upload endpoint or image storage. GitHub has no public API that
+lets a visitor's OAuth token upload attachments, and the forum must not use
+the web session upload flow. New posts appear in the anonymous archive after
+the next hourly **Community maintenance** run and immediately for signed-in
+visitors.
+
 ## Cloudflare and deployment
 
 The dedicated Worker serves static SPA assets plus `/api/auth/config`,
