@@ -5,9 +5,10 @@ import { forumConfig } from '$lib/config';
 const base = `https://github.com/${forumConfig.repo.owner}/${forumConfig.repo.name}/discussions`;
 
 describe('GitHub writing links', () => {
-	it('opens the category chooser when no topic is known', () => {
-		expect(newPostUrl()).toBe(`${base}/new/choose`);
-		expect(newPostUrl(null)).toBe(`${base}/new/choose`);
+	it('starts in General when no topic is known', () => {
+		expect(newPostUrl()).toBe(`${base}/new?category=general`);
+		expect(newPostUrl(null)).toBe(`${base}/new?category=general`);
+		expect(newPostUrl('')).toBe(`${base}/new?category=general`);
 	});
 	it('preselects the topic on GitHub', () => {
 		expect(newPostUrl('download-hub')).toBe(`${base}/new?category=download-hub`);

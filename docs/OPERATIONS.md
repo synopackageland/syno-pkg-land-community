@@ -85,7 +85,7 @@ PAT sign-in is disabled.
 
 The forum is for reading. **New post**, **Comment on GitHub**, **Reply on GitHub**
 and **Edit** open GitHub Discussions in a new tab (`/discussions/new?category=<slug>`,
-the discussion page or the comment permalink); the old `/new` path forwards
+`general` outside a topic, the discussion page or the comment permalink); the old `/new` path forwards
 there. GitHub stores pasted images as its own attachments, so the forum keeps
 no editor, upload endpoint or image storage. GitHub has no public API that
 lets a visitor's OAuth token upload attachments, and the forum must not use
