@@ -231,7 +231,7 @@ export async function getDiscussion(number: number): Promise<Discussion> {
 						totalCount
 						pageInfo { endCursor hasNextPage }
 						nodes {
-							id bodyHTML createdAt isAnswer
+							id url bodyHTML createdAt isAnswer
 							${ACTOR}
 							${REACTIONS}
 							replies(first: 100) {
@@ -406,29 +406,6 @@ export async function listUserDiscussions(
 /* Mutations */
 /* --------- */
 
-/**
- * Edit a discussion's title, body, and/or category. GitHub only permits this
- * for the author and users with repository write access; the UI gates on the
- * same rule, and the API enforces it server-side regardless.
- */
-export async function updateDiscussion(
-	discussionId: string,
-	changes: { title?: string; body?: string; categoryId?: string }
-): Promise<Pick<Discussion, 'title' | 'body' | 'bodyHTML' | 'category'>> {
-	const data = await gql<{
-		updateDiscussion: { discussion: Pick<Discussion, 'title' | 'body' | 'bodyHTML' | 'category'> };
-	}>(
-		`mutation ($input: UpdateDiscussionInput!) {
-			updateDiscussion(input: $input) {
-				discussion { title body bodyHTML category { ${CATEGORY_FIELDS} } }
-			}
-		}`,
-		{ input: { discussionId, ...changes } }
-	);
-	invalidateCache('discussion');
-	return data.updateDiscussion.discussion;
-}
-
 /** Permanently delete a discussion (author or repository write access only). */
 export async function deleteDiscussion(id: string): Promise<void> {
 	await gql(
@@ -438,47 +415,6 @@ export async function deleteDiscussion(id: string): Promise<void> {
 		{ input: { id } }
 	);
 	invalidateCache('discussion');
-}
-
-export async function createDiscussion(opts: {
-	categoryId: string;
-	title: string;
-	body: string;
-	article?: boolean;
-}): Promise<number> {
-	const repositoryId = await getRepoId();
-	const body = opts.article ? `${marker}\n\n${opts.body}` : opts.body;
-	const data = await gql<{ createDiscussion: { discussion: { number: number } } }>(
-		`mutation ($input: CreateDiscussionInput!) {
-			createDiscussion(input: $input) { discussion { number } }
-		}`,
-		{ input: { repositoryId, categoryId: opts.categoryId, title: opts.title, body } }
-	);
-	invalidateCache('discussions');
-	return data.createDiscussion.discussion.number;
-}
-
-/**
- * Post a comment (or a reply when `replyToId` is set) and return the created
- * node with everything needed to render it — callers insert it into the
- * thread optimistically instead of refetching the whole discussion.
- */
-export async function addComment(
-	discussionId: string,
-	body: string,
-	replyToId?: string
-): Promise<Reply> {
-	const data = await gql<{ addDiscussionComment: { comment: Reply } }>(
-		`mutation ($input: AddDiscussionCommentInput!) {
-			addDiscussionComment(input: $input) {
-				comment { id bodyHTML createdAt ${ACTOR} ${REACTIONS} }
-			}
-		}`,
-		{ input: { discussionId, body, ...(replyToId ? { replyToId } : {}) } }
-	);
-	// comment counts in lists and the thread itself are now stale
-	invalidateCache('discussion');
-	return data.addDiscussionComment.comment;
 }
 
 export async function toggleReaction(subjectId: string, content: ReactionContent, on: boolean) {

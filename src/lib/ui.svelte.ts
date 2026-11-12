@@ -147,20 +147,6 @@ export function canPostIn(category: Pick<Category, 'slug'>): boolean {
 }
 
 /** What a topic's post button should do for the current visitor */
-export function postAction(category: Pick<Category, 'slug'>): 'post' | 'sign-in' | 'locked' {
-	if (!auth.signedIn) return 'sign-in';
+export function postAction(category: Pick<Category, 'slug'>): 'post' | 'locked' {
 	return canPostIn(category) ? 'post' : 'locked';
-}
-
-/**
- * Whether a post's actions go behind the phone-width ⋯ menu. With only
- * Report to offer, a menu would just hide one button.
- */
-export function postActionsMenu({ canModerate, editing }: { canModerate: boolean; editing: boolean }): boolean {
-	return canModerate && !editing;
-}
-
-/** Categories the signed-in user may post in */
-export function postableCategories(): Category[] {
-	return ui.categories.filter(canPostIn);
 }

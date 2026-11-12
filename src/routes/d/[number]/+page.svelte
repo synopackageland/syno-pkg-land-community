@@ -2,36 +2,24 @@
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { swr, writeCache } from '$lib/cache';
+	import { swr } from '$lib/cache';
 	import CommentCard from '$lib/components/CommentCard.svelte';
 	import Loading from '$lib/components/Loading.svelte';
-	import MarkdownEditor from '$lib/components/MarkdownEditor.svelte';
 	import ReactionBar from '$lib/components/ReactionBar.svelte';
 	import SignInPrompt from '$lib/components/SignInPrompt.svelte';
 	import UserBadges from '$lib/components/UserBadges.svelte';
 	import { forumConfig } from '$lib/config';
-	import {
-		addComment,
-		deleteDiscussion,
-		getDiscussion,
-		isArticle,
-		stripMarker,
-		toggleUpvote,
-		updateDiscussion
-	} from '$lib/github/api';
+	import { deleteDiscussion, getDiscussion, isArticle, toggleUpvote } from '$lib/github/api';
 	import { auth } from '$lib/github/auth.svelte';
-	import type { Comment, Discussion, Reply } from '$lib/github/types';
+	import type { Discussion } from '$lib/github/types';
 	import { fetchArchivedDiscussion } from '$lib/archive/client';
-	import { archiveMode, isMaintainer, postActionsMenu, ui } from '$lib/ui.svelte';
+	import { archiveMode, isMaintainer, ui } from '$lib/ui.svelte';
 	import { formatDate, timeAgo } from '$lib/utils';
 
 	let discussion = $state<Discussion | null>(null);
 	let loading = $state(true);
 	let error = $state<string | null>(null);
 
-	let commentBody = $state('');
-	let posting = $state(false);
-	let postError = $state<string | null>(null);
 	let upvoteBusy = $state(false);
 
 	const number = $derived(Number(page.params.number));
@@ -50,50 +38,8 @@
 			: '#'
 	);
 
-	// inline moderation editor
-	let editing = $state(false);
-	/** The phone-width ⋯ menu holding Edit/Delete/Report */
+	/** The phone-width ⋯ menu holding Edit/Delete/Report; with only Report a menu would hide one link */
 	let actionsOpen = $state(false);
-	const actionsInMenu = $derived(postActionsMenu({ canModerate, editing }));
-	let editTitle = $state('');
-	let editCategoryId = $state('');
-	let editBody = $state('');
-	let editBusy = $state(false);
-	let editError = $state<string | null>(null);
-
-	function startEdit() {
-		if (!discussion) return;
-		editTitle = discussion.title;
-		editCategoryId = discussion.category.id;
-		editBody = stripMarker(discussion.body);
-		editError = null;
-		editing = true;
-	}
-
-	async function saveEdit(e: SubmitEvent) {
-		e.preventDefault();
-		if (!discussion || !editTitle.trim() || !editBody.trim()) return;
-		editBusy = true;
-		editError = null;
-		try {
-			// preserve the post's article/post type
-			const body = article
-				? `${forumConfig.content.articles.marker}\n\n${editBody}`
-				: editBody;
-			const updated = await updateDiscussion(discussion.id, {
-				title: editTitle.trim(),
-				body,
-				categoryId: editCategoryId
-			});
-			Object.assign(discussion, updated);
-			persist();
-			editing = false;
-		} catch (err) {
-			editError = err instanceof Error ? err.message : 'Failed to save changes.';
-		} finally {
-			editBusy = false;
-		}
-	}
 
 	let deleteBusy = $state(false);
 	async function removeDiscussion() {
@@ -145,41 +91,6 @@
 		}
 	}
 
-	/** Persist the locally-updated thread so the cache stays fresh */
-	function persist() {
-		if (discussion) writeCache(`discussion:${number}`, $state.snapshot(discussion));
-	}
-
-	async function submitComment(e: SubmitEvent) {
-		e.preventDefault();
-		if (!discussion || !commentBody.trim()) return;
-		posting = true;
-		postError = null;
-		try {
-			// the mutation returns the created comment — insert it directly
-			// instead of refetching the whole thread
-			const created = await addComment(discussion.id, commentBody);
-			discussion.comments.nodes.push({
-				...created,
-				isAnswer: false,
-				replies: { totalCount: 0, nodes: [] }
-			});
-			discussion.comments.totalCount += 1;
-			commentBody = '';
-			persist();
-		} catch (err) {
-			postError = err instanceof Error ? err.message : 'Failed to post comment.';
-		} finally {
-			posting = false;
-		}
-	}
-
-	function onReplyPosted(comment: Comment, reply: Reply) {
-		comment.replies.nodes.push(reply);
-		comment.replies.totalCount += 1;
-		persist();
-	}
-
 	async function upvote() {
 		if (!auth.signedIn) {
 			ui.signInOpen = true;
@@ -203,17 +114,10 @@
 
 <!-- Edit/Delete/Report, inline on wide screens and in the ⋯ menu on phones -->
 {#snippet postActions(cls: string)}
-	{#if canModerate && !editing}
-		<button
-			type="button"
-			onclick={() => {
-				actionsOpen = false;
-				startEdit();
-			}}
-			class={cls}
-		>
+	{#if canModerate}
+		<a href={discussion?.url} target="_blank" rel="noopener noreferrer" title="Edit this post on GitHub" onclick={() => (actionsOpen = false)} class={cls}>
 			Edit
-		</button>
+		</a>
 		<button
 			type="button"
 			onclick={() => {
@@ -301,10 +205,10 @@
 					<span class="badge bg-fd-muted text-fd-muted-foreground">Pinned</span>
 				{/if}
 
-				<span class="ml-auto items-center gap-0.5 {actionsInMenu ? 'hidden sm:inline-flex' : 'inline-flex'}">
+				<span class="ml-auto items-center gap-0.5 {canModerate ? 'hidden sm:inline-flex' : 'inline-flex'}">
 					{@render postActions('btn btn-quiet h-7 px-2 text-[12.5px]')}
 				</span>
-				{#if actionsInMenu}
+				{#if canModerate}
 					<details class="relative ml-auto sm:hidden" bind:open={actionsOpen}>
 						<summary
 							class="flex size-7 cursor-pointer list-none items-center justify-center rounded-md hover:bg-fd-muted [&::-webkit-details-marker]:hidden"
@@ -319,43 +223,9 @@
 				{/if}
 			</div>
 
-			{#if editing}
-				<form onsubmit={saveEdit} class="mt-6 flex flex-col gap-4">
-					<div>
-						<label class="mb-1 block text-[13px] font-medium" for="dk-edit-title">Title</label>
-						<input id="dk-edit-title" type="text" bind:value={editTitle} maxlength="256" class="field" />
-					</div>
-					<div>
-						<label class="mb-1 block text-[13px] font-medium" for="dk-edit-topic">Topic</label>
-						<select id="dk-edit-topic" bind:value={editCategoryId} class="field sm:max-w-xs">
-							{#each ui.categories as category (category.id)}
-								<option value={category.id}>{category.name}</option>
-							{/each}
-						</select>
-					</div>
-					<div>
-						<span class="mb-1 block text-[13px] font-medium">Body</span>
-						<MarkdownEditor bind:value={editBody} rows={10} />
-					</div>
-					{#if editError}
-						<p class="rounded-lg border border-red-500/30 bg-red-500/5 p-3 text-sm text-red-600 dark:text-red-400">{editError}</p>
-					{/if}
-					<div class="flex justify-end gap-2">
-						<button type="button" onclick={() => (editing = false)} class="btn btn-quiet">Cancel</button>
-						<button
-							type="submit"
-							disabled={editBusy || !editTitle.trim() || !editBody.trim()}
-							class="btn btn-primary"
-						>
-							{editBusy ? 'Saving…' : 'Save changes'}
-						</button>
-					</div>
-				</form>
-			{:else}
-				<div class="markdown mt-6 {article ? 'text-base leading-8' : ''}">
-					{@html discussion.bodyHTML}
-				</div>
-			{/if}
+			<div class="markdown mt-6 {article ? 'text-base leading-8' : ''}">
+				{@html discussion.bodyHTML}
+			</div>
 
 			{#if forumConfig.features.upvotes || forumConfig.features.reactions}
 				<div class="mt-6 flex flex-wrap items-center gap-2">
@@ -390,9 +260,8 @@
 					{#each discussion.comments.nodes as comment (comment.id)}
 						<CommentCard
 							{comment}
-							discussionId={discussion.id}
+							discussionUrl={discussion.url}
 							locked={discussion.locked}
-							onposted={(reply) => onReplyPosted(comment, reply)}
 						/>
 					{/each}
 				</div>
@@ -402,29 +271,12 @@
 				<p class="mt-4 rounded-lg bg-fd-muted px-4 py-3 text-[13px] text-fd-muted-foreground">
 					This discussion is locked. New comments are disabled.
 				</p>
-			{:else if !auth.signedIn}
-				<div class="mt-4 rounded-lg bg-fd-muted px-4 py-3 text-[13px] text-fd-muted-foreground">
-					You're viewing a read-only snapshot.
-					<button
-						type="button"
-						onclick={() => (ui.signInOpen = true)}
-						class="font-medium text-fd-link hover:underline"
-					>
-						Sign in
-					</button>
-					to join the discussion.
-				</div>
 			{:else}
-				<form onsubmit={submitComment} class="mt-5">
-					<h3 class="mb-2 text-[13px] font-medium">Add a comment</h3>
-					<MarkdownEditor bind:value={commentBody} />
-					{#if postError}<p class="mt-2 text-sm text-red-600 dark:text-red-400">{postError}</p>{/if}
-					<div class="mt-3 flex justify-end">
-						<button type="submit" disabled={posting || !commentBody.trim()} class="btn btn-primary">
-							{posting ? 'Posting…' : 'Comment'}
-						</button>
-					</div>
-				</form>
+				<div class="mt-5 flex justify-end">
+					<a href={discussion.url} target="_blank" rel="noopener noreferrer" title="Comments are written on GitHub" class="btn btn-primary">
+						Comment on GitHub
+					</a>
+				</div>
 			{/if}
 		</section>
 	</article>

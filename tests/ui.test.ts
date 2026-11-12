@@ -127,26 +127,12 @@ describe('permissions', () => {
 		expect(mod.canPostIn({ slug: 'announcements' })).toBe(true);
 	});
 
-	it('postAction asks signed-out visitors to sign in first', () => {
+	it('postAction offers GitHub posting to every visitor except in restricted topics', () => {
 		mockAuth.signedIn = false;
-		expect(mod.postAction({ slug: 'general' })).toBe('sign-in');
-		expect(mod.postAction({ slug: 'announcements' })).toBe('sign-in');
-		mockAuth.signedIn = true;
 		expect(mod.postAction({ slug: 'general' })).toBe('post');
 		expect(mod.postAction({ slug: 'announcements' })).toBe('locked');
-	});
-
-	it('postActionsMenu collapses only when there is more than Report to show', () => {
-		expect(mod.postActionsMenu({ canModerate: true, editing: false })).toBe(true);
-		expect(mod.postActionsMenu({ canModerate: true, editing: true })).toBe(false);
-		expect(mod.postActionsMenu({ canModerate: false, editing: false })).toBe(false);
-	});
-
-	it('postableCategories filters restricted topics for readers', async () => {
-		await mod.loadOverview();
-		expect(mod.postableCategories().map((c) => c.slug)).toEqual(['general']);
 		mod.ui.viewerPermission = 'WRITE';
-		expect(mod.postableCategories().map((c) => c.slug)).toEqual(['general', 'announcements']);
+		expect(mod.postAction({ slug: 'announcements' })).toBe('post');
 	});
 });
 
