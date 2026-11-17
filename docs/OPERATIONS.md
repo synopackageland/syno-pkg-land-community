@@ -40,19 +40,18 @@ Renew it about a month before it expires:
 Catalog source is **synopackageland/catalog** (`catalog.yaml`), configured once
 in `forum/catalog-settings.json`.
 
-Every hour (minute 17), the job reads catalog.yaml and current discussions. It
-deduplicates architecture pins, posts a new announcement per package/version and
-updates generated notes for the same version. Third-party titles use
-`[publisher/package]`. A stable hidden marker makes retries idempotent. Removing
-an entry never deletes its category or discussions. Existing official display
-names/slugs are configured; future names default to the SPK package ID.
+Every hour (minute 17), and on every discussion change, the job reads
+catalog.yaml (schema 3 or 4), records the current package releases in
+`catalog-sync.json`, rebuilds the anonymous archive and publishes it to the
+`data` branch with the built-in repository GITHUB_TOKEN.
 
-If `CATALOG_SYNC_TOKEN` is not set, the job reports `needs-catalog-sync-token`
-with pending announcements and still refreshes the anonymous archive using the
-built-in repository GITHUB_TOKEN. An expired or revoked token makes the
-catalog step fail, so a red **Community maintenance** run is the signal to renew it.
-The long-lived token is never substituted with an unrelated workstation token.
-All catalog writes verify `/user` is synopackageland before each mutation.
+The scheduled job does not post release announcements. Announcements are
+opt-in: running `catalog-sync.ts` with both `CATALOG_SYNC_TOKEN` and
+`CATALOG_ANNOUNCE=1` posts one announcement per package/version and updates
+generated notes for the same version. Third-party titles use
+`[publisher/package]`. A stable hidden marker makes retries idempotent. Removing
+an entry never deletes its category or discussions. All catalog writes verify
+`/user` is synopackageland before each mutation.
 
 Snapshots keep normal Git history. Publishing creates a commit with the previous
 data commit as parent and updates the ref with `force: false`; no force-push,

@@ -7,7 +7,8 @@ import { GitHub } from '../lib/github';
 const settings = JSON.parse(await readFile('forum/catalog-settings.json', 'utf8')) as Settings & { catalogRepository: string; catalogBranch: string; forumRepository: string };
 const token = process.env.CATALOG_SYNC_TOKEN || process.env.GITHUB_TOKEN || '';
 const api = new GitHub(token, settings.forumRepository);
-const canWrite = Boolean(process.env.CATALOG_SYNC_TOKEN);
+// Release announcements are opt-in: the scheduled sync only records the catalog for the archive.
+const canWrite = Boolean(process.env.CATALOG_SYNC_TOKEN) && process.env.CATALOG_ANNOUNCE === '1';
 if (canWrite) await api.assertOwner();
 const response = await fetch(`https://raw.githubusercontent.com/${settings.catalogRepository}/${settings.catalogBranch}/catalog.yaml`);
 if (!response.ok) throw new Error(`Catalog fetch failed (${response.status}); no writes performed`);
@@ -44,7 +45,7 @@ if (canWrite) await runSync(plan, {
 const out = process.env.OUT_DIR || '.data-out';
 await mkdir(out, { recursive: true });
 const status = { syncedAt: new Date().toISOString(), catalogRepository: settings.catalogRepository,
-  mode: canWrite ? 'write' : 'needs-catalog-sync-token', pendingCategories: plan.pendingCategories,
+  mode: canWrite ? 'write' : 'archive-only', pendingCategories: plan.pendingCategories,
   pendingAnnouncements: canWrite ? 0 : plan.posts.length, packages,
   multiRepoReviewNeeded: new Set(packages.filter((p) => p.official).map((p) => p.key)).size >= 15 };
 await writeFile(`${out}/catalog-sync.json`, JSON.stringify(status, null, 2));
