@@ -1,6 +1,29 @@
 {
-	"archivedAt": "2026-10-21T04:53:20.299Z",
+	"archivedAt": "2026-11-17T03:58:30.729Z",
 	"discussions": [
+		{
+			"id": "D_kwDOVLwbas4ArHUq",
+			"number": 39,
+			"title": "Built-in web terminal in DSM, so you don’t have to open SSH",
+			"body": "It would be very useful to have a native terminal app inside DSM, accessible from the main menu like any other package.\r\n\r\nSometimes you just need to run a few commands, like checking a service, reading a log or fixing a permission. Today the only way is to enable SSH, connect from an external client, and then remember to disable it again. Opening the SSH port, even for a short time, adds an unnecessary attack surface.\r\n\r\nA web-based terminal running inside the DSM session would solve this:\r\n\r\nNo SSH port to open: everything goes through the existing DSM web session (HTTPS).\r\nSame user, same privileges: the shell runs as the user logged into DSM, with exactly the same rights. No privilege escalation, and sudo only for accounts that are already allowed to use it.\r\nAdmin control: access can be granted or denied per user or group through the standard DSM application permissions.\r\nTraceability: sessions and commands can be logged in the DSM Log Center.\r\n\r\nThis would make day-to-day maintenance faster and more secure, especially for users who manage their NAS remotely and don’t want to expose SSH at all.",
+			"createdAt": "2026-11-13T15:16:28Z",
+			"updatedAt": "2026-11-14T04:46:45Z",
+			"upvoteCount": 1,
+			"author": {
+				"login": "r0verchr0me",
+				"avatarUrl": "https://avatars.githubusercontent.com/u/7636242?v=4",
+				"url": "https://github.com/r0verchr0me"
+			},
+			"category": {
+				"id": "DIC_kwDOVLwbas4DIkxR",
+				"name": "General",
+				"slug": "general",
+				"emojiHTML": "<div>💬</div>"
+			},
+			"comments": {
+				"totalCount": 1
+			}
+		},
 		{
 			"id": "D_kwDOVLwbas4AqUFC",
 			"number": 35,
@@ -140,12 +163,12 @@
 			}
 		},
 		{
-			"id": "D_kwDOVLwbas4AqTP8",
-			"number": 29,
-			"title": "Download Hub 0.2.2-0048",
-			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgGopeed:0.2.2-0048 -->\n\nDownload Hub **0.2.2-0048**\n\n0.2.2-0048\n- Rebuilt with SDK/App 0.17.7, CLI 0.17.8, templates 0.17.10 and UI 0.12.4.\n- Fix administrator authorization for DSM administrators group members, including domain accounts, using the shared native DSM check.\n- Executor payload changed; open Download Hub and approve system access again after upgrading. Existing data and settings are retained.\n\nPackage: `synopackageland/SynoPkgGopeed`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"id": "D_kwDOVLwbas4AqTP7",
+			"number": 28,
+			"title": "Connect 0.1.0-0059",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgConnect:0.1.0-0059 -->\n\nConnect **0.1.0-0059**\n\n0.1.0-0059\n- Rebuilt with CLI 0.17.5, templates 0.17.8, SDK/App 0.17.5 and UI 0.12.4.\n- Full-page layout uses flush content without an outer page card.\n\nPackage: `synopackageland/SynoPkgConnect`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
 			"createdAt": "2026-10-20T17:11:52Z",
-			"updatedAt": "2026-10-20T17:11:52Z",
+			"updatedAt": "2026-11-13T15:01:45Z",
 			"upvoteCount": 1,
 			"author": {
 				"login": "synopackageland",
@@ -159,14 +182,14 @@
 				"emojiHTML": "<div>📣</div>"
 			},
 			"comments": {
-				"totalCount": 0
+				"totalCount": 1
 			}
 		},
 		{
-			"id": "D_kwDOVLwbas4AqTP7",
-			"number": 28,
-			"title": "Connect 0.1.0-0059",
-			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgConnect:0.1.0-0059 -->\n\nConnect **0.1.0-0059**\n\n0.1.0-0059\n- Rebuilt with CLI 0.17.5, templates 0.17.8, SDK/App 0.17.5 and UI 0.12.4.\n- Full-page layout uses flush content without an outer page card.\n\nPackage: `synopackageland/SynoPkgConnect`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
+			"id": "D_kwDOVLwbas4AqTP8",
+			"number": 29,
+			"title": "Download Hub 0.2.2-0048",
+			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgGopeed:0.2.2-0048 -->\n\nDownload Hub **0.2.2-0048**\n\n0.2.2-0048\n- Rebuilt with SDK/App 0.17.7, CLI 0.17.8, templates 0.17.10 and UI 0.12.4.\n- Fix administrator authorization for DSM administrators group members, including domain accounts, using the shared native DSM check.\n- Executor payload changed; open Download Hub and approve system access again after upgrading. Existing data and settings are retained.\n\nPackage: `synopackageland/SynoPkgGopeed`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
 			"createdAt": "2026-10-20T17:11:52Z",
 			"updatedAt": "2026-10-20T17:11:52Z",
 			"upvoteCount": 1,
