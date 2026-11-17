@@ -21,6 +21,7 @@ import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path';
 import { collectPages } from '../lib/pagination';
 import { lastActivityAt } from '../../src/lib/archive/activity';
+import { stableAttachmentUrls } from '../../src/lib/archive/attachments';
 import userConfig from '../../forum.config';
 import { mergeConfig } from '../../src/lib/config/schema';
 import {
@@ -256,7 +257,7 @@ function toArchivedDiscussion(d: ScanDiscussion) {
 		number: d.number,
 		title: d.title,
 		body: d.body,
-		bodyHTML: d.bodyHTML,
+		bodyHTML: stableAttachmentUrls(d.bodyHTML),
 		url: d.url,
 		createdAt: d.createdAt,
 		lastEditedAt: d.lastEditedAt,
@@ -271,7 +272,7 @@ function toArchivedDiscussion(d: ScanDiscussion) {
 			pageInfo: { endCursor: null, hasNextPage: false },
 			nodes: d.comments.nodes.map((c) => ({
 				id: c.id,
-				bodyHTML: c.bodyHTML,
+				bodyHTML: stableAttachmentUrls(c.bodyHTML),
 				createdAt: c.createdAt,
 				isAnswer: c.isAnswer,
 				author: c.author,
@@ -280,7 +281,7 @@ function toArchivedDiscussion(d: ScanDiscussion) {
 					totalCount: c.replies.totalCount,
 					nodes: c.replies.nodes.map((r) => ({
 						id: r.id,
-						bodyHTML: r.bodyHTML,
+						bodyHTML: stableAttachmentUrls(r.bodyHTML),
 						createdAt: r.createdAt,
 						author: r.author,
 						reactionGroups: neutralReactions(r.reactionGroups)
