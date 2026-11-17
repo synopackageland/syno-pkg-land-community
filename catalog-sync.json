@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-17T07:36:31.801Z",
+  "syncedAt": "2026-11-17T13:29:14.870Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "archive-only",
   "pendingCategories": [
@@ -88,27 +88,27 @@
   "packages": [
     {
       "key": "synopackageland/SynoReclaim",
-      "version": "0.1.1-1672",
+      "version": "0.1.1-1674",
       "name": "Reclaim",
       "official": true,
       "category": "reclaim",
-      "notes": "- Internal interface component update; pages look and work the same"
+      "notes": "- On a phone, the page background, cards and nested panels now match the desktop look"
     },
     {
       "key": "synopackageland/SynoPkgConnect",
-      "version": "0.1.0-0176",
+      "version": "0.1.0-0180",
       "name": "Connect",
       "official": true,
       "category": "connect",
-      "notes": "- Phone page: Apps such as Connect and Reclaim open instead of loading forever\n- Phone page: Package Center, Log Center and tables fit the screen, and wide tables scroll sideways with the first column pinned"
+      "notes": "- Phone page: the Active Backup for Business calendar and the Synology Drive welcome screen are no longer cut off\n- In the Scan with your phone section, the left and right columns are centred vertically beside the phone\n- On a phone, the page background, cards and nested panels now match the desktop look"
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
-      "version": "0.2.2-0111",
+      "version": "0.2.2-0112",
       "name": "Download Hub",
       "official": true,
       "category": "download-hub",
-      "notes": "- Interface polish: hover over shortened text to see all of it"
+      "notes": "- Phone layout: the background, cards and panels now match the desktop look"
     },
     {
       "key": "synopackageland/SynoPkgOpenList",
