@@ -23,14 +23,20 @@ const CJK = /[\u3000-\u303f\u3040-\u30ff\u3400-\u9fff\uff00-\uffef]/;
 const FALLBACK_NOTES = 'A new package version is available.';
 
 /** The forum is English only: keep the English changelog and drop every other language. */
-function englishNotes(changelog: unknown): string {
-  const text = changelog && typeof changelog === 'object' ? (changelog as Record<string, unknown>).en : changelog;
+function englishNotes(changelog: unknown, version: string): string {
+  let text = changelog && typeof changelog === 'object' ? (changelog as Record<string, unknown>).en : changelog;
+  // Schema 4: changelog.releases[version].en is a list of English lines.
+  const releases = changelog && typeof changelog === 'object' ? (changelog as Record<string, unknown>).releases : undefined;
+  if (releases && typeof releases === 'object') {
+    const lines = record((releases as Record<string, unknown>)[version] ?? {}).en;
+    text = Array.isArray(lines) ? lines.filter((l) => typeof l === 'string').map((l) => `- ${l}`).join('\n') : undefined;
+  }
   return typeof text === 'string' && !CJK.test(text) ? text : '';
 }
 
 export function normalizeCatalog(input: unknown, settings: Settings): PackageRelease[] {
   const catalog = record(input);
-  if (catalog.schema !== 3 || !Array.isArray(catalog.packages)) throw new Error('Expected catalog schema 3');
+  if ((catalog.schema !== 3 && catalog.schema !== 4) || !Array.isArray(catalog.packages)) throw new Error('Expected catalog schema 3 or 4');
   const releases = new Map<string, PackageRelease>();
   for (const raw of catalog.packages) {
     const pkg = record(raw);
@@ -38,7 +44,6 @@ export function normalizeCatalog(input: unknown, settings: Settings): PackageRel
     if (!Array.isArray(pkg.pins) || !pkg.pins.length) throw new Error('Expected package pins');
     const metadata = pkg.metadata ? record(pkg.metadata) : {};
     const changelog = metadata.changelog;
-    const notes = englishNotes(changelog);
     for (const rawPin of pkg.pins) {
       const pin = record(rawPin);
       const id = required(pin.package, 'package');
@@ -47,7 +52,7 @@ export function normalizeCatalog(input: unknown, settings: Settings): PackageRel
       const configured = settings.packages[key];
       releases.set(`${key}\0${version}`, { key, version, name: configured?.name ?? id,
         official: publisher === settings.owner, category: configured?.category ?? id.toLowerCase().replace(/[^a-z0-9-]/g, '-'),
-        notes });
+        notes: englishNotes(changelog, version) });
     }
   }
   return [...releases.values()];

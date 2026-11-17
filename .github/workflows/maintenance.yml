@@ -17,6 +17,7 @@ jobs:
   sync:
     if: github.repository == 'synopackageland/syno-pkg-land-community'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -26,10 +27,9 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - name: Synchronize catalog and announce releases
+      - name: Record catalog for the archive (no announcements)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CATALOG_SYNC_TOKEN: ${{ secrets.CATALOG_SYNC_TOKEN }}
           OUT_DIR: .data-out
         run: npx tsx .github/scripts/catalog-sync.ts
       - name: Build anonymous archive

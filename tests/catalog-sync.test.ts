@@ -15,6 +15,14 @@ function catalog(version = '1.0', extra = false) {
 const CJK = /[　-〿぀-ヿ㐀-鿿＀-￯]/;
 
 describe('catalog synchronization', () => {
+  it('reads schema 4 changelogs keyed by release version', () => {
+    const input = catalog('2.0') as Record<string, unknown> & { packages: { metadata?: Record<string, unknown> }[] };
+    input.schema = 4;
+    input.packages[0].metadata = { changelog: { releases: { '2.0': { en: ['Faster scans', 'Fixed a crash'], 'zh-TW': ['更快'] } } } };
+    expect(normalizeCatalog(input, settings)[0].notes).toBe('- Faster scans\n- Fixed a crash');
+    input.packages[0].metadata = { changelog: { releases: { '1.9': { en: ['Old'] } } } };
+    expect(normalizeCatalog(input, settings)[0].notes).toBe('');
+  });
   it('does not treat a release marker copied by another user as an official announcement', () => {
     const packages = normalizeCatalog(catalog(), settings);
     const generated = planSync(packages, categories, [], settings).posts[0];
