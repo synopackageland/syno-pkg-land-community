@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-17T05:03:05.853Z",
+  "syncedAt": "2026-11-17T07:36:31.801Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "archive-only",
   "pendingCategories": [
@@ -96,11 +96,11 @@
     },
     {
       "key": "synopackageland/SynoPkgConnect",
-      "version": "0.1.0-0174",
+      "version": "0.1.0-0176",
       "name": "Connect",
       "official": true,
       "category": "connect",
-      "notes": "- Interface polish: hover over shortened text to see all of it"
+      "notes": "- Phone page: Apps such as Connect and Reclaim open instead of loading forever\n- Phone page: Package Center, Log Center and tables fit the screen, and wide tables scroll sideways with the first column pinned"
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
