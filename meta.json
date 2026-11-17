@@ -1,5 +1,5 @@
 {
-	"archivedAt": "2026-11-17T03:58:30.729Z",
+	"archivedAt": "2026-11-17T04:14:05.267Z",
 	"categories": [
 		{
 			"id": "DIC_kwDOVLwbas4DIkxQ",
@@ -15,6 +15,14 @@
 			"slug": "general",
 			"emojiHTML": "<div>💬</div>",
 			"description": "Chat about anything and everything here",
+			"isAnswerable": false
+		},
+		{
+			"id": "DIC_kwDOVLwbas4DLTt_",
+			"name": "Tips & Tricks",
+			"slug": "tips-tricks",
+			"emojiHTML": "<div>🥘</div>",
+			"description": "",
 			"isAnswerable": false
 		}
 	],

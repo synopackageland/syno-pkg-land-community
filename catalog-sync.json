@@ -1,0 +1,211 @@
+{
+  "syncedAt": "2026-11-17T04:13:52.213Z",
+  "catalogRepository": "synopackageland/catalog",
+  "mode": "archive-only",
+  "pendingCategories": [
+    {
+      "key": "shared",
+      "name": "Third-party",
+      "slug": "third-party"
+    },
+    {
+      "key": "synopackageland/SynoReclaim",
+      "name": "Reclaim",
+      "slug": "reclaim"
+    },
+    {
+      "key": "synopackageland/SynoPkgConnect",
+      "name": "Connect",
+      "slug": "connect"
+    },
+    {
+      "key": "synopackageland/SynoPkgGopeed",
+      "name": "Download Hub",
+      "slug": "download-hub"
+    },
+    {
+      "key": "synopackageland/SynoPkgOpenList",
+      "name": "SynoPkgOpenList",
+      "slug": "synopkgopenlist"
+    },
+    {
+      "key": "synopackageland/SynoPkgFreshRSS",
+      "name": "SynoPkgFreshRSS",
+      "slug": "synopkgfreshrss"
+    },
+    {
+      "key": "synopackageland/SynoPkgAudiobookshelf",
+      "name": "SynoPkgAudiobookshelf",
+      "slug": "synopkgaudiobookshelf"
+    },
+    {
+      "key": "synopackageland/SynoPkgJellyfin",
+      "name": "SynoPkgJellyfin",
+      "slug": "synopkgjellyfin"
+    },
+    {
+      "key": "synopackageland/SynoPkgConvertX",
+      "name": "SynoPkgConvertX",
+      "slug": "synopkgconvertx"
+    },
+    {
+      "key": "synopackageland/SynoPkgPaperlessNgx",
+      "name": "SynoPkgPaperlessNgx",
+      "slug": "synopkgpaperlessngx"
+    },
+    {
+      "key": "synopackageland/SynoPkgVaultwarden",
+      "name": "SynoPkgVaultwarden",
+      "slug": "synopkgvaultwarden"
+    },
+    {
+      "key": "synopackageland/SynoPkgNavidrome",
+      "name": "SynoPkgNavidrome",
+      "slug": "synopkgnavidrome"
+    },
+    {
+      "key": "synopackageland/SynoPkgHomeAssistant",
+      "name": "SynoPkgHomeAssistant",
+      "slug": "synopkghomeassistant"
+    },
+    {
+      "key": "synopackageland/Magpie",
+      "name": "Magpie",
+      "slug": "magpie"
+    },
+    {
+      "key": "synopackageland/Ovis",
+      "name": "Ovis",
+      "slug": "ovis"
+    },
+    {
+      "key": "synopackageland/T3Code",
+      "name": "T3Code",
+      "slug": "t3code"
+    }
+  ],
+  "pendingAnnouncements": 15,
+  "packages": [
+    {
+      "key": "synopackageland/SynoReclaim",
+      "version": "0.1.1-1672",
+      "name": "Reclaim",
+      "official": true,
+      "category": "reclaim",
+      "notes": "- Internal interface component update; pages look and work the same"
+    },
+    {
+      "key": "synopackageland/SynoPkgConnect",
+      "version": "0.1.0-0174",
+      "name": "Connect",
+      "official": true,
+      "category": "connect",
+      "notes": "- Interface polish: hover over shortened text to see all of it"
+    },
+    {
+      "key": "synopackageland/SynoPkgGopeed",
+      "version": "0.2.2-0111",
+      "name": "Download Hub",
+      "official": true,
+      "category": "download-hub",
+      "notes": "- Interface polish: hover over shortened text to see all of it"
+    },
+    {
+      "key": "synopackageland/SynoPkgOpenList",
+      "version": "4.2.9-0011",
+      "name": "SynoPkgOpenList",
+      "official": true,
+      "category": "synopkgopenlist",
+      "notes": "- Improve installation reliability in Package Center"
+    },
+    {
+      "key": "synopackageland/SynoPkgFreshRSS",
+      "version": "1.30.4-0020",
+      "name": "SynoPkgFreshRSS",
+      "official": true,
+      "category": "synopkgfreshrss",
+      "notes": "- Improve installation reliability in Package Center"
+    },
+    {
+      "key": "synopackageland/SynoPkgAudiobookshelf",
+      "version": "2.37.2-0013",
+      "name": "SynoPkgAudiobookshelf",
+      "official": true,
+      "category": "synopkgaudiobookshelf",
+      "notes": "- Improve installation reliability in Package Center"
+    },
+    {
+      "key": "synopackageland/SynoPkgJellyfin",
+      "version": "12.4-0012",
+      "name": "SynoPkgJellyfin",
+      "official": true,
+      "category": "synopkgjellyfin",
+      "notes": "- Improve installation reliability in Package Center"
+    },
+    {
+      "key": "synopackageland/SynoPkgConvertX",
+      "version": "0.20.0-0010",
+      "name": "SynoPkgConvertX",
+      "official": true,
+      "category": "synopkgconvertx",
+      "notes": "- Improve installation reliability in Package Center"
+    },
+    {
+      "key": "synopackageland/SynoPkgPaperlessNgx",
+      "version": "3.4.0-0013",
+      "name": "SynoPkgPaperlessNgx",
+      "official": true,
+      "category": "synopkgpaperlessngx",
+      "notes": "- Improve installation reliability in Package Center"
+    },
+    {
+      "key": "synopackageland/SynoPkgVaultwarden",
+      "version": "1.37.4-0022",
+      "name": "SynoPkgVaultwarden",
+      "official": true,
+      "category": "synopkgvaultwarden",
+      "notes": "- Improve installation reliability in Package Center"
+    },
+    {
+      "key": "synopackageland/SynoPkgNavidrome",
+      "version": "0.64.2-0022",
+      "name": "SynoPkgNavidrome",
+      "official": true,
+      "category": "synopkgnavidrome",
+      "notes": "- Improve installation reliability in Package Center"
+    },
+    {
+      "key": "synopackageland/SynoPkgHomeAssistant",
+      "version": "2026.10.4-0009",
+      "name": "SynoPkgHomeAssistant",
+      "official": true,
+      "category": "synopkghomeassistant",
+      "notes": "- Improve installation reliability in Package Center"
+    },
+    {
+      "key": "synopackageland/Magpie",
+      "version": "0.1.3093-0009",
+      "name": "Magpie",
+      "official": true,
+      "category": "magpie",
+      "notes": "- Improve installation reliability in Package Center"
+    },
+    {
+      "key": "synopackageland/Ovis",
+      "version": "0.5.1-0007",
+      "name": "Ovis",
+      "official": true,
+      "category": "ovis",
+      "notes": "- Improve installation reliability in Package Center"
+    },
+    {
+      "key": "synopackageland/T3Code",
+      "version": "0.1.7-0011",
+      "name": "T3Code",
+      "official": true,
+      "category": "t3code",
+      "notes": "- Improve installation reliability in Package Center"
+    }
+  ],
+  "multiRepoReviewNeeded": true
+}
