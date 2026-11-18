@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-18T04:16:14.880Z",
+  "syncedAt": "2026-11-18T08:41:39.609Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "archive-only",
   "pendingCategories": [
@@ -96,19 +96,19 @@
     },
     {
       "key": "synopackageland/SynoPkgConnect",
-      "version": "0.1.0-0182",
+      "version": "0.1.0-0183",
       "name": "Connect",
       "official": true,
       "category": "connect",
-      "notes": "- Phone page: the address bar keeps showing /m after signing in and after a reload\n- Phone page: Apps with their own desktop, such as Surveillance Station, open as a list that leads straight to each feature; Virtual Machine Manager statistics show in full on a narrow screen"
+      "notes": "- Phone page: pull down on Home, Apps and Notifications to refresh\n- Phone page: in package Apps with side tabs, the tabs open from the menu button; side panels sit above or below the content and lists fill the screen\n- Phone page: Add NAS also adds a NAS without Syno Connect Center and opens its DSM in a new tab; when the browser does not trust the NAS certificate, open DSM to accept it and the page checks again when you come back"
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
-      "version": "0.2.2-0113",
+      "version": "0.2.2-0115",
       "name": "Download Hub",
       "official": true,
       "category": "download-hub",
-      "notes": "- On a phone, the page toolbar takes fewer rows and sits at the top edge"
+      "notes": "- Built from the public source repository; features are unchanged"
     },
     {
       "key": "synopackageland/SynoPkgOpenList",
@@ -152,11 +152,11 @@
     },
     {
       "key": "synopackageland/SynoPkgPaperlessNgx",
-      "version": "3.4.0-0013",
+      "version": "3.5.0-0001",
       "name": "SynoPkgPaperlessNgx",
       "official": true,
       "category": "synopkgpaperlessngx",
-      "notes": "- Improve installation reliability in Package Center"
+      "notes": "- Update Paperless-ngx to 3.5.0 with manual workflow triggers, Markdown notes and background bulk edits"
     },
     {
       "key": "synopackageland/SynoPkgVaultwarden",
@@ -176,35 +176,35 @@
     },
     {
       "key": "synopackageland/SynoPkgHomeAssistant",
-      "version": "2026.10.4-0009",
+      "version": "2026.11.2-0001",
       "name": "SynoPkgHomeAssistant",
       "official": true,
       "category": "synopkghomeassistant",
-      "notes": "- Improve installation reliability in Package Center"
+      "notes": "- Update Home Assistant to 2026.11.2 with 38 new integrations and device fixes"
     },
     {
       "key": "synopackageland/Magpie",
-      "version": "0.1.3093-0009",
+      "version": "0.1.4404-0001",
       "name": "Magpie",
       "official": true,
       "category": "magpie",
-      "notes": "- Improve installation reliability in Package Center"
+      "notes": "- Update to upstream magpie 0.1.4404 with gateway, routing and usage improvements; Antigravity now runs through the local agy CLI"
     },
     {
       "key": "synopackageland/Ovis",
-      "version": "0.5.1-0007",
+      "version": "0.5.4-0001",
       "name": "Ovis",
       "official": true,
       "category": "ovis",
-      "notes": "- Improve installation reliability in Package Center"
+      "notes": "- Update to upstream Ovis 0.5.4: agent inbox, explained settings and a compiled server for remote PCs"
     },
     {
       "key": "synopackageland/T3Code",
-      "version": "0.1.7-0011",
+      "version": "0.1.10-0002",
       "name": "T3Code",
       "official": true,
       "category": "t3code",
-      "notes": "- Improve installation reliability in Package Center"
+      "notes": "- Update to upstream T3 Code 0.1.10: reply to responses, custom themes, native thread resume"
     }
   ],
   "multiRepoReviewNeeded": true

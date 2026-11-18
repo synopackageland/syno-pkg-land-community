@@ -1,5 +1,5 @@
 {
-	"archivedAt": "2026-11-18T04:16:17.060Z",
+	"archivedAt": "2026-11-18T08:41:41.393Z",
 	"discussions": [
 		{
 			"id": "D_kwDOVLwbas4ArNpJ",
@@ -237,7 +237,7 @@
 			"title": "Connect 0.1.0-0059",
 			"body": "<!-- synopkgland:release:synopackageland%2FSynoPkgConnect:0.1.0-0059 -->\n\nConnect **0.1.0-0059**\n\n0.1.0-0059\n- Rebuilt with CLI 0.17.5, templates 0.17.8, SDK/App 0.17.5 and UI 0.12.4.\n- Full-page layout uses flush content without an outer page card.\n\nPackage: `synopackageland/SynoPkgConnect`\n\n[Browse packages](https://synopkgland.com/apps/)\n\n",
 			"createdAt": "2026-10-20T17:11:52Z",
-			"updatedAt": "2026-11-13T15:01:45Z",
+			"updatedAt": "2026-11-18T08:41:16Z",
 			"upvoteCount": 1,
 			"author": {
 				"login": "synopackageland",
@@ -251,7 +251,7 @@
 				"emojiHTML": "<div>📣</div>"
 			},
 			"comments": {
-				"totalCount": 1
+				"totalCount": 2
 			}
 		},
 		{
