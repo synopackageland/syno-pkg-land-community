@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-17T22:19:08.247Z",
+  "syncedAt": "2026-11-18T04:16:14.880Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "archive-only",
   "pendingCategories": [
@@ -88,27 +88,27 @@
   "packages": [
     {
       "key": "synopackageland/SynoReclaim",
-      "version": "0.1.1-1674",
+      "version": "0.1.1-1675",
       "name": "Reclaim",
       "official": true,
       "category": "reclaim",
-      "notes": "- On a phone, the page background, cards and nested panels now match the desktop look"
+      "notes": "- On a phone, the page toolbar takes fewer rows and sits at the top edge"
     },
     {
       "key": "synopackageland/SynoPkgConnect",
-      "version": "0.1.0-0180",
+      "version": "0.1.0-0182",
       "name": "Connect",
       "official": true,
       "category": "connect",
-      "notes": "- Phone page: the Active Backup for Business calendar and the Synology Drive welcome screen are no longer cut off\n- In the Scan with your phone section, the left and right columns are centred vertically beside the phone\n- On a phone, the page background, cards and nested panels now match the desktop look"
+      "notes": "- Phone page: the address bar keeps showing /m after signing in and after a reload\n- Phone page: Apps with their own desktop, such as Surveillance Station, open as a list that leads straight to each feature; Virtual Machine Manager statistics show in full on a narrow screen"
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
-      "version": "0.2.2-0112",
+      "version": "0.2.2-0113",
       "name": "Download Hub",
       "official": true,
       "category": "download-hub",
-      "notes": "- Phone layout: the background, cards and panels now match the desktop look"
+      "notes": "- On a phone, the page toolbar takes fewer rows and sits at the top edge"
     },
     {
       "key": "synopackageland/SynoPkgOpenList",
@@ -128,11 +128,11 @@
     },
     {
       "key": "synopackageland/SynoPkgAudiobookshelf",
-      "version": "2.37.2-0013",
+      "version": "2.38.0-0001",
       "name": "SynoPkgAudiobookshelf",
       "official": true,
       "category": "synopkgaudiobookshelf",
-      "notes": "- Improve installation reliability in Package Center"
+      "notes": "- Update to Audiobookshelf 2.38.0 with library scan and access control fixes"
     },
     {
       "key": "synopackageland/SynoPkgJellyfin",
@@ -160,11 +160,11 @@
     },
     {
       "key": "synopackageland/SynoPkgVaultwarden",
-      "version": "1.37.4-0022",
+      "version": "1.37.5-0001",
       "name": "SynoPkgVaultwarden",
       "official": true,
       "category": "synopkgvaultwarden",
-      "notes": "- Improve installation reliability in Package Center"
+      "notes": "- Update to Vaultwarden 1.37.5 with security fixes and web vault 2026.10.1"
     },
     {
       "key": "synopackageland/SynoPkgNavidrome",
