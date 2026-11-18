@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-18T13:06:28.685Z",
+  "syncedAt": "2026-11-18T21:25:49.077Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "archive-only",
   "pendingCategories": [
@@ -88,19 +88,19 @@
   "packages": [
     {
       "key": "synopackageland/SynoReclaim",
-      "version": "0.1.1-1677",
+      "version": "0.1.1-1678",
       "name": "Reclaim",
       "official": true,
       "category": "reclaim",
-      "notes": "- In the “Unable to start” dialog, one click now removes only the groups that would remove a copy you chose to keep, checks again and keeps the cleanup list open"
+      "notes": "- When several groups would remove a copy you chose to keep, the “Unable to start” dialog now names them all at once, so one click takes them all out of the list"
     },
     {
       "key": "synopackageland/SynoPkgConnect",
-      "version": "0.1.0-0185",
+      "version": "0.1.0-0186",
       "name": "Connect",
       "official": true,
       "category": "connect",
-      "notes": "- Phone page: adding a NAS asks you to trust its certificate when needed; Apps open at once with a launch screen, and Surveillance Station sub-Apps fit the phone\n- The Add connection wizard shows every way at once"
+      "notes": "- Phone page: text fields highlight their whole rounded field on focus, and dashboard cards, card headers and toolbars in DSM Apps fit the phone"
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
