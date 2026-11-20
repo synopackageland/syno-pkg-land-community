@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-20T11:30:47.378Z",
+  "syncedAt": "2026-11-20T20:10:35.548Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "archive-only",
   "pendingCategories": [
@@ -96,11 +96,11 @@
     },
     {
       "key": "synopackageland/SynoPkgConnect",
-      "version": "0.1.0-0186",
+      "version": "0.1.0-0190",
       "name": "Connect",
       "official": true,
       "category": "connect",
-      "notes": "- Phone page: text fields highlight their whole rounded field on focus, and dashboard cards, card headers and toolbars in DSM Apps fit the phone"
+      "notes": "- Phone page: Photos, Drive, Chat, Calendar and other Apps that open in a page of their own open directly and much faster; Reopen shows only when loading failed\n- Phone page: Home shows the DSM version on its own line, with an Update available tag that opens Update & Restore (administrators)\n- Phone page: Security Advisor and its Security Baseline, Hyper Backup's task page and DSM grids fit the phone; grids scroll sideways as a whole\n- Phone page: the browser tab, the home screen icon and the Add to Home Screen card show DSM's own icon\n- Cloudflare: own domain, Free link and temporary address show that uploads are limited to 100 MB per file and downloads have no limit\n- Cloudflare: an App address removed before the tunnel was recreated is now cleaned up, so later App address changes no longer fail"
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
