@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-21T01:29:29.441Z",
+  "syncedAt": "2026-11-21T09:45:26.392Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "archive-only",
   "pendingCategories": [
@@ -96,11 +96,11 @@
     },
     {
       "key": "synopackageland/SynoPkgConnect",
-      "version": "0.1.0-0191",
+      "version": "0.1.0-0193",
       "name": "Connect",
       "official": true,
       "category": "connect",
-      "notes": "- Cloudflare: a new Local network option (off by default) offers DSM's local address when your browser is confirmed to reach it on your local network; it switches only when you click\n- Cloudflare: after switching, sign in again; with HTTPS the browser first warns about DSM's own certificate; if the DSM firewall is on, allow TCP port 45001\n- Phone page: Home shows Switch to local network in the same case\n- Cloudflare: the temporary address now says each upload must finish within 100 seconds, so large files may fail\n- Cloudflare: on narrow screens the upload limit line no longer starts a line with a stray dot"
+      "notes": "- Cloudflare: the own domain, Free link and temporary address no longer show an upload limit"
     },
     {
       "key": "synopackageland/SynoPkgGopeed",
