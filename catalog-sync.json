@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-25T02:22:47.324Z",
+  "syncedAt": "2026-11-25T08:14:44.890Z",
   "catalogRepository": "synopackageland/catalog",
   "mode": "archive-only",
   "pendingCategories": [
@@ -22,6 +22,11 @@
       "key": "synopackageland/SynoPkgGopeed",
       "name": "Download Hub",
       "slug": "download-hub"
+    },
+    {
+      "key": "synopackageland/SynoMailPlusSetupAssistant",
+      "name": "SynoMailPlusSetupAssistant",
+      "slug": "synomailplussetupassistant"
     },
     {
       "key": "synopackageland/SynoPkgOpenList",
@@ -84,7 +89,7 @@
       "slug": "t3code"
     }
   ],
-  "pendingAnnouncements": 15,
+  "pendingAnnouncements": 16,
   "packages": [
     {
       "key": "synopackageland/SynoReclaim",
@@ -109,6 +114,14 @@
       "official": true,
       "category": "download-hub",
       "notes": "- Updated to the latest UI kit and SDK; features are unchanged"
+    },
+    {
+      "key": "synopackageland/SynoMailPlusSetupAssistant",
+      "version": "0.1.0-0056",
+      "name": "SynoMailPlusSetupAssistant",
+      "official": true,
+      "category": "synomailplussetupassistant",
+      "notes": "- First catalog release: guided setup for Synology MailPlus Server with Cloudflare or a fixed IP, plus built-in mail diagnostics"
     },
     {
       "key": "synopackageland/SynoPkgOpenList",
